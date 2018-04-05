@@ -201,6 +201,8 @@ inline bool Client::DoTransaction(size_t ops[],double durations[]) {
       throw utils::Exception("Operation request is not recognized!");
   }
   assert(status >= 0);
+  ++ops[3];
+  durations[3] += transaction_timer.elapsed();
   return (status == DB::kOK);
 }
 

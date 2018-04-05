@@ -32,8 +32,8 @@ size_t DelegateClient(ycsbc::DB *db, ycsbc::CoreWorkload *wl, const size_t num_o
     db->Init();
     fp_phase = fopen("phase_time.txt","w");
   }
-  size_t ops[3] = {0,0,0};
-  double durations[] = {0,0,0};
+  size_t ops[] = {0,0,0,0};
+  double durations[] = {0,0,0,0};
   ycsbc::Client client(*db, *wl);
   size_t oks = 0;
   std::string out_string;
@@ -76,6 +76,8 @@ size_t DelegateClient(ycsbc::DB *db, ycsbc::CoreWorkload *wl, const size_t num_o
     cout<<durations[ycsbc::Operation::READ]/ops[ycsbc::Operation::READ]<<"us"<<" Read ops: "<<ops[ycsbc::Operation::READ]<<endl;
     cout<<"Zero-result lookup: "<<endl;
     cout<<durations[2]/ops[2]<<"us"<<" Zero-result ops: "<<ops[2]<<endl;
+    cout<<"IOPS: "<<endl;
+    cout<<ops[3]/(durations[3]/1000000)<<endl;
     db->doSomeThing("printStats");
     // db->doSomeThing("printAccessFreq");
     if(wl->adjust_filter_&&!end_flag_){
