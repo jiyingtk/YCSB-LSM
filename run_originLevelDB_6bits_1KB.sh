@@ -71,10 +71,10 @@ bloom_bit_array=(6)
 level=6
 maxOpenfiles=60000
 directIOFlag=true
-blockCacheSizes=(0 8) #MB
+blockCacheSizes=(8 16 32 64) #MB
 sizeRatio=10
-requestdistribution=uniform
-zipfianconsts=(0.99)
+requestdistribution=zipfian
+zipfianconsts=(1.10 1.20)
 workload_prefix=$1
 #dbfilename="$dbfilename_o""$level"
 for blockCacheSize in ${blockCacheSizes[@]}

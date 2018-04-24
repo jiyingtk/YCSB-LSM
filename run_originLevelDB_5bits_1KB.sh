@@ -43,7 +43,7 @@ function __runLSM(){
     workloadr_name=./workloads/"$workload_prefix"glsmworkloadr_"$levelIn"_"$sizeRatio"_"$value_size".spec
     echo workloadrname:"$workloadr_name"
     __modifyConfig directIOFlag "$directIOFlag"
-    for j in `seq 1 3`
+    for j in `seq 1 2`
     do
 	let count=300/"$j"
 	vmstat -n "$j" "$count"  > vmstat_"$count".txt &
@@ -72,10 +72,10 @@ bloombits=(5)
 level=6
 maxOpenfiles=60000
 directIOFlag=true
-blockCacheSizes=(0) #MB
+blockCacheSizes=(8 16 32 64) #MB
 sizeRatio=10
 requestdistribution=zipfian
-zipfianconsts=(0.99)
+zipfianconsts=(1.10 1.20)
 #dbfilename="$dbfilename_o"l"$level"s"$sizeRatio"b"$bloombits"a"$arrayname"
 dbfilename="$dbfilename_o"l"$level"b"$bloombits"s"$sizeRatio"
 workload_prefix=$1
