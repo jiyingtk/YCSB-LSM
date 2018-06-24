@@ -1,0 +1,7 @@
+_bloom_bits_2
+bloom_bits from config:32737
+filter policy name:leveldb.DynamicBloomFilter 
+Options used in leveldb
+compression	max_file_size	write_buffer_size	max_open_files
+ NoCompress	          2MB	              4MB	         50000
+glsm --- hierarchical bloom filter

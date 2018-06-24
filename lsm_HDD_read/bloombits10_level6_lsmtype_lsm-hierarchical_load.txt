@@ -1,0 +1,63 @@
+_bloom_bits_10
+bloom_bits from config:32683
+
+0:32 1:32 2:32 3:27 4:18 5:9 6:1 
+Options used in leveldb
+compression	max_file_size	write_buffer_size	max_open_files
+ NoCompress	          2MB	              4MB	         50000
+lsm --- hierarchical bloom filter 
+
+                               Compactions
+Level  Files Size(MB) Time(sec) Read(MB) Write(MB)
+--------------------------------------------------
+  0        9       31      1387        0     54767
+  1       14       24      4768    91792     91363
+  2      187      245     11563   237673    237451
+  3     2003     2470     14912   310484    309991
+  4    12362    24037     10729   251212    250599
+  5    13255    26018      1075    26237     26052
+
+ Compaction Count:101414 TrivialMoveCount:17726 
+
+ bloomFilterCompare Count:0 readTableCount:0 
+
+
+WRITE latency
+-nanusWrite ops:0
+READ latency
+-nanusRead ops:0
+Not found num: 0
+                               Compactions
+Level  Files Size(MB) Time(sec) Read(MB) Write(MB)
+--------------------------------------------------
+  0        9       31      1387        0     54767
+  1       14       24      4768    91792     91363
+  2      187      245     11563   237673    237451
+  3     2003     2470     14912   310484    309991
+  4    12362    24037     10729   251212    250599
+  5    13255    26018      1075    26237     26052
+
+ Compaction Count:101414 TrivialMoveCount:17726 
+
+ bloomFilterCompare Count:0 readTableCount:0 
+
+                               Compactions
+Level  Files Size(MB) Time(sec) Read(MB) Write(MB)
+--------------------------------------------------
+  0        0        0      1387        0     54767
+  1        6        9      4770    91844     91416
+  2       82       99     11573   237869    237647
+  3      714      999     14967   311607    311111
+  4     5381     9998     11176   261615    260979
+  5    21055    41567      2044    49660     49348
+
+ Compaction Count:110380 TrivialMoveCount:23574 
+
+ bloomFilterCompare Count:0 readTableCount:0 
+
+--------------above are untilCompactionEnds output--------------
+
+
+---------------------READ STATISTICS-----------------------------------------
+type   		count		min		ave		max
+

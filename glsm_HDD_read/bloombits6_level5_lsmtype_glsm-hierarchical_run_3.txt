@@ -1,0 +1,89 @@
+_bloom_bits_6
+bloom_bits from config:32670
+filter policy name:leveldb.DynamicBloomFilter 
+Options used in leveldb
+compression	max_file_size	write_buffer_size	max_open_files
+   Compress	          2MB	              4MB	         50000
+glsm --- hierarchical bloom filter
+output latency to filename :latencyfilename 
+
+WRITE latency
+-nanusWrite ops:0
+READ latency
+5122.42usRead ops:100000
+                               Compactions
+Level  Files Size(MB) Time(sec) Read(MB) Write(MB)
+--------------------------------------------------
+  0        9        7         0        0         0
+  1        3        5         0        0         0
+  2        2        5         0        0         0
+  3        2        5         0        0         0
+  4        3        5         0        0         0
+  5        2        5         0        0         0
+  6        9       20         0        0         0
+  7       10       21         0        0         0
+  8        9       20         0        0         0
+  9       10       21         0        0         0
+ 10        9       20         0        0         0
+ 11       10       21         0        0         0
+ 12       10       20         0        0         0
+ 13       10       21         0        0         0
+ 14        9       20         0        0         0
+ 15       13       23         0        0         0
+ 16      107      225         0        8         4
+ 17      101      218         0        0         0
+ 18       99      218         0        0         0
+ 19       98      218         0        0         0
+ 20      101      222         0        0         0
+ 21       99      219         0        0         0
+ 22      100      219         0        0         0
+ 23       98      219         0        0         0
+ 24       90      202         0        0         0
+
+ Compaction Count:1 TrivialMoveCount:0 
+
+                               Compactions
+Level  Files Size(MB) Time(sec) Read(MB) Write(MB)
+--------------------------------------------------
+  0        9        7         0        0         0
+  1        3        5         0        0         0
+  2        2        5         0        0         0
+  3        2        5         0        0         0
+  4        3        5         0        0         0
+  5        2        5         0        0         0
+  6        9       20         0        0         0
+  7       10       21         0        0         0
+  8        9       20         0        0         0
+  9       10       21         0        0         0
+ 10        9       20         0        0         0
+ 11       10       21         0        0         0
+ 12       10       20         0        0         0
+ 13       10       21         0        0         0
+ 14        9       20         0        0         0
+ 15       13       23         0        0         0
+ 16      107      225         0        8         4
+ 17      101      218         0        0         0
+ 18       99      218         0        0         0
+ 19       98      218         0        0         0
+ 20      101      222         0        0         0
+ 21       99      219         0        0         0
+ 22      100      219         0        0         0
+ 23       98      219         0        0         0
+ 24       90      202         0        0         0
+
+ Compaction Count:1 TrivialMoveCount:0 
+
+--------------abover are untilCompactionEnds output--------------
+
+
+---------------------READ STATISTICS-----------------------------------------
+type   		count		min		ave		max
+1 time		91182		16		5576.19		64711
+2 time		105		69		10417.56		27432
+3 time		32		108		14176.66		28425
+4 time		15		6943		16872.13		27869
+5 time		2		18446744073709551615		28442.50		29442
+6 time		3		18446744073709551615		27846.00		32791
+7 time		2		36799		37789.50		38780
+8 time		2		32234		40278.50		48323
+

@@ -1,0 +1,52 @@
+_bloom_bits_6
+seek compaction flag:false
+--------------------------- Before Do Transaction -----------------------------------------
+                               Compactions
+Level  Files Size(MB) Time(sec) Read(MB) Write(MB)
+--------------------------------------------------
+  0        1        1         0        0         0
+  1        6        8         0        0         0
+  2       76       98         0        0         0
+  3     1006      999         0        0         0
+  4     6377     9999         0        0         0
+  5    48230    96166         0        0         0
+filter mem space overhead:0 filter num:0 
+filter mem space overhead:0 filter num:0 
+average add filter time  = -nan add filters count:0 
+
+----------------------------Transaction Output------------------
+output latency to filename :latencyfilename 
+
+WRITE latency
+-nanusWrite ops:0
+READ latency
+3618.24usRead ops:3000000
+Zero-result lookup: 
+1353.95us Zero-result ops: 1561766
+                               Compactions
+Level  Files Size(MB) Time(sec) Read(MB) Write(MB)
+--------------------------------------------------
+  0        1        1         0        0         0
+  1        6        8         0        0         0
+  2       76       98         0        0         0
+  3     1006      999         0        0         0
+  4     6377     9999         0        0         0
+  5    48230    96166         0        0         0
+filter mem space overhead:842696502 filter num:55413 
+filter mem space overhead:842696502 filter num:55413 
+average add filter time  = 7941.851 add filters count:55978 
+leveldb.findtable.time min:0.000 ave:104.437 max:176772.000 count:13349387
+leveldb.internalget.time min:0.000 ave:704.859 max:145851.000 count:13349387
+leveldb.release.time min:0.000 ave:0.199 max:33.000 count:13349387
+leveldb.block.read.time min:85.000 ave:4301.812 max:145847.000 count:2179787
+leveldb.0.time min:8.000 ave:506.760 max:189931.000 count:1142572
+leveldb.1.time min:100.000 ave:4970.487 max:214133.000 count:1546303
+leveldb.2.time min:204.000 ave:7847.460 max:177055.000 count:300234
+leveldb.3.time min:332.000 ave:19191.784 max:89061.000 count:10551
+leveldb.4.time min:10468.000 ave:24993.629 max:73907.000 count:337
+leveldb.5.time min:17700.000 ave:28678.667 max:34740.000 count:3
+
+--- untilCompactionEnds will output ------------
+
+--------------above are untilCompactionEnds output--------------
+

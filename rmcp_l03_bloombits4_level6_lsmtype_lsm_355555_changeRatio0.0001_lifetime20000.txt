@@ -1,0 +1,6 @@
+_bloom_bits_4
+seek compaction flag:false
+
+bits_per_key_per_filter: 3 5 5 5 5 5 filters size:6
+Counterpart bloom_bits from config:4
+Multi-Queue Capacity:228528

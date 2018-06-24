@@ -1,7 +1,7 @@
 #!/bin/bash
 experiment_time=4
 value_size=1KB
-DISK=SSD"$experiment_time"
+DISK=HDD"$experiment_time"
 dbfilename_o=/home/ming/"$DISK"_"$value_size"/lsm
 configpath=./configDir/leveldb_config.ini
 section=basic
@@ -70,7 +70,7 @@ directIOFlag=false
 blockCacheSizes=(0) #MB
 sizeRatio=10
 requestdistribution=zipfian
-zipfianconst=1.10
+zipfianconst=0.99
 #dbfilename="$dbfilename_o""$level"
 for blockCacheSize in ${blockCacheSizes[@]}
 do
@@ -90,7 +90,7 @@ do
 	    echo dbfilename: "$dbfilename"
 	    if [ "$requestdistribution" = "zipfian" ]; then
                 echo "zipfian"
-		dirname=/home/ming/experiment/lsm_"$DISK"_read_zipfian"$zipfianconst"/experiment"$experiment_time"_"$value_size"/bloombits"$bloombits"level"$level"/open_files_"$maxOpenfiles"_notfound_100WRead_directIO"$directIOFlag"_blockCacheSize"$blockCacheSize"MB_sizeRatio"$sizeRatio"
+		dirname=/home/ming/experiment/300G4bits
 	    else
 		echo "$requestdistribution"
 		dirname=/home/ming/experiment/lsm_"$DISK"_read_"$requestdistribution"/experiment"$experiment_time"_"$value_size"/bloombits"$bloombits"level"$level"/open_files_"$maxOpenfiles"_notfound_100WRead_directIO"$directIOFlag"_blockCacheSize"$blockCacheSize"MB_sizeRatio"$sizeRatio"

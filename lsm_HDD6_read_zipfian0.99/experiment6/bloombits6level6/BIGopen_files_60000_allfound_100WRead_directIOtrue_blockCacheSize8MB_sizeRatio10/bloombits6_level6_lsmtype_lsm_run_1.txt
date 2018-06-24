@@ -1,0 +1,93 @@
+_bloom_bits_6
+seek compaction flag:false
+--------------------------- Before Do Transaction -----------------------------------------
+                               Compactions
+Level  Files Size(MB) Time(sec) Read(MB) Write(MB)
+--------------------------------------------------
+  0        1        1         0        0         0
+  1        6        8         0        0         0
+  2       76       98         0        0         0
+  3     1006      999         0        0         0
+  4     6377     9999         0        0         0
+  5    48230    96166         0        0         0
+filter mem space overhead:0 filter num:0 
+filter mem space overhead:0 filter num:0 
+average add filter time  = -nan add filters count:0 
+
+----------------------------Transaction Output------------------
+output latency to filename :latencyfilename 
+
+WRITE latency
+-nanusWrite ops:0
+READ latency
+3862.48usRead ops:1000000
+Zero-result lookup: 
+2556.73us Zero-result ops: 743581
+                               Compactions
+Level  Files Size(MB) Time(sec) Read(MB) Write(MB)
+--------------------------------------------------
+  0        1        1         0        0         0
+  1        6        8         0        0         0
+  2       76       98         0        0         0
+  3     1006      999         0        0         0
+  4     6377     9999         0        0         0
+  5    48230    96166         0        0         0
+filter mem space overhead:843615425 filter num:55494 
+filter mem space overhead:843615425 filter num:55494 
+average add filter time  = 7912.598 add filters count:55494 
+leveldb.findtable.time min:0.000 ave:314.095 max:94058.000 count:4376223
+leveldb.internalget.time min:0.000 ave:564.353 max:86508.000 count:4376223
+leveldb.release.time min:0.000 ave:0.184 max:147.000 count:4376223
+leveldb.block.read.time min:0.000 ave:4988.657 max:86504.000 count:492311
+leveldb.block.new.time min:0.000 ave:2.210 max:2016.000 count:488483
+leveldb.block.file.read.time min:78.000 ave:6889.636 max:86498.000 count:488483
+leveldb.block.reader.cache.time min:0.000 ave:0.613 max:1393.000 count:170310
+leveldb.block.reader.nocache.time min:100.000 ave:7622.630 max:86502.000 count:322001
+leveldb.filter.matches.time min:0.000 ave:0.516 max:1404.000 count:3883912
+leveldb.0.time min:10.000 ave:1412.515 max:187854.000 count:578843
+leveldb.1.time min:8.000 ave:6632.512 max:127407.000 count:354714
+leveldb.2.time min:12.000 ave:9951.136 max:117880.000 count:61870
+leveldb.3.time min:21.000 ave:14588.832 max:83923.000 count:4435
+leveldb.4.time min:8830.000 ave:26122.681 max:77476.000 count:138
+
+Adjust bloom filter accroding to access frequencies
+output latency to filename :latencyfilename 
+
+WRITE latency
+-nanusWrite ops:0
+READ latency
+2508.35usRead ops:1000000
+Zero-result lookup: 
+1130.98us Zero-result ops: 743389
+                               Compactions
+Level  Files Size(MB) Time(sec) Read(MB) Write(MB)
+--------------------------------------------------
+  0        1        1         0        0         0
+  1        6        8         0        0         0
+  2       76       98         0        0         0
+  3     1006      999         0        0         0
+  4     6377     9999         0        0         0
+  5    48230    96166         0        0         0
+filter mem space overhead:843838892 filter num:55604 
+filter mem space overhead:843838892 filter num:55604 
+average add filter time  = 3314.991 add filters count:110 
+leveldb.findtable.time min:0.000 ave:0.850 max:28169.000 count:4375771
+leveldb.internalget.time min:0.000 ave:568.328 max:79248.000 count:4375771
+leveldb.release.time min:0.000 ave:0.182 max:16.000 count:4375771
+leveldb.block.read.time min:1.000 ave:5019.592 max:79244.000 count:492942
+leveldb.block.new.time min:0.000 ave:1.117 max:23.000 count:322218
+leveldb.block.file.read.time min:95.000 ave:7674.305 max:79237.000 count:322218
+leveldb.block.reader.cache.time min:0.000 ave:0.453 max:13.000 count:171054
+leveldb.block.reader.nocache.time min:98.000 ave:7682.720 max:79241.000 count:321888
+leveldb.filter.matches.time min:0.000 ave:0.453 max:19.000 count:3882829
+leveldb.0.time min:9.000 ave:25.741 max:28190.000 count:578468
+leveldb.1.time min:8.000 ave:5321.752 max:79261.000 count:354830
+leveldb.2.time min:13.000 ave:8624.389 max:76724.000 count:62130
+leveldb.3.time min:19.000 ave:13116.160 max:82076.000 count:4439
+leveldb.4.time min:6432.000 ave:22540.385 max:38591.000 count:130
+leveldb.5.time min:20865.000 ave:28013.333 max:33378.000 count:3
+
+--- untilCompactionEnds will output ------------
+
+--------------above are untilCompactionEnds output--------------
+

@@ -1,0 +1,50 @@
+_bloom_bits_4
+seek compaction flag:false
+output latency to filename :latencyfilename 
+
+Total time of insert: 5382445us
+Per insert time: 24.7544us
+--------------------------- Before Do Transaction -----------------------------------------
+read latency:-nan	read counts:0
+write latency:22.100	write counts:217434
+                               Compactions
+Level  Files Size(MB) Time(sec) Read(MB) Write(MB)
+--------------------------------------------------
+  0        0        0         1        0       204
+  1       29       51         2      305       309
+  2       82      161         2      420       424
+filter mem space overhead:108790 filter num:112 
+average create filters time  = 79.958 create filter count:431 
+average sync SSTable time = 5321.631          sync SSTable count: 431
+average add filter time  = 1.195 add filters count:431 
+leveldb.block.new.time min:0.000 ave:0.306 max:12.000 count:184132
+leveldb.block.file.read.time min:0.000 ave:1.230 max:43.000 count:184132
+leveldb.block.reader.nocache.time min:1.000 ave:1.854 max:44.000 count:182839
+leveldb.open.table.time min:16.000 ave:21.705 max:57.000 count:431
+leveldb.slow.down.time min:1053.000 ave:1055.120 max:1065.000 count:3040
+leveldb.write.to.memtable min:0.000 ave:1.902 max:72.000 count:217434
+leveldb.write.to.log min:1.000 ave:3.095 max:177.000 count:217434
+leveldb.make.room.for.write min:0.000 ave:15.265 max:9367.000 count:217434
+
+----------------------------Transaction Output------------------
+output latency to filename :latencyfilename 
+
+WRITE latency
+-nanus Write ops: 0
+READ latency
+-nanus Read ops: 0
+Zero-result lookup: 
+-nanus Zero-result ops: 0
+read latency:-nan	read counts:0
+write latency:-nan	write counts:0
+                               Compactions
+Level  Files Size(MB) Time(sec) Read(MB) Write(MB)
+--------------------------------------------------
+  0        0        0         1        0       204
+  1       29       51         2      305       309
+  2       82      161         2      420       424
+filter mem space overhead:108790 filter num:112 
+filter mem space overhead:108790 filter num:112 
+average add filter time  = -nan add filters count:0 
+
+Total time of main: 5402152us

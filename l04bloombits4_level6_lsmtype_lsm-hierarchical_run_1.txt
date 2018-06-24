@@ -1,0 +1,7 @@
+_bloom_bits_4
+0:22.600 1:22.600 2:17.800 3:13.000 4:8.200 5:3.400 6:1.000 7:1.000 
+Options used in leveldb
+compression	max_file_size	write_buffer_size	max_open_files
+ NoCompress	          2MB	              4MB	         60000
+lsm --- hierarchical bloom filter 
+output latency to filename :latencyfilename 

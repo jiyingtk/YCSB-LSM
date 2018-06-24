@@ -236,12 +236,17 @@ inline std::string CoreWorkload::NextTransactionKey() {
 
 inline std::string CoreWorkload::BuildKeyName(uint64_t key_num) {
   char key[100];
+  static int keyname_count = 0;
+  ++keyname_count;
   if (!ordered_inserts_) {
     key_num = utils::Hash(key_num);
   }
   //  key_num %= insert_key_sequence_.Last();
-  snprintf(key, sizeof(key), "%020lu", key_num);
-  return std::string("user").append(std::string(key,20));
+  snprintf(key, sizeof(key), "%020lu.", key_num);
+  if(keyname_count % 2 == 0){
+    return std::string("user").append(std::string(key,20));
+  }
+  return std::string("user").append(std::string(key,21));
 }
 
 inline std::string CoreWorkload::NextFieldName() {

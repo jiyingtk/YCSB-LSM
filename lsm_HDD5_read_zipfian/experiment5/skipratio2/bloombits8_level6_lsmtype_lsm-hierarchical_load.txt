@@ -1,0 +1,77 @@
+_bloom_bits_8
+
+0:27 1:27 2:22 3:17 4:12 5:7 6:1 
+Options used in leveldb
+compression	max_file_size	write_buffer_size	max_open_files
+ NoCompress	          2MB	              4MB	         56370
+lsm --- hierarchical bloom filter 
+
+Total time of insert: 85874482280us
+Per insert time: 38.5688us
+                               Compactions
+Level  Files Size(MB) Time(sec) Read(MB) Write(MB)
+--------------------------------------------------
+  0        7       23      1497        0    114617
+  1       22       39      5623   197533    196190
+  2      140      207     17163   510077    508654
+  3     1303     1999     23398   657333    655720
+  4    11726    19999     20695   615959    614321
+  5    42528    85411      4975   190551    189628
+
+ Compaction Count:232599 TrivialMoveCount:21996 
+
+ bloomFilterCompare Count:0 readTableCount:0 
+
+ createFilter Count: 35703711 Average Create Filter Time:130.120 
+ AddFilter Count: 1450180 Average add filter time: 296.654 
+ Filter Num: 55586 Filter Mem space(B): 1139067156 
+
+
+WRITE latency
+-nanusWrite ops:0
+READ latency
+-nanusRead ops:0
+Zero-result lookup: 
+-nanus Zero-result ops: 0
+                               Compactions
+Level  Files Size(MB) Time(sec) Read(MB) Write(MB)
+--------------------------------------------------
+  0        7       23      1497        0    114617
+  1       22       39      5623   197533    196190
+  2      140      207     17163   510077    508654
+  3     1303     1999     23398   657333    655720
+  4    11726    19999     20695   615959    614321
+  5    42528    85411      4975   190551    189628
+
+ Compaction Count:232599 TrivialMoveCount:21996 
+
+ bloomFilterCompare Count:0 readTableCount:0 
+
+ createFilter Count: 35703711 Average Create Filter Time:130.120 
+ AddFilter Count: 1450180 Average add filter time: 296.654 
+ Filter Num: 55586 Filter Mem space(B): 1139067156 
+
+                               Compactions
+Level  Files Size(MB) Time(sec) Read(MB) Write(MB)
+--------------------------------------------------
+  0        0        0      1497        0    114617
+  1        7        9      5624   197572    196229
+  2       69      100     17170   510313    508890
+  3      832      999     23407   657593    655978
+  4     6993     9999     20782   618349    616700
+  5    48289    96378      6399   236262    235160
+
+ Compaction Count:239067 TrivialMoveCount:22006 
+
+ bloomFilterCompare Count:0 readTableCount:0 
+
+ createFilter Count: 36467650 Average Create Filter Time:128.838 
+ AddFilter Count: 1481103 Average add filter time: 311.735 
+ Filter Num: 55925 Filter Mem space(B): 1056811402 
+
+--------------above are untilCompactionEnds output--------------
+
+
+---------------------READ STATISTICS-----------------------------------------
+type   		count		min		ave		max
+

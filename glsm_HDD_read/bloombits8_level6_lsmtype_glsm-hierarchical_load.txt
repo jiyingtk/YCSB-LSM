@@ -1,0 +1,8 @@
+_bloom_bits_8
+bloom_bits from config:32589
+filter policy name:leveldb.DynamicBloomFilter 
+Options used in leveldb
+compression	max_file_size	write_buffer_size	max_open_files
+   Compress	          2MB	              4MB	         50000
+glsm --- hierarchical bloom filter
+IO error: /home/ming/vlogHDDDir100/glsm: Too many open files

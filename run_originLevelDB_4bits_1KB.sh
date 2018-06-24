@@ -1,7 +1,7 @@
 #!/bin/bash
 experiment_time=4
 value_size=1KB
-DISK=SSD"$experiment_time"
+DISK=HDD"$experiment_time"
 dbfilename_o=/home/ming/"$DISK"_"$value_size"/lsm
 configpath=./configDir/leveldb_config.ini
 section=basic
@@ -42,7 +42,7 @@ function __runLSM(){
     workloadr_name=./workloads/"$workload_prefix"glsmworkloadr_"$levelIn"_"$sizeRatio"_"$value_size".spec
     echo workloadrname:"$workloadr_name"
     __modifyConfig directIOFlag "$directIOFlag"
-    for j in `seq 1 2`
+    for j in `seq 1 1`
     do
 	let count=300/"$j"
 	vmstat -n "$j" "$count"  > vmstat_"$count".txt &
@@ -58,8 +58,8 @@ function __runLSM(){
 		mkdir  -p "$dirname"
 	    fi
 	    mv "$runname"_"$j".txt "$dirname"
-	    mv testlf1.txt "$dirname"/latency_"$runname"_"$j"_noseek_fix"$j".txt
-	    mv nlf1.txt "$dirname"/nlatency_"$runname"_"$bb"_"$j"_noseek_fix"$j".txt
+	    mv testlf1.txt "$dirname"/tlatency_"$runname"_"$j"_noseek_fix"$j".txt
+	    mv nlf1.txt "$dirname"/tnlatency_"$runname"_"$bb"_"$j"_noseek_fix"$j".txt
 	    cp vmstat_"$count".txt "$dirname"/vmstat_count"$count"_"$j".txt
             #sleep 100s
 	fi
@@ -100,13 +100,13 @@ do
 		for zipfianconst in ${zipfianconsts[@]}
 		do
 		    dirname=/home/ming/experiment/lsm_"$DISK"_read_zipfian"$zipfianconst"/experiment"$experiment_time"_"$value_size"/bloombits"$bloombits"level"$level"/open_files_"$maxOpenfiles"_notfound_100WRead_directIO"$directIOFlag"_blockCacheSize"$blockCacheSize"MB_sizeRatio"$sizeRatio"
-		    __runLSM l03_bloombits"$bloombits"_level"$level"_lsmtype_"$lsmtype" "$dirname" "$level"  "$lsmtype" "$bloombits" 
+		    __runLSM tl03_bloombits"$bloombits"_level"$level"_lsmtype_"$lsmtype" "$dirname" "$level"  "$lsmtype" "$bloombits" 
 		done
 	    else
 		echo "$requestdistribution"
 		dirname=/home/ming/experiment/lsm_"$DISK"_read_"$requestdistribution"/experiment"$experiment_time"_"$value_size"/bloombits"$bloombits"level"$level"/open_files_"$maxOpenfiles"_notfound_100WRead_directIO"$directIOFlag"_blockCacheSize"$blockCacheSize"MB_sizeRatio"$sizeRatio"
 		zipfianconst=0.99
-		__runLSM l03_bloombits"$bloombits"_level"$level"_lsmtype_"$lsmtype" "$dirname" "$level"  "$lsmtype" "$bloombits" 
+		__runLSM tl03_bloombits"$bloombits"_level"$level"_lsmtype_"$lsmtype" "$dirname" "$level"  "$lsmtype" "$bloombits" 
 	    fi
 
 	done

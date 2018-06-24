@@ -1,0 +1,59 @@
+_bloom_bits_6
+seek compaction flag:false
+
+Total time of insert: 37641250550us
+Per insert time: 16.9058us
+--------------------------- Before Do Transaction -----------------------------------------
+                               Compactions
+Level  Files Size(MB) Time(sec) Read(MB) Write(MB)
+--------------------------------------------------
+  0        7       22       952        0    111830
+  1       15       21      2553   195185    193837
+  2      160      209      5503   506827    506063
+  3     1647     2011      6962   643378    642431
+  4    11773    20000      6711   608709    607723
+  5    42403    85133      3553   188210    187820
+filter mem space overhead:838279685 filter num:55651 
+average create filters time  = 41.750 create filter count:35719186 
+average sync SSTable time = 4279.665 sync SSTable count: 1444865
+average add filter time  = 13.125 add filters count:1445398 
+
+----------------------------Transaction Output------------------
+
+WRITE latency
+-nanusWrite ops:0
+READ latency
+-nanusRead ops:0
+Zero-result lookup: 
+-nanus Zero-result ops: 0
+                               Compactions
+Level  Files Size(MB) Time(sec) Read(MB) Write(MB)
+--------------------------------------------------
+  0        7       22       952        0    111830
+  1       15       21      2553   195185    193837
+  2      160      209      5503   506827    506063
+  3     1647     2011      6962   643378    642431
+  4    11773    20000      6711   608709    607723
+  5    42403    85133      3553   188210    187820
+filter mem space overhead:838279685 filter num:55651 
+filter mem space overhead:838279685 filter num:55651 
+average add filter time  = -nan add filters count:0 
+
+--- untilCompactionEnds will output ------------
+
+--------------above are untilCompactionEnds output--------------
+
+                               Compactions
+Level  Files Size(MB) Time(sec) Read(MB) Write(MB)
+--------------------------------------------------
+  0        0        0       952        0    111830
+  1        6        8      2553   195224    193876
+  2       76       98      5504   507001    506237
+  3     1006      999      6978   644843    643894
+  4     6377     9999      6803   615434    614434
+  5    48230    96166      4818   232831    232332
+filter mem space overhead:841178902 filter num:55522 
+average create filters time  = 56.294 create filter count:835151 
+average sync SSTable time = 3954.080 sync SSTable count: 28899
+average add filter time  = 1083.374 add filters count:34366 
+

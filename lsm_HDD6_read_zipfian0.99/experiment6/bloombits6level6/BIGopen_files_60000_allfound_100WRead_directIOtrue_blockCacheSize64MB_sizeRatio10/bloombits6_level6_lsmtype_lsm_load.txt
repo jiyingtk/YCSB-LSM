@@ -1,0 +1,94 @@
+_bloom_bits_6
+seek compaction flag:false
+
+Total time of insert: 49573195333us
+Per insert time: 44.5296us
+--------------------------- Before Do Transaction -----------------------------------------
+                               Compactions
+Level  Files Size(MB) Time(sec) Read(MB) Write(MB)
+--------------------------------------------------
+  0        2        6      1136        0    111830
+  1       24       41      3261   195408    194062
+  2      158      204      6848   510164    509398
+  3     1610     2000      8746   641368    640422
+  4    11710    19999     10915   608767    607779
+  5    42432    85144      4385   188139    187750
+filter mem space overhead:843950331 filter num:55936 
+average create filters time  = 56.349 create filter count:35742578 
+average sync SSTable time = 5067.373 sync SSTable count: 1444196
+average add filter time  = 20.594 add filters count:1444196 
+leveldb.block.new.time min:0.000 ave:0.872 max:253287.000 count:536777196
+leveldb.block.file.read.time min:0.000 ave:9.227 max:543257.000 count:536777196
+leveldb.block.reader.nocache.time min:0.000 ave:10.586 max:543261.000 count:532444608
+
+----------------------------Transaction Output------------------
+
+WRITE latency
+-nanusWrite ops:0
+READ latency
+-nanusRead ops:0
+Zero-result lookup: 
+-nanus Zero-result ops: 0
+                               Compactions
+Level  Files Size(MB) Time(sec) Read(MB) Write(MB)
+--------------------------------------------------
+  0        2        6      1136        0    111830
+  1       24       41      3261   195408    194062
+  2      158      204      6848   510164    509398
+  3     1610     2000      8746   641368    640422
+  4    11710    19999     10915   608767    607779
+  5    42432    85144      4385   188139    187750
+filter mem space overhead:843950331 filter num:55936 
+average create filters time  = 45.500 create filter count:2 
+average sync SSTable time = -nan sync SSTable count: 0
+average add filter time  = -nan add filters count:0 
+leveldb.block.new.time min:0.000 ave:1.000 max:14.000 count:32
+leveldb.block.file.read.time min:1.000 ave:1.812 max:2.000 count:32
+leveldb.block.reader.nocache.time min:2.000 ave:3.312 max:17.000 count:32
+
+Adjust bloom filter accroding to access frequencies
+
+WRITE latency
+-nanusWrite ops:0
+READ latency
+-nanusRead ops:0
+Zero-result lookup: 
+-nanus Zero-result ops: 0
+                               Compactions
+Level  Files Size(MB) Time(sec) Read(MB) Write(MB)
+--------------------------------------------------
+  0        2        6      1136        0    111830
+  1       11       19      3261   195408    194062
+  2      152      192      6850   510307    509540
+  3     1557     1931      8749   641601    640654
+  4    11313    19313     10929   609414    608426
+  5    42831    85923      4473   190956    190559
+filter mem space overhead:843965171 filter num:55867 
+average create filters time  = 59.791 create filter count:60538 
+average sync SSTable time = 5935.696 sync SSTable count: 2081
+average add filter time  = 61.996 add filters count:2081 
+leveldb.block.new.time min:0.000 ave:1.172 max:17646.000 count:957735
+leveldb.block.file.read.time min:0.000 ave:56.823 max:233945.000 count:957736
+leveldb.block.reader.nocache.time min:1.000 ave:58.733 max:233948.000 count:951493
+
+--- untilCompactionEnds will output ------------
+
+--------------above are untilCompactionEnds output--------------
+
+                               Compactions
+Level  Files Size(MB) Time(sec) Read(MB) Write(MB)
+--------------------------------------------------
+  0        2        6      1136        0    111830
+  1        5        9      3261   195408    194062
+  2       93       99      6851   510368    509602
+  3      818      999      8763   642254    641306
+  4     6443     9999     11100   615300    614300
+  5    48181    96158      6006   232384    231886
+filter mem space overhead:843910790 filter num:55542 
+average create filters time  = 69.155 create filter count:756402 
+average sync SSTable time = 6221.819 sync SSTable count: 26097
+average add filter time  = 161.004 add filters count:26097 
+leveldb.block.new.time min:0.000 ave:1.526 max:192495.000 count:11960899
+leveldb.block.file.read.time min:0.000 ave:79.258 max:412755.000 count:11960899
+leveldb.block.reader.nocache.time min:0.000 ave:81.524 max:412758.000 count:11882608
+

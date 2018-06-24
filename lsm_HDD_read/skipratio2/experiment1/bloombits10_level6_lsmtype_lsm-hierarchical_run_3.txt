@@ -1,0 +1,55 @@
+_bloom_bits_10
+bloom_bits from config:32742
+
+0:32 1:29 2:24 3:19 4:14 5:9 6:1 
+Options used in leveldb
+compression	max_file_size	write_buffer_size	max_open_files
+ NoCompress	          2MB	              4MB	         50000
+lsm --- hierarchical bloom filter 
+output latency to filename :latencyfilename 
+
+WRITE latency
+-nanusWrite ops:0
+READ latency
+5009.98usRead ops:1000000
+Not found num: 525083
+                               Compactions
+Level  Files Size(MB) Time(sec) Read(MB) Write(MB)
+--------------------------------------------------
+  0        1        3         0        0         0
+  1        6       10         0        0         0
+  2       66      100         0        0         0
+  3      796      999         0        0         0
+  4     6952     9998         0        0         0
+  5    49735   100000         0        0         0
+  6     2226     4410         0        0         0
+
+ Compaction Count:0 TrivialMoveCount:0 
+
+ bloomFilterCompare Count:4016266 readTableCount:4507311 
+
+                               Compactions
+Level  Files Size(MB) Time(sec) Read(MB) Write(MB)
+--------------------------------------------------
+  0        1        3         0        0         0
+  1        6       10         0        0         0
+  2       66      100         0        0         0
+  3      796      999         0        0         0
+  4     6952     9998         0        0         0
+  5    49735   100000         0        0         0
+  6     2226     4410         0        0         0
+
+ Compaction Count:0 TrivialMoveCount:0 
+
+ bloomFilterCompare Count:4016266 readTableCount:4507311 
+
+--------------above are untilCompactionEnds output--------------
+
+
+---------------------READ STATISTICS-----------------------------------------
+type   		count		min		ave		max
+0 time		509932		7		2586.49		104320
+1 time		489095		9		7499.87		114616
+2 time		969		21		14279.72		85423
+3 time		4		17103		21546.50		26059
+

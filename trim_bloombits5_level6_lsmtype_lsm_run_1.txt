@@ -1,0 +1,2 @@
+_bloom_bits_5
+seek compaction flag:false
