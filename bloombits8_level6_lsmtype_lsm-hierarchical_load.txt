@@ -1,7 +1,0 @@
-_bloom_bits_8
-
-0:27 1:27 2:22 3:17 4:12 5:7 6:1 
-Options used in leveldb
-compression	max_file_size	write_buffer_size	max_open_files
- NoCompress	          2MB	              4MB	         56370
-lsm --- hierarchical bloom filter 

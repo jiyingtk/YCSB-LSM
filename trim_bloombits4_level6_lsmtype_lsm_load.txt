@@ -1,3 +1,0 @@
-_bloom_bits_4
-seek compaction flag:false
-output latency to filename :latencyfilename 

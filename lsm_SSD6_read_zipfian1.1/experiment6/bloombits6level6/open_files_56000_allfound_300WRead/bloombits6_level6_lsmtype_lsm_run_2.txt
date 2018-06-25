@@ -1,6 +1,0 @@
-_bloom_bits_6
-seek compaction flag:false
---- untilCompactionEnds will output ------------
-
---------------above are untilCompactionEnds output--------------
-
