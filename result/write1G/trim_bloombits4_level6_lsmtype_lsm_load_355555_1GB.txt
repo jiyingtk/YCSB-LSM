@@ -1,0 +1,90 @@
+_bloom_bits_4
+seek compaction flag:false
+
+bits_per_key_per_filter: 3 5 5 5 5 5 1 filters size:7
+Counterpart bloom_bits from config:4
+Multi-Queue Capacity:226360
+output latency to filename :latencyfilename 
+
+Total time of insert: 268323796us
+Per insert time: 246.809us
+--------------------------- Before Do Transaction -----------------------------------------
+                               Compactions
+Level  Files Size(MB) Time(sec) Read(MB) Write(MB)
+--------------------------------------------------
+  0        1        4        24        0      1073
+  1       37       64        59     1687      1690
+  2      134      249       132     4105      4108
+  3      381      763        44     1418      1417
+filter mem space overhead:360476 filter_num:408 
+create filters time / compaction time = 25.638% write filters time / compaction time = 0.074%
+average create filters time  = 15679.747 average filter lock time = 8.991 average filter wait time = 15566.070 
+average sync time  = 11465.623 sync count = 4242 
+average child create filter time  = 374.729 average child other time = 1.000 
+ Remove Expired Filter 
+ Remove Head Filter 
+ ADD Filter Time 
+add filter to 2 filter(s) count: 4200 time: 56877  average time: 13.542
+add filter to 4 filter(s) count: 164 time: 2930  average time: 17.866
+total add filter count: 4364 latency: 13.70  totalAccessCount 0 totalAccessTime 0 
+leveldb.block.new.time min:0.000 ave:0.575 max:28007.000 count:1823602
+leveldb.read.block.file.read.time min:1.000 ave:9.042 max:38211.000 count:1823602
+leveldb.get.aligned.buffer.time min:0.000 ave:1.114 max:149.000 count:12726
+leveldb.unget.aligned.buffer.time min:0.000 ave:0.433 max:39.000 count:12726
+leveldb.block.read.no.cache.time min:3.000 ave:12.744 max:38215.000 count:1807736
+leveldb.open.table.time min:45.000 ave:94.590 max:15780.000 count:4242
+totalAccessCount 32894142 totalAccessTime 40996892 
+leveldb.slow.down.time min:1007.000 ave:1223.305 max:25906.000 count:170692
+leveldb.wait.time min:1007.000 ave:1225.494 max:46171.000 count:170695
+totalAccessCount 341390 totalAccessTime 417993967 
+leveldb.write.to.memtable min:1.000 ave:13.470 max:43494.000 count:1087172
+leveldb.write.to.log min:5.000 ave:17.386 max:82208.000 count:1087172
+leveldb.make.room.for.write min:0.000 ave:194.811 max:47281.000 count:1087172
+leveldb.compaction.time min:16845.000 ave:276901.417 max:2696972.000 count:929
+leveldb.compaction.read.time min:0.000 ave:8.351 max:38208.000 count:1818809
+totalAccessCount 10539539 totalAccessTime 517768481 
+lru 0 count 352 lru_lens_count:352 
+lru 1 count 0 lru_lens_count:0 
+lru 2 count 201 lru_lens_count:201 
+lru 3 count 0 lru_lens_count:0 
+lru 4 count 1 lru_lens_count:1 
+lru 5 count 0 lru_lens_count:0 
+lru 6 count 0 lru_lens_count:0 
+lru 7 count 0 lru_lens_count:0 
+totalAccessCount 0 totalAccessTime 0 
+
+----------------------------Transaction Output------------------
+output latency to filename :latencyfilename 
+
+WRITE latency 
+-nanus Write ops: 0
+READ latency(including zero-result lookup)
+-nanus Read ops: 0
+Zero-result lookup: 
+-nanus Zero-result ops: 0
+IOPS: 
+-nan
+                               Compactions
+Level  Files Size(MB) Time(sec) Read(MB) Write(MB)
+--------------------------------------------------
+  0        1        4        24        0      1073
+  1       37       64        59     1687      1690
+  2      134      249       132     4105      4108
+  3      381      763        44     1418      1417
+filter mem space overhead:360476 filter_num:408 
+create filters time / compaction time = 0.000% write filters time / compaction time = 0.000%
+ Remove Expired Filter 
+ Remove Head Filter 
+totalAccessCount 0 totalAccessTime 0 
+totalAccessCount 0 totalAccessTime 0 
+lru 0 count 352 lru_lens_count:352 
+lru 1 count 0 lru_lens_count:0 
+lru 2 count 201 lru_lens_count:201 
+lru 3 count 0 lru_lens_count:0 
+lru 4 count 1 lru_lens_count:1 
+lru 5 count 0 lru_lens_count:0 
+lru 6 count 0 lru_lens_count:0 
+lru 7 count 0 lru_lens_count:0 
+totalAccessCount 0 totalAccessTime 0 
+
+Total time of main: 268351251us

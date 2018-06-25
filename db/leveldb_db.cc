@@ -58,7 +58,7 @@ LevelDB::LevelDB(const char* dbfilename,const char* configPath)
     }else if(bloom_type == 0){
 	options.filter_policy = leveldb::NewBloomFilterPolicy(bloom_bits);
     }else if(bloom_type == 2){
-	int bits_per_key_per_filter[10];
+	int bits_per_key_per_filter[10] = {0};
 	int i = 0;
 	std::string bits_array_filename = LevelDB_ConfigMod::getInstance().getBitsArrayFilename();
 	FILE *fp = fopen(bits_array_filename.c_str(),"r");
