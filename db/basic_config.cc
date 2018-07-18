@@ -46,9 +46,11 @@ void LevelDB_ConfigMod::setConfigPath(const char*path){
     _compression_flag = readBool("basic.compressionFlag");
     _directIO_flag = readBool("basic.directIOFlag");
     _seek_compaction_flag = readBool("basic.seekCompactionFlag");
+    _force_disable_compaction_flag = readBool("basic.forceDisableCompactionFlag");
     _statistics_open = readBool("basic.statisticsOpen");
     _bloom_bits_array_filename = readString("basic.bitsArrayFilename");
     _setFreCountInCompaction = readBool("basic.setFreCountInCompaction");
+    _l0_base_ratio = readFloat("basic.L0BaseRatio");
     _lrus_num = readInt("LRU.LRUNum");
     _filters_capacity_ratio = readFloat("LRU.FilterCapacityRatio");
     _base_num = readInt("LRU.BaseNum");
@@ -108,6 +110,12 @@ bool LevelDB_ConfigMod::getSeekCompactionFlag()
    return _seek_compaction_flag;
 }
 
+bool LevelDB_ConfigMod::getForceDisableCompactionFlag()
+{
+   assert(!_pt.empty());
+   return _force_disable_compaction_flag;
+}
+
 bool LevelDB_ConfigMod::getStatisticsOpen()
 {
    assert(!_pt.empty());
@@ -129,6 +137,12 @@ double LevelDB_ConfigMod::getFiltersCapacityRatio()
 {
     assert(!_pt.empty());
     return _filters_capacity_ratio;
+}
+
+double LevelDB_ConfigMod::getL0BaseRatio()
+{
+    assert(!_pt.empty());
+    return _l0_base_ratio;
 }
 
 int LevelDB_ConfigMod::getBaseNum()

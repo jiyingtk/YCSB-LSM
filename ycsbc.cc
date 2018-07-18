@@ -65,6 +65,10 @@ size_t DelegateClient(ycsbc::DB *db, ycsbc::CoreWorkload *wl, const size_t num_o
 	cerr<<"operation count:"<<i<<"\r";
       }
     }
+    if (i%100000==0){
+      db->doSomeThing("printFP");
+      db->doSomeThing("printAccessFreq");
+    }
   }
   gettimeofday(&end_insert_time,NULL);
   timersub(&end_insert_time,&start_insert_time,&res_time);
@@ -79,9 +83,10 @@ size_t DelegateClient(ycsbc::DB *db, ycsbc::CoreWorkload *wl, const size_t num_o
     cout<<"IOPS: "<<endl;
     cout<<ops[3]/(durations[3]/1000000)<<endl;
     db->doSomeThing("printStats");
-    // db->doSomeThing("printAccessFreq");
-    if(wl->adjust_filter_&&!end_flag_){
+  
+    if (!end_flag_)  
       db->doSomeThing("printAccessFreq");
+    if(wl->adjust_filter_&&!end_flag_){
       end_flag_ = true;
       ycsbc::CoreWorkload nwl;
       nwl.Init(*props_ptr);
@@ -159,6 +164,8 @@ int main(const int argc, const char *argv[]) {
     assert(n.valid());
     sum += n.get();
   }
+  db->doSomeThing("printFP");
+
   double duration = timer.elapsed();
   cerr<< endl;
   cerr << "# Transaction throughput (KTPS)" << endl;

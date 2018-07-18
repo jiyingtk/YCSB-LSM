@@ -54,9 +54,11 @@ private:
     bool _compression_flag;
     bool _directIO_flag;
     bool _seek_compaction_flag;
+    bool _force_disable_compaction_flag;
     bool _statistics_open;
     int _lrus_num;
     double _filters_capacity_ratio;
+    double _l0_base_ratio;
     int _base_num;
     uint64_t _life_time;
     bool _setFreCountInCompaction;
@@ -77,10 +79,12 @@ public:
     bool getCompression_flag();
     bool getDirectIOFlag();
     bool getSeekCompactionFlag();
+    bool getForceDisableCompactionFlag();
     bool getStatisticsOpen();
     std::string getBitsArrayFilename();
     int getLRUsNum();
     double getFiltersCapacityRatio();
+    double getL0BaseRatio();
     int getBaseNum();
     uint64_t getLifeTime();
     bool getSetFreCountInCompaction();

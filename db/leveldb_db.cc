@@ -22,7 +22,9 @@ LevelDB::LevelDB(const char* dbfilename,const char* configPath)
     int max_File_sizes = LevelDB_ConfigMod::getInstance().getMax_file_size();
     int bloom_type = LevelDB_ConfigMod::getInstance().getBloomType();
     bool seek_compaction_flag = LevelDB_ConfigMod::getInstance().getSeekCompactionFlag();
+    bool force_disable_compaction_flag = LevelDB_ConfigMod::getInstance().getForceDisableCompactionFlag();
     double filter_capacity_ratio = LevelDB_ConfigMod::getInstance().getFiltersCapacityRatio();
+    double l0_base_ratio = LevelDB_ConfigMod::getInstance().getL0BaseRatio();
     int base_num = LevelDB_ConfigMod::getInstance().getBaseNum();
     uint64_t life_time = LevelDB_ConfigMod::getInstance().getLifeTime();
     bool setFreCountInCompaction = LevelDB_ConfigMod::getInstance().getSetFreCountInCompaction();
@@ -33,6 +35,12 @@ LevelDB::LevelDB(const char* dbfilename,const char* configPath)
     int size_ratio = LevelDB_ConfigMod::getInstance().getSizeRatio();
     cout<<"seek compaction flag:";
     if(seek_compaction_flag){
+      cout<<"true"<<endl;
+    }else{
+      cout<<"false"<<endl;
+    }
+    cout<<"force disable compaction flag:";
+    if(force_disable_compaction_flag){
       cout<<"true"<<endl;
     }else{
       cout<<"false"<<endl;
@@ -96,7 +104,9 @@ LevelDB::LevelDB(const char* dbfilename,const char* configPath)
     options.max_file_size = max_File_sizes;
     options.max_open_files = max_open_files;
     options.opEp_.seek_compaction_ = seek_compaction_flag;
+    options.opEp_.force_disable_compaction = force_disable_compaction_flag;
     options.opEp_.filter_capacity_ratio = filter_capacity_ratio;
+    options.opEp_.l0_base_ratio = l0_base_ratio;
     options.opEp_.life_time = life_time;
     options.opEp_.base_num = base_num;
     options.opEp_.setFreCountInCompaction = setFreCountInCompaction;
@@ -107,7 +117,7 @@ LevelDB::LevelDB(const char* dbfilename,const char* configPath)
  
     options.opEp_.init_filter_nums = init_filter_num;
     options.block_cache = leveldb::NewLRUCache(block_cache_size);
-    fprintf(stderr,"filter_capacity_ratio: %.3lf, init_filter_num:%d change_ratio %.5lf block_cache_size %lu MB size_ratio:%d\n",filter_capacity_ratio,init_filter_num,change_ratio,block_cache_size/1024/1024,size_ratio);
+    fprintf(stderr,"filter_capacity_ratio: %.3lf, init_filter_num:%d change_ratio %.5lf block_cache_size %lu MB size_ratio:%d l0_base_ratio:%lf\n",filter_capacity_ratio,init_filter_num,change_ratio,block_cache_size/1024/1024,size_ratio,l0_base_ratio);
 
     if(LevelDB_ConfigMod::getInstance().getStatisticsOpen()){
       options.opEp_.stats_ = leveldb::CreateDBStatistics();
@@ -128,7 +138,7 @@ int LevelDB::Read(const string& table, const string& key, const vector< string >
     std::string value;
     leveldb::Status s = db_->Get(leveldb::ReadOptions(), key, &value);
     if(s.IsNotFound()){
-	// fprintf(stderr,"not found!\n");
+	// fprintf(stdout,"ycsb not found! %s\n", key.c_str());
 	return DB::kErrorNoData;
     }
     if(!s.ok()){
@@ -144,7 +154,7 @@ int LevelDB::Insert(const string& table, const string& key, vector< DB::KVPair >
 {
     leveldb::Status s;
     int count = 0;
-    //cout<<key<<endl;
+    // cout<<key<<endl;
     for(KVPair &p : values){
 	//cout<<p.second.length()<<endl;
 	s = db_->Put(leveldb::WriteOptions(), key, p.second);
@@ -213,6 +223,19 @@ void LevelDB::printAccessFreq()
 		perror("write :");
 	    }
 	    close(fd[i]);
+
+
+        snprintf(buf,sizeof(buf),"level%d_extra_infos.txt",i);
+        fd[i] = open(buf,O_RDWR|O_CREAT);
+        if(fd[i] < 0){
+        perror("open :");
+        }
+        snprintf(buf,sizeof(buf),"leveldb.files-extra-infos%d",i);
+        db_->GetProperty(buf,&acc_str);
+        if(write(fd[i],acc_str.c_str(),acc_str.size()) != (ssize_t)acc_str.size()){
+        perror("write :");
+        }
+        close(fd[i]);
     }
 }
 
@@ -258,6 +281,50 @@ void LevelDB::doSomeThing(const char* thing_str)
     cout<<stat_str<<endl;
   }else if(strncmp(thing_str,"printAccessFreq",strlen("printAccessFreq")) == 0){
 	printAccessFreq();
+  }else if(strncmp(thing_str,"printFP",strlen("printFP")) == 0){
+    int fd = open("fp_access_file.txt",O_RDWR|O_CREAT);
+    if(fd < 0){
+        perror("open :");
+    }
+    std::string stat_str;
+    db_->GetProperty("leveldb.fp-stat-access_file",&stat_str);
+    if(write(fd,stat_str.c_str(),stat_str.size()) != (ssize_t)stat_str.size()){
+        perror("write :");
+    }
+    close(fd);
+
+    fd = open("fp_calc_fpr.txt",O_RDWR|O_CREAT);
+    if(fd < 0){
+        perror("open :");
+    }
+    stat_str.clear();
+    db_->GetProperty("leveldb.fp-stat-calc_fpr",&stat_str);
+    if(write(fd,stat_str.c_str(),stat_str.size()) != (ssize_t)stat_str.size()){
+        perror("write :");
+    }
+    close(fd);
+
+    fd = open("fp_real_fpr.txt",O_RDWR|O_CREAT);
+    if(fd < 0){
+        perror("open :");
+    }
+    stat_str.clear();
+    db_->GetProperty("leveldb.fp-stat-real_fpr",&stat_str);
+    if(write(fd,stat_str.c_str(),stat_str.size()) != (ssize_t)stat_str.size()){
+        perror("write :");
+    }
+    close(fd);
+
+    fd = open("fp_real_io.txt",O_RDWR|O_CREAT);
+    if(fd < 0){
+        perror("open :");
+    }
+    stat_str.clear();
+    db_->GetProperty("leveldb.fp-stat-real_io",&stat_str);
+    if(write(fd,stat_str.c_str(),stat_str.size()) != (ssize_t)stat_str.size()){
+        perror("write :");
+    }
+    close(fd);
   }
 }
 
