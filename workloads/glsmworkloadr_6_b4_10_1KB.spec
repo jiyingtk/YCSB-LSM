@@ -10,7 +10,7 @@ recordcount=21743432
 #recordcount=217434321
 #recordcount=109772800
 #operationcount=1211034
-operationcount=2000000
+operationcount=1000000
 #operationcount=100000
 workload=com.yahoo.ycsb.workloads.CoreWorkload
 

@@ -3,7 +3,7 @@ experiment_time=4
 value_size=1KB
 DISK=HDD"$experiment_time"
 #dbfilename_o=/home/ming/"$DISK"_"$value_size"/lsm
-dbfilename_o=./ssd/lsm
+dbfilename_o=./ssd3/lsm
 configpath=./configDir/leveldb_config.ini
 section=basic
 function __modifyConfig(){
@@ -20,10 +20,11 @@ function __loadLSM(){
     levelIn=$3
     ltype=$4
     bb=$5
-    workloadw_name=./workloads/glsmworkloadw_"$levelIn"_"$sizeRatio"_"$value_size"_2.spec
+    workloadw_name=./workloads/glsmworkloadw_"$levelIn"_"$sizeRatio"_"$value_size".spec
     echo workloadname:"$workloadw_name"
     __modifyConfig directIOFlag false
-    ./ycsbc -db leveldb -threads 1 -P $workloadw_name -dbfilename "$dbfilename" -configpath "$configpath" -skipLoad false > "$loadname"
+    ./ycsbc -db leveldb -threads 8 -P $workloadw_name -dbfilename "$dbfilename" -configpath "$configpath" -skipLoad false > "$loadname"
+    echo load end
     sync;echo 1 > /proc/sys/vm/drop_caches
     sleep 100s
     if [ ! -d "$dirname" ]; then
@@ -40,7 +41,7 @@ function __runLSM(){
     levelIn=$3
     ltype=$4
     bb=$5
-    workloadr_name=./workloads/"$workload_prefix"glsmworkloadr_"$levelIn"_"$sizeRatio"_"$value_size"_2.spec
+    workloadr_name=./workloads/"$workload_prefix"glsmworkloadr_"$levelIn"_"$sizeRatio"_"$value_size".spec
     echo workloadrname:"$workloadr_name"
     __modifyConfig directIOFlag "$directIOFlag"
     for j in `seq 1 1`
@@ -55,7 +56,7 @@ function __runLSM(){
 	else
             echo ./ycsbc -db leveldb -threads 8 -P $workloadr_name -dbfilename "$dbfilename" -configpath "$configpath" -skipLoad true -requestdistribution "$requestdistribution" -zipfianconst "$zipfianconst" \> "$runname"_"$j".txt 2\>\&1
             ./ycsbc -db leveldb -threads 8 -P $workloadr_name -dbfilename "$dbfilename" -configpath "$configpath" -skipLoad true -requestdistribution "$requestdistribution" -zipfianconst "$zipfianconst" > "$runname"_"$j".txt 2>&1
-            echo finish ycsbc
+            echo run end
 	    sync;echo 1 > /proc/sys/vm/drop_caches
 	    if [ ! -d "$dirname" ]; then
 		mkdir  -p "$dirname"

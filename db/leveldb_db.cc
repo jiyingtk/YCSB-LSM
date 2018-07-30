@@ -99,6 +99,7 @@ LevelDB::LevelDB(const char* dbfilename,const char* configPath)
 	fprintf(stderr,"Wrong filter type!\n");
     }
     
+    options.opEp_.freq_divide_size = 2097152;
     options.create_if_missing = true;
     options.compression = compression_Open?leveldb::kSnappyCompression:leveldb::kNoCompression;  //compression is disabled.
     options.max_file_size = max_File_sizes;
