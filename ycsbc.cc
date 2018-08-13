@@ -25,16 +25,31 @@ bool StrStartWith(const char *str, const char *pre);
 string ParseCommandLine(int argc, const char *argv[], utils::Properties &props);
 bool end_flag_ = false;
 utils::Properties *props_ptr = NULL;
+
+int thread_id = 1;
+
+#ifdef CONCURRENT_RW
+size_t ops[16] = {0};
+unsigned long long durations[16] = {0};
+#endif
+
 size_t DelegateClient(ycsbc::DB *db, ycsbc::CoreWorkload *wl, const size_t num_ops,
     bool is_loading) {
+#ifndef CONCURRENT_RW
+  size_t ops[16] = {0};
+  unsigned long long durations[16] = {0};
+  int t_id = 0;
+#else
+  int t_id = __sync_fetch_and_add(&thread_id, 1);
+#endif
+ 
+
   FILE *fp_phase = NULL;
   if(!end_flag_){
     db->Init();
     fp_phase = fopen("phase_time.txt","w");
   }
-  size_t ops[] = {0,0,0,0};
-  double durations[] = {0,0,0,0};
-  ycsbc::Client client(*db, *wl);
+  ycsbc::Client client(*db, *wl, t_id);
   size_t oks = 0;
   std::string out_string;
   int skipratio_inload = wl->skipratio_inload;
@@ -74,14 +89,26 @@ size_t DelegateClient(ycsbc::DB *db, ycsbc::CoreWorkload *wl, const size_t num_o
   timersub(&end_insert_time,&start_insert_time,&res_time);
   cout<<endl;
   if(!is_loading){
+    cout << "Thread type: " << (t_id == 1 ? "READ" : "WRITE") << endl;
+    cout << "Used time: " << durations[ycsbc::Operation::THREAD0 + t_id]/1000000.0 << "s" << endl;
     cout<<"WRITE latency "<<endl;
-    cout<<durations[ycsbc::Operation::INSERT]/ops[ycsbc::Operation::INSERT]<<"us"<<" Write ops: "<<ops[ycsbc::Operation::INSERT]<<endl;
+    if (ops[ycsbc::Operation::INSERT])
+      cout<<durations[ycsbc::Operation::INSERT]/ops[ycsbc::Operation::INSERT]<<"us"<<" Write ops: "<<ops[ycsbc::Operation::INSERT]<<endl;
     cout<<"READ latency(including zero-result lookup)"<<endl;
-    cout<<durations[ycsbc::Operation::READ]/ops[ycsbc::Operation::READ]<<"us"<<" Read ops: "<<ops[ycsbc::Operation::READ]<<endl;
+    if (ops[ycsbc::Operation::READ])
+      cout<<durations[ycsbc::Operation::READ]/ops[ycsbc::Operation::READ]<<"us"<<" Read ops: "<<ops[ycsbc::Operation::READ]<<endl;
     cout<<"Zero-result lookup: "<<endl;
-    cout<<durations[2]/ops[2]<<"us"<<" Zero-result ops: "<<ops[2]<<endl;
-    cout<<"IOPS: "<<endl;
-    cout<<ops[3]/(durations[3]/1000000)<<endl;
+    if (ops[ycsbc::Operation::ZEROREAD])
+      cout<<durations[ycsbc::Operation::ZEROREAD]/ops[ycsbc::Operation::ZEROREAD]<<"us"<<" Zero-result ops: "<<ops[ycsbc::Operation::ZEROREAD]<<endl;
+    cout<<"Total IOPS: "<<endl;
+    cout<<ops[ycsbc::Operation::ALL]/(durations[ycsbc::Operation::THREAD0 + t_id]/1000000.0)<<endl;
+    cout<<"Read IOPS: "<<endl;
+    cout<<ops[ycsbc::Operation::READ]/(durations[ycsbc::Operation::THREAD0 + t_id]/1000000.0)<<endl;
+    // cout<<ops[ycsbc::Operation::READ]/(durations[ycsbc::Operation::READ]/1000000.0)<<endl;
+    cout<<"WRITE IOPS: "<<endl;
+    cout<<ops[ycsbc::Operation::INSERT]/(durations[ycsbc::Operation::THREAD0 + t_id]/1000000.0)<<endl;
+    // cout<<ops[ycsbc::Operation::INSERT]/(durations[ycsbc::Operation::INSERT]/1000000.0)<<endl;
+    
     db->doSomeThing("printStats");
   
     if (!end_flag_)  

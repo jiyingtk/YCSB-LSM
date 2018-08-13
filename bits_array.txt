@@ -1,2 +1,2 @@
 
-bits_per_key_per_filter: 2 2 2 2 2 2 2 2 2 2 
+bits_per_key_per_filter: 4 4 4 4 4 4 

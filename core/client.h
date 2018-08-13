@@ -74,7 +74,7 @@ private:
 const unsigned long long WallTimer::S2US = 1000000;
 class Client {
  public:
-  Client(DB &db, CoreWorkload &wl) : db_(db), workload_(wl) { 
+  Client(DB &db, CoreWorkload &wl, int t_id_) : db_(db), workload_(wl), t_id(t_id_) { 
 	if(wl.with_timestamp_){
 	    timestamp_trace_fp_ = wl.timestamp_trace_fp_;
 	}else{
@@ -103,7 +103,7 @@ class Client {
   }
   
   virtual bool DoInsert(bool insert_real=true);
-  virtual bool DoTransaction(size_t ops[],double durations[]);
+  virtual bool DoTransaction(size_t ops[],unsigned long long durations[]);
   
   virtual ~Client() { 
       if(latency_fp_){
@@ -113,7 +113,8 @@ class Client {
  }
   
  protected:
-  
+  ycsbc::Operation pre_operations;
+
   virtual int TransactionRead();
   virtual int TransactionReadModifyWrite();
   virtual int TransactionScan();
@@ -122,6 +123,7 @@ class Client {
   void getCurrentTimeStamp();
   DB &db_;
   CoreWorkload &workload_;
+  int t_id;
   char *line_;
   boost::shared_ptr<ycsbc::Operation> current_operation_;
   FILE *timestamp_trace_fp_;
@@ -145,7 +147,7 @@ inline bool Client::DoInsert(bool insert_real) {
 }
 
 
-inline bool Client::DoTransaction(size_t ops[],double durations[]) {
+inline bool Client::DoTransaction(size_t ops[],unsigned long long durations[]) {
   int status = -1;
   unsigned long long latency;
   if(!first_do_transaction){
@@ -164,32 +166,48 @@ inline bool Client::DoTransaction(size_t ops[],double durations[]) {
   }
  WallTimer transaction_timer;
  transaction_timer.Start();
-  ycsbc::Operation operations = current_operation_ == nullptr ?workload_.NextOperation():*current_operation_;
+  ycsbc::Operation operations;
+
+  if (t_id == 0)
+    operations = current_operation_ == nullptr ?workload_.NextOperation():*current_operation_;
+  else if (t_id == 1)
+    operations = READ;
+  else
+    operations = INSERT;
+
   switch (operations) {
     case READ:
       status = TransactionRead();
       latency = transaction_timer.elapsed();
-      durations[READ] += latency;
+      __sync_add_and_fetch(&durations[READ], latency);
+      // durations[READ] += latency;
       if(latency_fp_  != NULL){
-	  if(status == DB::kOK){
-	    fprintf(latency_fp_,"%llu,",latency);
-	  }else if(status == DB::kErrorNoData){
-	     fprintf(nlatency_fp_,"%llu,",latency);
-	     ops[2]++;
-	     durations[2] += latency;
-	  }
+    	  if(status == DB::kOK){
+    	    fprintf(latency_fp_,"%llu,",latency);
+    	  }else if(status == DB::kErrorNoData){
+    	     fprintf(nlatency_fp_,"%llu,",latency);
+            __sync_add_and_fetch(&ops[ZEROREAD], 1);
+    	     // ops[2]++;
+            __sync_add_and_fetch(&durations[ZEROREAD], latency);
+    	     // durations[2] += latency;
+    	  }
       }
-      ops[READ]++;
+      __sync_add_and_fetch(&ops[READ], 1);
+      // ops[READ]++;
       break;
     case UPDATE:
       status = TransactionUpdate();
-      durations[INSERT] += (transaction_timer.elapsed());
-      ops[INSERT]++;
+      __sync_add_and_fetch(&durations[INSERT], transaction_timer.elapsed());
+      // durations[INSERT] += (transaction_timer.elapsed());
+      __sync_add_and_fetch(&ops[INSERT], 1);
+      // ops[INSERT]++;
       break;
     case INSERT:
       status = TransactionInsert();
-      durations[INSERT] += (transaction_timer.elapsed());
-      ops[INSERT]++;
+      __sync_add_and_fetch(&durations[INSERT], transaction_timer.elapsed());
+      // durations[INSERT] += (transaction_timer.elapsed());
+      __sync_add_and_fetch(&ops[INSERT], 1);
+      // ops[INSERT]++;
       break;
     case SCAN:
       status = TransactionScan();
@@ -201,8 +219,11 @@ inline bool Client::DoTransaction(size_t ops[],double durations[]) {
       throw utils::Exception("Operation request is not recognized!");
   }
   assert(status >= 0);
-  ++ops[3];
-  durations[3] += transaction_timer.elapsed();
+  __sync_add_and_fetch(&ops[ALL], 1);
+  __sync_add_and_fetch(&ops[THREAD0 + t_id], 1);
+  __sync_add_and_fetch(&durations[THREAD0 + t_id], transaction_timer.elapsed());
+  // ++ops[3];
+  // durations[3] += transaction_timer.elapsed();
   return (status == DB::kOK);
 }
 

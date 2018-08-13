@@ -27,7 +27,10 @@ enum Operation {
   READ,
   UPDATE,
   SCAN,
-  READMODIFYWRITE
+  READMODIFYWRITE,
+  ZEROREAD,
+  ALL,
+  THREAD0
 };
 
 class CoreWorkload {

@@ -66,7 +66,7 @@ LevelDB::LevelDB(const char* dbfilename,const char* configPath)
     }else if(bloom_type == 0){
 	options.filter_policy = leveldb::NewBloomFilterPolicy(bloom_bits);
     }else if(bloom_type == 2){
-	int bits_per_key_per_filter[10] = {0};
+	int bits_per_key_per_filter[32] = {0};
 	int i = 0;
 	std::string bits_array_filename = LevelDB_ConfigMod::getInstance().getBitsArrayFilename();
 	FILE *fp = fopen(bits_array_filename.c_str(),"r");
@@ -99,7 +99,17 @@ LevelDB::LevelDB(const char* dbfilename,const char* configPath)
 	fprintf(stderr,"Wrong filter type!\n");
     }
     
-    options.opEp_.freq_divide_size = 2097152;
+    options.opEp_.region_divide_size = 2097152 / 2;
+    // options.opEp_.region_divide_size = 131072 * 4 * 4;
+    // options.opEp_.region_divide_size = 65536;
+    // options.opEp_.region_divide_size = 2097152;
+    // options.opEp_.region_divide_size = 131072 * 2;
+    options.opEp_.freq_divide_size = options.opEp_.region_divide_size;
+    // options.opEp_.freq_divide_size = 2097152 / 8;
+
+    options.opEp_.kFilterBaseLg = 16;
+    options.opEp_.key_value_size = 100;
+
     options.create_if_missing = true;
     options.compression = compression_Open?leveldb::kSnappyCompression:leveldb::kNoCompression;  //compression is disabled.
     options.max_file_size = max_File_sizes;
@@ -136,12 +146,18 @@ LevelDB::LevelDB(const char* dbfilename,const char* configPath)
 bool  LevelDB::hasRead = false;
 int LevelDB::Read(const string& table, const string& key, const vector< string >* fields, vector< DB::KVPair >& result)
 {
+    // static FILE* fexist = fopen("exist.txt", "w");
+    // static FILE* fnotexist = fopen("notexist.txt", "w");
     std::string value;
     leveldb::Status s = db_->Get(leveldb::ReadOptions(), key, &value);
     if(s.IsNotFound()){
+        // fprintf(fnotexist, "%s\n", key.c_str());
 	// fprintf(stdout,"ycsb not found! %s\n", key.c_str());
-	return DB::kErrorNoData;
+    	return DB::kErrorNoData;
     }
+    // else
+    //     fprintf(fexist, "%s\n", key.c_str());
+
     if(!s.ok()){
          cerr<<s.ToString()<<endl;
 	 fprintf(stderr,"read error\n");

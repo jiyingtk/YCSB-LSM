@@ -10,18 +10,18 @@ recordcount=21743432
 #recordcount=217434321
 #recordcount=109772800
 #operationcount=1211034
-operationcount=1000000
+operationcount=2000000
 #operationcount=100000
 workload=com.yahoo.ycsb.workloads.CoreWorkload
 
 readallfields=true
 
-readproportion=1.0
+#readproportion=1.0
+#updateproportion=0.0
+readproportion=0.5
 updateproportion=0.0
-#readproportion=0.5
-#updateproportion=0.5
 scanproportion=0
-insertproportion=0
+insertproportion=0.5
 fieldlength=1000
 requestdistribution=zipfian
 
