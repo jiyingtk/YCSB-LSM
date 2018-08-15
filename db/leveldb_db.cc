@@ -19,6 +19,7 @@ LevelDB::LevelDB(const char* dbfilename,const char* configPath)
     char *bloom_filename_char;
     int bloom_bits = LevelDB_ConfigMod::getInstance().getBloom_bits();;
     int max_open_files = LevelDB_ConfigMod::getInstance().getMax_open_files();
+    uint64_t region_divide_size = LevelDB_ConfigMod::getInstance().getRegion_divide_size();
     int max_File_sizes = LevelDB_ConfigMod::getInstance().getMax_file_size();
     int bloom_type = LevelDB_ConfigMod::getInstance().getBloomType();
     bool seek_compaction_flag = LevelDB_ConfigMod::getInstance().getSeekCompactionFlag();
@@ -99,7 +100,8 @@ LevelDB::LevelDB(const char* dbfilename,const char* configPath)
 	fprintf(stderr,"Wrong filter type!\n");
     }
     
-    options.opEp_.region_divide_size = 2097152 / 2;
+    options.opEp_.region_divide_size = region_divide_size;
+    printf("region_divide_size: %llu\n", region_divide_size);exit(1);
     // options.opEp_.region_divide_size = 131072 * 4 * 4;
     // options.opEp_.region_divide_size = 65536;
     // options.opEp_.region_divide_size = 2097152;

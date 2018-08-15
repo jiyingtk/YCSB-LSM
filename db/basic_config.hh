@@ -50,6 +50,7 @@ private:
     int _bloom_bits;
     bool _open_log;
     int _max_file_size;
+    uint64_t _region_divide_size;
     int _bloom_type;  //0 means origin bloom filter, 1 means  hierarchical bloom filter, 2 means multi_bloom_filter
     bool _compression_flag;
     bool _directIO_flag;
@@ -75,6 +76,7 @@ public:
     int getBloom_bits();
     bool getOpen_log();
     int getMax_file_size();
+    uint64_t getRegion_divide_size();
     void setConfigPath(const char*key);
     bool getCompression_flag();
     bool getDirectIOFlag();

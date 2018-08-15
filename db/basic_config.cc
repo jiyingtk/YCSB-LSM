@@ -40,6 +40,7 @@ void LevelDB_ConfigMod::setConfigPath(const char*path){
     _bloom_bits = readInt("basic.bloomBits");
     std::cout<<"_bloom_bits_"<<_bloom_bits<<std::endl;
     _max_file_size = readInt("basic.maxFilesize");
+    _region_divide_size = readULL("basic.RegionDivideSize");
     _max_open_files = readInt("basic.maxOpenfiles");
     _bloom_type = readInt("basic.bloomType");
     _open_log = readBool("basic.openLog");
@@ -77,6 +78,11 @@ int LevelDB_ConfigMod::getBloom_bits(){
 int LevelDB_ConfigMod::getMax_file_size(){
     assert(!_pt.empty());
     return _max_file_size;
+}
+
+uint64_t LevelDB_ConfigMod::getRegion_divide_size(){
+    assert(!_pt.empty());
+    return _region_divide_size;
 }
 
 int LevelDB_ConfigMod::getMax_open_files(){
