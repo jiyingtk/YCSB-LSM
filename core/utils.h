@@ -34,15 +34,15 @@ inline uint64_t FNVHash64(uint64_t val) {
 
 inline uint64_t Hash(uint64_t val) { return FNVHash64(val); }
 
+static std::default_random_engine generator;
+static std::uniform_real_distribution<double> uniform(0, 1);
 inline double RandomDouble(double min = 0.0, double max = 1.0) {
-  static std::default_random_engine generator;
-  static std::uniform_real_distribution<double> uniform(min, max);
   return uniform(generator);
 }
 
+static std::default_random_engine gen1;
+static std::uniform_int_distribution<uint64_t> uniform1(0,9223372036854775808ULL);
 inline uint64_t RandomULL(uint64_t min = 0,uint64_t max = 9223372036854775808ULL ){
-    static std::default_random_engine gen1;
-    static std::uniform_int_distribution<uint64_t> uniform1(min,max);
     return uniform1(gen1);
 }
 ///

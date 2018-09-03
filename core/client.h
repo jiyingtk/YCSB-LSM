@@ -74,7 +74,7 @@ private:
 const unsigned long long WallTimer::S2US = 1000000;
 class Client {
  public:
-  Client(DB &db, CoreWorkload &wl, int t_id_) : db_(db), workload_(wl), t_id(t_id_) { 
+  Client(DB &db, CoreWorkload &wl, int t_id_, int t_type_) : db_(db), workload_(wl), t_id(t_id_), t_type(t_type_) { 
 	if(wl.with_timestamp_){
 	    timestamp_trace_fp_ = wl.timestamp_trace_fp_;
 	}else{
@@ -124,6 +124,7 @@ class Client {
   DB &db_;
   CoreWorkload &workload_;
   int t_id;
+  int t_type;
   char *line_;
   boost::shared_ptr<ycsbc::Operation> current_operation_;
   FILE *timestamp_trace_fp_;
@@ -168,9 +169,9 @@ inline bool Client::DoTransaction(size_t ops[],unsigned long long durations[]) {
  transaction_timer.Start();
   ycsbc::Operation operations;
 
-  if (t_id == 0)
+  if (t_type == 0)
     operations = current_operation_ == nullptr ?workload_.NextOperation():*current_operation_;
-  else if (t_id == 1)
+  else if (t_type == 1)
     operations = READ;
   else
     operations = INSERT;

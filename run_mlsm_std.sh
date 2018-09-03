@@ -40,6 +40,7 @@ function __runLSM(){
     ltype=$4
     bb=$5
     cR=$6
+    RegionDS=$7
     # workloadr_name=./workloads/workloada.spec
     workloadr_name=./workloads/glsmworkloadr_"$levelIn"_b4_10_"$value_size".spec
     echo workload_name $workloadr_name
@@ -50,6 +51,9 @@ function __runLSM(){
     if [ ! -d "$dirname" ]; then
     mkdir  -p "$dirname"
     fi
+    if [ ! -d "$dirname"/"$RegionDS" ]; then
+    mkdir  -p "$dirname"/"$RegionDS"
+    fi
     section=LRU
     for life_time in ${life_times[@]}
     do
@@ -59,22 +63,22 @@ function __runLSM(){
     then
         ./ycsbc -db leveldb -threads 1 -P $workloadr_name -dbfilename "$dbfilename" -configpath "$configpath" -skipLoad true -requestdistribution "$requestdistribution" -zipfianconst "$zipfianconst" 
     else
-            echo ./ycsbc -db leveldb -threads 1 -P $workloadr_name -dbfilename "$dbfilename" -configpath "$configpath" -skipLoad true -requestdistribution "$requestdistribution" -zipfianconst "$zipfianconst" \> "$runname"_changeRatio"$cR"_lifetime"$life_time".txt 2\>\&1
-            ./ycsbc -db leveldb -threads 1 -P $workloadr_name -dbfilename "$dbfilename" -configpath "$configpath" -skipLoad true -requestdistribution "$requestdistribution" -zipfianconst "$zipfianconst" > "$runname"_changeRatio"$cR"_lifetime"$life_time".txt 2>&1
+            echo ./ycsbc -db leveldb -threads 2 -P $workloadr_name -dbfilename "$dbfilename" -configpath "$configpath" -skipLoad true -requestdistribution "$requestdistribution" -zipfianconst "$zipfianconst" -readTheadNums 0 \> "$runname"_changeRatio"$cR"_lifetime"$life_time".txt 2\>\&1
+            ./ycsbc -db leveldb -threads 2 -P $workloadr_name -dbfilename "$dbfilename" -configpath "$configpath" -skipLoad true -requestdistribution "$requestdistribution" -zipfianconst "$zipfianconst" -readTheadNums 0 > "$runname"_changeRatio"$cR"_lifetime"$life_time".txt 2>&1
         sync;echo 1 > /proc/sys/vm/drop_caches
         echo finish ycsbc run
         chmod +r fp_access_file.txt
         chmod +r fp_calc_fpr.txt
         chmod +r fp_real_fpr.txt
         chmod +r fp_real_io.txt
-        mv fp_access_file.txt "$dirname"/
-        mv fp_calc_fpr.txt "$dirname"/
-        mv fp_real_fpr.txt "$dirname"/
-        mv fp_real_io.txt "$dirname"/
-        mv "$runname"_changeRatio"$cR"_lifetime"$life_time".txt "$dirname"/
-        mv testlf1.txt "$dirname"/latency_"$runname"_changeRatio"$cR"_lifetime"$life_time".txt
-        mv nlf1.txt "$dirname"/nlatency_"$runname"_changeRatio"$cR"_lifetime"$life_time".txt
-        mv level?_access_frequencies.txt "$dirname"/
+        mv fp_access_file.txt "$dirname"/"$RegionDS"/
+        mv fp_calc_fpr.txt "$dirname"/"$RegionDS"/
+        mv fp_real_fpr.txt "$dirname"/"$RegionDS"/
+        mv fp_real_io.txt "$dirname"/"$RegionDS"/
+        mv "$runname"_changeRatio"$cR"_lifetime"$life_time".txt "$dirname"/"$RegionDS"/
+        mv testlf1.txt "$dirname"/"$RegionDS"/latency_"$runname"_changeRatio"$cR"_lifetime"$life_time".txt
+        mv nlf1.txt "$dirname"/"$RegionDS"/nlatency_"$runname"_changeRatio"$cR"_lifetime"$life_time".txt
+        mv level?_access_frequencies.txt "$dirname"/"$RegionDS"/
             sleep 100s
     fi
     done
@@ -84,29 +88,29 @@ function __runLSM(){
 
 
 experiment_time=5
-dbfilename_o=./ssd/mlsm
+dbfilename_o=./ssd2/mlsm
 configpath=./configDir/leveldb_config.ini
 section=basic
 lsmtype=(mleveldb)
 
 # arrayname=455555
-arrayname=355555
-# arrayname=333333
+# arrayname=355555
+arrayname=444444
 # arrayname=2222222222
 
 level=6
 bloombits=4
 sizeRatio=10
 
-dbsize=100GB
-tablesize=64   #MB
+dbsize=10GB
+tablesize=2   #MB
 
-# value_size=1KB
-value_size=100B
+value_size=1KB
+# value_size=100B
 
 dbfilename="$dbfilename_o"l"$level"s"$sizeRatio"b"$bloombits"a"$arrayname"db"$dbsize"table"$tablesize"MBkv"$value_size"
 
-outnameprefix=halfrmcp_l03
+outnameprefix=halfrmcp
 
 initFilterNum=2
 changeRatios=(0.0001)
@@ -122,11 +126,13 @@ requestdistribution=zipfian
 zipfianconsts=(0.99)
 # zipfianconsts=(1.10)
 
-DisableCompaction=true
-# DisableCompaction=false
+DisableCompaction=false
 
-maxOpenfiles=180000
-# maxOpenfiles=56800
+maxOpenfiles=6100
+# maxOpenfiles=1750
+
+
+regionDivideSizes=(16384) #KB
 
 run_type=1
 # 0: only load, 1: only run, 2: load+run
@@ -135,10 +141,13 @@ run_type=1
 bitsArrayFilename=./bitsArray/bitsArray"$arrayname".txt
 echo dbfilename: "$dbfilename"
 let ts=tablesize*1024*1024
+__modifyConfig valueSize 1024
+__modifyConfig filterBaseLg 16
 __modifyConfig bitsArrayFilename "$bitsArrayFilename"
 __modifyConfig maxOpenfiles "$maxOpenfiles"
 __modifyConfig maxFilesize "$ts"
 __modifyConfig L0BaseRatio 1.0
+__modifyConfig forceDeleteLevel0File false
 __modifyConfig forceDisableCompactionFlag "$DisableCompaction"
 
 workload_prefix=$1
@@ -160,15 +169,40 @@ do
         section=basic
         for changeRatio in ${changeRatios[@]}
         do
-            section=LRU
-            __modifyConfig changeRatio "$changeRatio"
-            section=basic
-            if [ "$requestdistribution" = "zipfian" ]; then
-                echo request_distribution: "zipfian"
-                for zipfianconst in ${zipfianconsts[@]}
-                do
-                    # dirname=/home/ming/experiment/expectation/lsm_"$DISK"_read_"$requestdistribution""$zipfianconst"_multi_filter_sizeRatio"$sizeRatio"/experiment"$experiment_time"_"$value_size"/FilterCapacityRatio_"$FilterCapacityRatio"_lru0_100WRead_initFilterNum"$initFilterNum"_directIO_"$directIOFlag"_blockCacheSize"$blockCacheSize"MB
+            for regionDivideSize in ${regionDivideSizes[@]}
+            do
+                section=basic
+                let rds=regionDivideSize*1024
+                __modifyConfig RegionDivideSize "$rds"
+                
+                section=LRU
+                __modifyConfig changeRatio "$changeRatio"
+                section=basic
+                if [ "$requestdistribution" = "zipfian" ]; then
+                    echo request_distribution: "zipfian"
+                    for zipfianconst in ${zipfianconsts[@]}
+                    do
+                        # dirname=/home/ming/experiment/expectation/lsm_"$DISK"_read_"$requestdistribution""$zipfianconst"_multi_filter_sizeRatio"$sizeRatio"/experiment"$experiment_time"_"$value_size"/FilterCapacityRatio_"$FilterCapacityRatio"_lru0_100WRead_initFilterNum"$initFilterNum"_directIO_"$directIOFlag"_blockCacheSize"$blockCacheSize"MB
+                        dirname=./result
+
+                        if [ $run_type = 0 ]; then
+                            echo load mode
+                            __loadLSM "$outnameprefix"_load_bloombits"$bloombits"_level"$level"_lsmtype_"$lsmtype" "$dirname" "$level"  "$lsmtype" "$bloombits" "$changeRatio"
+                        elif [ $run_type = 1 ]; then
+                            echo run mode
+                            __runLSM "$outnameprefix"_run_bloombits"$bloombits"_level"$level"_lsmtype_"$lsmtype" "$dirname" "$level"  "$lsmtype" "$bloombits" "$changeRatio" RDS"$regionDivideSize"KB
+                        else
+                            echo load + run mode
+                            __loadLSM "$outnameprefix"_load_bloombits"$bloombits"_level"$level"_lsmtype_"$lsmtype" "$dirname" "$level"  "$lsmtype" "$bloombits" "$changeRatio"
+                            __runLSM "$outnameprefix"_run_bloombits"$bloombits"_level"$level"_lsmtype_"$lsmtype" "$dirname" "$level"  "$lsmtype" "$bloombits" "$changeRatio"
+                        fi
+
+                    done
+                else
+                    echo request_distribution: "$requestdistribution"
+                    # dirname=/home/ming/experiment/expectation/lsm_"$DISK"_read_"$requestdistribution"_multi_filter_sizeRatio"$sizeRatio"/experiment"$experiment_time"_"$value_size"/FilterCapacityRatio_"$FilterCapacityRatio"_lru0_100WRead_initFilterNum"$initFilterNum"_directIO_"$directIOFlag"_blockCacheSize"$blockCacheSize"MB
                     dirname=./result
+                    zipfianconst=0.99
 
                     if [ $run_type = 0 ]; then
                         echo load mode
@@ -182,26 +216,8 @@ do
                         __runLSM "$outnameprefix"_run_bloombits"$bloombits"_level"$level"_lsmtype_"$lsmtype" "$dirname" "$level"  "$lsmtype" "$bloombits" "$changeRatio"
                     fi
 
-                done
-            else
-                echo request_distribution: "$requestdistribution"
-                # dirname=/home/ming/experiment/expectation/lsm_"$DISK"_read_"$requestdistribution"_multi_filter_sizeRatio"$sizeRatio"/experiment"$experiment_time"_"$value_size"/FilterCapacityRatio_"$FilterCapacityRatio"_lru0_100WRead_initFilterNum"$initFilterNum"_directIO_"$directIOFlag"_blockCacheSize"$blockCacheSize"MB
-                dirname=./result
-                zipfianconst=0.99
-
-                if [ $run_type = 0 ]; then
-                    echo load mode
-                    __loadLSM "$outnameprefix"_load_bloombits"$bloombits"_level"$level"_lsmtype_"$lsmtype" "$dirname" "$level"  "$lsmtype" "$bloombits" "$changeRatio"
-                elif [ $run_type = 1 ]; then
-                    echo run mode
-                    __runLSM "$outnameprefix"_run_bloombits"$bloombits"_level"$level"_lsmtype_"$lsmtype" "$dirname" "$level"  "$lsmtype" "$bloombits" "$changeRatio"
-                else
-                    echo load + run mode
-                    __loadLSM "$outnameprefix"_load_bloombits"$bloombits"_level"$level"_lsmtype_"$lsmtype" "$dirname" "$level"  "$lsmtype" "$bloombits" "$changeRatio"
-                    __runLSM "$outnameprefix"_run_bloombits"$bloombits"_level"$level"_lsmtype_"$lsmtype" "$dirname" "$level"  "$lsmtype" "$bloombits" "$changeRatio"
                 fi
-
-            fi
+            done
         done
     done
 done

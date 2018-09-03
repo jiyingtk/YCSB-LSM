@@ -50,7 +50,7 @@ inline Value DiscreteGenerator<Value>::Next() {
     chooser -= p.second / sum_;
   }
   
-  assert(false);
+  // assert(false);
   return last_;
 }
 

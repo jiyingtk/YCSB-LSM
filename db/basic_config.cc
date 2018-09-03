@@ -36,12 +36,13 @@ size_t Basic_ConfigMod<T>::readSize_t(const char *key){
 void LevelDB_ConfigMod::setConfigPath(const char*path){
     boost::property_tree::ini_parser::read_ini(path, _pt);
     assert (!_pt.empty());
-    _bloom_filename = readString("basic.bloomFilename");
+    _bloom_filename = readString("basic.bloomFileName");
+    _vlog_filename= readString("basic.vlogFileName");
     _bloom_bits = readInt("basic.bloomBits");
     std::cout<<"_bloom_bits_"<<_bloom_bits<<std::endl;
-    _max_file_size = readInt("basic.maxFilesize");
-    _region_divide_size = readULL("basic.RegionDivideSize");
-    _max_open_files = readInt("basic.maxOpenfiles");
+    _max_file_size = readInt("basic.maxFileSize");
+    _region_divide_size = readULL("basic.regionDivideSize");
+    _max_open_files = readInt("basic.maxOpenFiles");
     _bloom_type = readInt("basic.bloomType");
     _open_log = readBool("basic.openLog");
     _compression_flag = readBool("basic.compressionFlag");
@@ -49,17 +50,21 @@ void LevelDB_ConfigMod::setConfigPath(const char*path){
     _seek_compaction_flag = readBool("basic.seekCompactionFlag");
     _force_disable_compaction_flag = readBool("basic.forceDisableCompactionFlag");
     _statistics_open = readBool("basic.statisticsOpen");
-    _bloom_bits_array_filename = readString("basic.bitsArrayFilename");
+    _bloom_bits_array_filename = readString("basic.bitsArrayFileName");
     _setFreCountInCompaction = readBool("basic.setFreCountInCompaction");
     _l0_base_ratio = readFloat("basic.L0BaseRatio");
     _lrus_num = readInt("LRU.LRUNum");
-    _filters_capacity_ratio = readFloat("LRU.FilterCapacityRatio");
-    _base_num = readInt("LRU.BaseNum");
-    _life_time = readULL("LRU.LifeTime");
-    _logBase = readInt("LRU.LogBase");
+    _filters_capacity_ratio = readFloat("LRU.filterCapacityRatio");
+    _base_num = readInt("LRU.baseNum");
+    _life_time = readULL("LRU.lifeTime");
+    _logBase = readInt("LRU.logBase");
     _slowRatio = readFloat("LRU.slowRatio");
     _changeRatio = readFloat("LRU.changeRatio");
     _sizeRatio = readInt("basic.sizeRatio");
+    _valueSize = readInt("basic.valueSize");
+    _filterBaseLg = readInt("basic.filterBaseLg");
+    _runMode = readInt("basic.runMode");
+    _forceDeleteLevel0File = readBool("basic.forceDeleteLevel0File");
     _init_filter_num = readFloat("LRU.initFilterNum");
     _blockCacheSize = readSize_t("basic.blockCacheSize");
 }
@@ -68,6 +73,11 @@ boost::shared_ptr<T> Basic_ConfigMod<T>::instance= nullptr;*/
 std::string LevelDB_ConfigMod::getBloom_filename(){
     assert(!_pt.empty());
     return _bloom_filename;
+}
+
+std::string LevelDB_ConfigMod::getVlogFilename() {
+    assert(!_pt.empty());
+    return _vlog_filename;
 }
 
 int LevelDB_ConfigMod::getBloom_bits(){
@@ -197,6 +207,29 @@ int LevelDB_ConfigMod::getSizeRatio()
 {
      assert(!_pt.empty());
     return _sizeRatio;
+}
+
+int LevelDB_ConfigMod::getValueSize()
+{
+     assert(!_pt.empty());
+    return _valueSize;
+}
+
+int LevelDB_ConfigMod::getFilterBaseLg()
+{
+     assert(!_pt.empty());
+    return _filterBaseLg;
+}
+
+int LevelDB_ConfigMod::getRunMode()
+{
+     assert(!_pt.empty());
+    return _runMode;
+}
+
+bool LevelDB_ConfigMod::getForceDeleteLevel0File(){
+    assert(!_pt.empty());
+    return _forceDeleteLevel0File;
 }
 
 template<>

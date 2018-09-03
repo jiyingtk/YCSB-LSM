@@ -34,6 +34,11 @@ LevelDB::LevelDB(const char* dbfilename,const char* configPath)
     int init_filter_num = LevelDB_ConfigMod::getInstance().getInitFilterNum();
     size_t block_cache_size = LevelDB_ConfigMod::getInstance().getBlockCacheSize();
     int size_ratio = LevelDB_ConfigMod::getInstance().getSizeRatio();
+    int value_size = LevelDB_ConfigMod::getInstance().getValueSize();
+    int kFilterBaseLg = LevelDB_ConfigMod::getInstance().getFilterBaseLg();
+    bool force_delete_level0_file = LevelDB_ConfigMod::getInstance().getForceDeleteLevel0File();
+    int run_mode = LevelDB_ConfigMod::getInstance().getRunMode();
+    
     cout<<"seek compaction flag:";
     if(seek_compaction_flag){
       cout<<"true"<<endl;
@@ -90,7 +95,6 @@ LevelDB::LevelDB(const char* dbfilename,const char* configPath)
 	    fprintf(stdout,"%d ",bits_per_key_per_filter[i]);
 	    fprintf(fpout,"%d ",bits_per_key_per_filter[i]);
 	}
-	//options.opEp_.lrus_num_ = LevelDB_ConfigMod::getInstance().getLRUsNum();
 	options.opEp_.lrus_num_ = i+1;
 	options.filter_policy = leveldb::NewBloomFilterPolicy(bits_per_key_per_filter,bloom_bits);
 	fprintf(stderr,"\n");
@@ -101,20 +105,19 @@ LevelDB::LevelDB(const char* dbfilename,const char* configPath)
     }
     
     options.opEp_.region_divide_size = region_divide_size;
-    printf("region_divide_size: %llu\n", region_divide_size);exit(1);
-    // options.opEp_.region_divide_size = 131072 * 4 * 4;
-    // options.opEp_.region_divide_size = 65536;
-    // options.opEp_.region_divide_size = 2097152;
-    // options.opEp_.region_divide_size = 131072 * 2;
-    options.opEp_.freq_divide_size = options.opEp_.region_divide_size;
-    // options.opEp_.freq_divide_size = 2097152 / 8;
 
-    options.opEp_.kFilterBaseLg = 16;
-    options.opEp_.key_value_size = 100;
+    options.opEp_.freq_divide_size = options.opEp_.region_divide_size;
+
+    options.opEp_.kFilterBaseLg = kFilterBaseLg;
+    options.opEp_.key_value_size = value_size;
+    options.opEp_.force_delete_level0_file = force_delete_level0_file;
+    options.opEp_.run_mode = run_mode;  //0:origin, 1:ebf-previous, 2:ebf-optimized
+    options.opEp_.cache_use_real_size = true;
 
     options.create_if_missing = true;
     options.compression = compression_Open?leveldb::kSnappyCompression:leveldb::kNoCompression;  //compression is disabled.
     options.max_file_size = max_File_sizes;
+    options.write_buffer_size = 64 << 20;
     options.max_open_files = max_open_files;
     options.opEp_.seek_compaction_ = seek_compaction_flag;
     options.opEp_.force_disable_compaction = force_disable_compaction_flag;

@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-std=c++11 -g2 -c  -Wall -fgnu-tm -lleveldb 
+CFLAGS=-std=c++11 -g2 -c  -Wall -fgnu-tm -lleveldb -lrocksdb
 INCLUDES=-I../  
 SOURCES=$(wildcard *.cc)
 OBJECTS=$(SOURCES:.cc=.o)

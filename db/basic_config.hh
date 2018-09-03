@@ -44,6 +44,7 @@ class LevelDB_ConfigMod:public Basic_ConfigMod<LevelDB_ConfigMod>{
 private:
     friend class Basic_ConfigMod<LevelDB_ConfigMod>;
     std::string _bloom_filename;
+    std::string _vlog_filename;
     std::string _bloom_bits_array_filename;
     int _max_open_files;
     bool _hierarchical_bloom_flag;
@@ -68,9 +69,14 @@ private:
     double _slowRatio;
     double _changeRatio;
     int _sizeRatio;
+    int _valueSize;
+    int _runMode;
+    int _filterBaseLg;
+    bool _forceDeleteLevel0File;
     size_t _blockCacheSize;
 public:
     std::string getBloom_filename();
+    std::string getVlogFilename();
     int getMax_open_files();
     int getBloomType();
     int getBloom_bits();
@@ -96,6 +102,10 @@ public:
     double getChangeRatio();
     size_t getBlockCacheSize();
     int getSizeRatio();
+    int getValueSize();
+    int getFilterBaseLg();
+    int getRunMode();
+    bool getForceDeleteLevel0File();
 };
 
 #endif
