@@ -140,6 +140,8 @@ class CoreWorkload {
   static const std::string RECORD_COUNT_PROPERTY;
   static const std::string OPERATION_COUNT_PROPERTY;
   
+  static const std::string READ_KEY_START_PROPERTY;
+
   static const std::string WITH_TIMESTAMP_PROPERTY;
   static const std::string WITH_TIMESTAMP_PROPERTY_DEFAULT;
   
@@ -162,6 +164,10 @@ class CoreWorkload {
   static const std::string HOTSPOT_DATA_FRACTION_DEFAULT ;
   static const std::string HOTSPOT_OPN_FRACTION ;
   static const std::string HOTSPOT_OPN_FRACTION_DEFAULT ;
+  static const std::string ZERO_LOOKUP_RATE;
+  static const std::string ZERO_LOOKUP_RATE_DEFAULT;
+  static const std::string SKIPRATIO_FORRUN_PROPERTY;
+  static const std::string SKIPRATIO_FORRUN_PROPERTY_DEFAULT; 
   static int initCount;
   ///
   /// Initialize the scenario.
@@ -215,6 +221,7 @@ class CoreWorkload {
   CounterGenerator insert_key_sequence_;
   bool ordered_inserts_;
   size_t record_count_;
+  size_t read_key_start_;
 public:
   bool with_timestamp_;
   bool with_operation_; //operation come from trace;
@@ -222,7 +229,9 @@ public:
   FILE *timestamp_trace_fp_;
   FILE *latency_fp_;
   int skipratio_inload;
+  int skipratio_forrun;
   bool adjust_filter_;
+  int zerolookuprate;
 };
 
 inline std::string CoreWorkload::NextSequenceKey() {
@@ -235,6 +244,14 @@ inline std::string CoreWorkload::NextTransactionKey() {
   do {
     key_num = key_chooser_->Next();
   } while (key_num > insert_key_sequence_.Last());
+  key_num += read_key_start_;
+
+  if (zerolookuprate != 0) {
+    if (rand() % 100 < zerolookuprate) {  //zero lookup
+      key_num += record_count_;
+    }
+  }
+
   return BuildKeyName(key_num);
 }
 

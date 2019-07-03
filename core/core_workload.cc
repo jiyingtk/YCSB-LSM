@@ -77,6 +77,8 @@ const string CoreWorkload::INSERT_START_DEFAULT = "0";
 const string CoreWorkload::RECORD_COUNT_PROPERTY = "recordcount";
 const string CoreWorkload::OPERATION_COUNT_PROPERTY = "operationcount";
 
+const string CoreWorkload::READ_KEY_START_PROPERTY = "readkeystart";
+
 const string CoreWorkload::WITH_TIMESTAMP_PROPERTY = "withtimestamp";
 const string CoreWorkload::WITH_TIMESTAMP_PROPERTY_DEFAULT = "false";
 
@@ -100,6 +102,12 @@ const std::string CoreWorkload::HOTSPOT_DATA_FRACTION_DEFAULT ="0.2";
 const std::string CoreWorkload::HOTSPOT_OPN_FRACTION = "hotspotopnfraction";
 const std::string CoreWorkload::HOTSPOT_OPN_FRACTION_DEFAULT = "0.8";
 
+const std::string CoreWorkload::ZERO_LOOKUP_RATE = "zerolookuprate";
+const std::string CoreWorkload::ZERO_LOOKUP_RATE_DEFAULT = "0";
+
+const std::string CoreWorkload::SKIPRATIO_FORRUN_PROPERTY ="skipratioforrun";
+const std::string CoreWorkload::SKIPRATIO_FORRUN_PROPERTY_DEFAULT = "0"; 
+
 int CoreWorkload::initCount = 0;
 
 void CoreWorkload::Init(const utils::Properties &p) {
@@ -122,6 +130,7 @@ void CoreWorkload::Init(const utils::Properties &p) {
       READMODIFYWRITE_PROPORTION_PROPERTY, READMODIFYWRITE_PROPORTION_DEFAULT));
   
   sscanf(p.GetProperty(RECORD_COUNT_PROPERTY).c_str(),"%zu",&record_count_);
+  sscanf(p.GetProperty(READ_KEY_START_PROPERTY, "0").c_str(),"%zu",&read_key_start_);
   int field_len = std::stoi(p.GetProperty(FIELD_LENGTH_PROPERTY,
                                           FIELD_LENGTH_DEFAULT));
   std::string request_dist = p.GetProperty(REQUEST_DISTRIBUTION_PROPERTY,
@@ -130,7 +139,7 @@ void CoreWorkload::Init(const utils::Properties &p) {
                                              MAX_SCAN_LENGTH_DEFAULT));
   std::string scan_len_dist = p.GetProperty(SCAN_LENGTH_DISTRIBUTION_PROPERTY,
                                             SCAN_LENGTH_DISTRIBUTION_DEFAULT);
-  int insert_start = std::stoi(p.GetProperty(INSERT_START_PROPERTY,
+  long insert_start = std::stol(p.GetProperty(INSERT_START_PROPERTY,
                                              INSERT_START_DEFAULT));
   
   read_all_fields_ = utils::StrToBool(p.GetProperty(READ_ALL_FIELDS_PROPERTY,
@@ -169,8 +178,13 @@ void CoreWorkload::Init(const utils::Properties &p) {
        latency_fp_ = NULL;
   }
   
+  zerolookuprate = std::stoi(p.GetProperty(ZERO_LOOKUP_RATE,
+                                ZERO_LOOKUP_RATE_DEFAULT));
+
   skipratio_inload = std::stoi(p.GetProperty(SKIPRATIO_INLOAD_PROPERTY,
                                 SKIPRATIO_INLOAD_PROPERTY_DEFAULT));
+  skipratio_forrun = std::stoi(p.GetProperty(SKIPRATIO_FORRUN_PROPERTY,
+                                SKIPRATIO_FORRUN_PROPERTY_DEFAULT));
   adjust_filter_ = utils::StrToBool(p.GetProperty(ADJUST_FILTER_PROPERTY,
 						  ADJUST_FILTER_PROPERTY_DEFAULT));
    if(skipratio_inload != 0){
@@ -214,13 +228,13 @@ void CoreWorkload::Init(const utils::Properties &p) {
     // that is larger than what exists at the beginning of the test.
     // If the generator picks a key that is not inserted yet, we just ignore it
     // and pick another key.
-    int op_count = std::stoi(p.GetProperty(OPERATION_COUNT_PROPERTY));
-    int new_keys = (int)(op_count * insert_proportion * 2); // a fudge factor
+    long op_count = std::stol(p.GetProperty(OPERATION_COUNT_PROPERTY));
+    long new_keys = (long)(op_count * insert_proportion * 2); // a fudge factor
     double zipfian_const = std::stod(p.GetProperty(ZIPFIAN_CONST,ZIPFIAN_CONST_DEFAULT));
     key_chooser_ = new ScrambledZipfianGenerator(record_count_ + new_keys,zipfian_const);
   } else if (request_dist == "latest") {
-    key_chooser_ = new SkewedLatestGenerator(insert_key_sequence_);
-    
+    double zipfian_const = std::stod(p.GetProperty(ZIPFIAN_CONST,ZIPFIAN_CONST_DEFAULT));
+    key_chooser_ = new SkewedLatestGenerator(insert_key_sequence_, zipfian_const);
   } else if (request_dist == "hotspot"){
         double hotsetfraction =  std::stod(p.GetProperty(HOTSPOT_DATA_FRACTION,
                                 HOTSPOT_DATA_FRACTION_DEFAULT));

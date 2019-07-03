@@ -38,7 +38,8 @@ LevelDB::LevelDB(const char* dbfilename,const char* configPath)
     int kFilterBaseLg = LevelDB_ConfigMod::getInstance().getFilterBaseLg();
     bool force_delete_level0_file = LevelDB_ConfigMod::getInstance().getForceDeleteLevel0File();
     int run_mode = LevelDB_ConfigMod::getInstance().getRunMode();
-    
+    double extra_value1 = LevelDB_ConfigMod::getInstance().getExtraValue1();
+
     cout<<"seek compaction flag:";
     if(seek_compaction_flag){
       cout<<"true"<<endl;
@@ -113,11 +114,14 @@ LevelDB::LevelDB(const char* dbfilename,const char* configPath)
     options.opEp_.force_delete_level0_file = force_delete_level0_file;
     options.opEp_.run_mode = run_mode;  //0:origin, 1:ebf-previous, 2:ebf-optimized
     options.opEp_.cache_use_real_size = true;
+    options.opEp_.region_merge_threshold = extra_value1;
 
     options.create_if_missing = true;
     options.compression = compression_Open?leveldb::kSnappyCompression:leveldb::kNoCompression;  //compression is disabled.
     options.max_file_size = max_File_sizes;
     options.write_buffer_size = 64 << 20;
+    // options.write_buffer_size = 4 << 20;
+
     options.max_open_files = max_open_files;
     options.opEp_.seek_compaction_ = seek_compaction_flag;
     options.opEp_.force_disable_compaction = force_disable_compaction_flag;
@@ -128,6 +132,9 @@ LevelDB::LevelDB(const char* dbfilename,const char* configPath)
     options.opEp_.setFreCountInCompaction = setFreCountInCompaction;
     options.opEp_.slow_ratio = slow_ratio;
     options.opEp_.change_ratio = change_ratio;
+    options.opEp_.useLRUCache = LevelDB_ConfigMod::getInstance().getUseLRUCache();
+
+    fprintf(stderr, "use defaultLRUCache: %s, max_open_files: %d\n", (options.opEp_.useLRUCache?"true":"false"), max_open_files);
 
     options.opEp_.size_ratio = size_ratio;
  
@@ -202,7 +209,12 @@ int LevelDB::Delete(const string& table, const string& key)
 
 int LevelDB::Scan(const string& table, const string& key, int len, const vector< string >* fields, vector< vector< DB::KVPair > >& result)
 {
-    fprintf(stderr,"not implement yet");
+    leveldb::Iterator* iter = db_->NewIterator(leveldb::ReadOptions());
+    iter->Seek(key);
+    for (int i = 0; i < len; i++) {
+        iter->Next();
+    }
+    delete iter;
     return DB::kOK;
 }
 
@@ -227,7 +239,7 @@ void LevelDB::printAccessFreq()
     char buf[100];
     std::string num_files_str;
     snprintf(buf,sizeof(buf),"leveldb.num-files-at-level%d",levels);
-    while(levels == 0 || (db_->GetProperty(buf,&num_files_str) && std::stoi(num_files_str)!=0) ){
+    while(levels <= 2 || (db_->GetProperty(buf,&num_files_str) && std::stoi(num_files_str)!=0) ){
 	levels++;
 	snprintf(buf,sizeof(buf),"leveldb.num-files-at-level%d",levels);
     }
@@ -304,7 +316,7 @@ void LevelDB::doSomeThing(const char* thing_str)
   }else if(strncmp(thing_str,"printAccessFreq",strlen("printAccessFreq")) == 0){
 	printAccessFreq();
   }else if(strncmp(thing_str,"printFP",strlen("printFP")) == 0){
-    int fd = open("fp_access_file.txt",O_RDWR|O_CREAT);
+    int fd = open("fp_access_file.txt",O_RDWR|O_CREAT,0777);
     if(fd < 0){
         perror("open :");
     }
@@ -315,7 +327,7 @@ void LevelDB::doSomeThing(const char* thing_str)
     }
     close(fd);
 
-    fd = open("fp_calc_fpr.txt",O_RDWR|O_CREAT);
+    fd = open("fp_calc_fpr.txt",O_RDWR|O_CREAT,0777);
     if(fd < 0){
         perror("open :");
     }
@@ -326,7 +338,7 @@ void LevelDB::doSomeThing(const char* thing_str)
     }
     close(fd);
 
-    fd = open("fp_real_fpr.txt",O_RDWR|O_CREAT);
+    fd = open("fp_real_fpr.txt",O_RDWR|O_CREAT,0777);
     if(fd < 0){
         perror("open :");
     }
@@ -337,7 +349,7 @@ void LevelDB::doSomeThing(const char* thing_str)
     }
     close(fd);
 
-    fd = open("fp_real_io.txt",O_RDWR|O_CREAT);
+    fd = open("fp_real_io.txt",O_RDWR|O_CREAT,0777);
     if(fd < 0){
         perror("open :");
     }

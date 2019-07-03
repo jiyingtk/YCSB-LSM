@@ -103,7 +103,7 @@ class Client {
   }
   
   virtual bool DoInsert(bool insert_real=true);
-  virtual bool DoTransaction(size_t ops[],unsigned long long durations[]);
+  virtual bool DoTransaction(size_t ops[],unsigned long long durations[], bool insert_real=true);
   
   virtual ~Client() { 
       if(latency_fp_){
@@ -148,7 +148,7 @@ inline bool Client::DoInsert(bool insert_real) {
 }
 
 
-inline bool Client::DoTransaction(size_t ops[],unsigned long long durations[]) {
+inline bool Client::DoTransaction(size_t ops[],unsigned long long durations[], bool real_do) {
   int status = -1;
   unsigned long long latency;
   if(!first_do_transaction){
@@ -175,6 +175,15 @@ inline bool Client::DoTransaction(size_t ops[],unsigned long long durations[]) {
     operations = READ;
   else
     operations = INSERT;
+
+  if (!real_do) {
+    switch (operations) {
+      case INSERT:
+        const std::string &table = workload_.NextTable();
+        const std::string &key = workload_.NextSequenceKey();
+    }
+    return DB::kOK;
+  }
 
   switch (operations) {
     case READ:

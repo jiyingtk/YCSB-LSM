@@ -1,0 +1,1495 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ADJUST_FILTER_PROPERTY	core/core_workload.cc	/^const std::string CoreWorkload::ADJUST_FILTER_PROPERTY = "adjustfilter";$/;"	m	class:CoreWorkload	file:
+ADJUST_FILTER_PROPERTY	core/core_workload.h	/^  static const std::string ADJUST_FILTER_PROPERTY;$/;"	m	class:ycsbc::CoreWorkload
+ADJUST_FILTER_PROPERTY_DEFAULT	core/core_workload.cc	/^const std::string CoreWorkload::ADJUST_FILTER_PROPERTY_DEFAULT = "false";$/;"	m	class:CoreWorkload	file:
+ADJUST_FILTER_PROPERTY_DEFAULT	core/core_workload.h	/^  static const std::string ADJUST_FILTER_PROPERTY_DEFAULT;$/;"	m	class:ycsbc::CoreWorkload
+AF_LOCAL	redis/hiredis/net.h	41;"	d
+ALL	core/core_workload.h	/^  ALL,$/;"	e	enum:ycsbc::Operation
+AddValue	core/discrete_generator.h	/^inline void DiscreteGenerator<Value>::AddValue(Value value, double weight) {$/;"	f	class:ycsbc::DiscreteGenerator
+BASIC_CONFIG_HH_	db/basic_config.hh	2;"	d
+BasicDB	db/basic_db.h	/^class BasicDB : public DB {$/;"	c	namespace:ycsbc
+Basic_ConfigMod	db/basic_config.hh	/^    Basic_ConfigMod() {}$/;"	f	class:Basic_ConfigMod
+Basic_ConfigMod	db/basic_config.hh	/^class Basic_ConfigMod {$/;"	c
+BuildKeyName	core/core_workload.h	/^inline std::string CoreWorkload::BuildKeyName(uint64_t key_num) {$/;"	f	class:ycsbc::CoreWorkload
+BuildUpdate	core/core_workload.cc	/^void CoreWorkload::BuildUpdate(std::vector<ycsbc::DB::KVPair> &update) {$/;"	f	class:CoreWorkload
+BuildValues	core/core_workload.cc	/^void CoreWorkload::BuildValues(std::vector<ycsbc::DB::KVPair> &values) {$/;"	f	class:CoreWorkload
+CC	Makefile	/^CC=g++$/;"	m
+CC	core/Makefile	/^CC=g++$/;"	m
+CC	db/Makefile	/^CC=g++$/;"	m
+CC	redis/Makefile	/^CC=g++$/;"	m
+CC	redis/hiredis/Makefile	/^CC:=$(shell sh -c 'type $(CC) >\/dev\/null 2>\/dev\/null && echo $(CC) || echo gcc')$/;"	m
+CFLAGS	Makefile	/^CFLAGS=-std=c++11 -g2  -Wall -pthread -I.\/ $/;"	m
+CFLAGS	core/Makefile	/^CFLAGS=-std=c++11 -g2 -c -Wall $/;"	m
+CFLAGS	db/Makefile	/^CFLAGS=-std=c++11 -g2 -c  -Wall -fgnu-tm -lleveldb -lrocksdb$/;"	m
+CONN_FD	redis/hiredis/test.c	/^    CONN_FD$/;"	e	enum:connection_type	file:
+CONN_TCP	redis/hiredis/test.c	/^    CONN_TCP,$/;"	e	enum:connection_type	file:
+CONN_UNIX	redis/hiredis/test.c	/^    CONN_UNIX,$/;"	e	enum:connection_type	file:
+CXX	redis/hiredis/Makefile	/^CXX:=$(shell sh -c 'type $(CXX) >\/dev\/null 2>\/dev\/null && echo $(CXX) || echo g++')$/;"	m
+Client	core/client.h	/^  Client(DB &db, CoreWorkload &wl, int t_id_, int t_type_) : db_(db), workload_(wl), t_id(t_id_), t_type(t_type_) { $/;"	f	class:ycsbc::Client
+Client	core/client.h	/^class Client {$/;"	c	namespace:ycsbc
+Clock	core/timer.h	/^  typedef std::chrono::high_resolution_clock Clock;$/;"	t	class:utils::Timer
+Close	core/db.h	/^  virtual void Close() { }$/;"	f	class:ycsbc::DB
+Close	db/leveldbVlog_db.cc	/^    void LeveldbVlog::Close()$/;"	f	class:ycsbc::LeveldbVlog
+Close	db/leveldb_db.cc	/^void LevelDB::Close()$/;"	f	class:ycsbc::LevelDB
+Close	db/rocksdb_db.cc	/^    void RocksDB::Close()$/;"	f	class:ycsbc::RocksDB
+Command	redis/redis_client.h	/^inline int RedisClient::Command(std::string cmd) {$/;"	f	class:ycsbc::RedisClient
+ConfigParser	modifyConfig.py	/^import ConfigParser$/;"	i
+ConstGenerator	core/const_generator.h	/^  ConstGenerator(int constant) : constant_(constant) { }$/;"	f	class:ycsbc::ConstGenerator
+ConstGenerator	core/const_generator.h	/^class ConstGenerator : public Generator<uint64_t> {$/;"	c	namespace:ycsbc
+Copy	lib/string.h	/^inline String String::Copy(const char *cstr) {$/;"	f	class:vmp::String
+CopyString	db/lock_stl_db.h	/^  const char *CopyString(const std::string &str) {$/;"	f	class:ycsbc::LockStlDB
+CopyString	db/tbb_rand_db.h	/^  const char *CopyString(const std::string &str) {$/;"	f	class:ycsbc::TbbRandDB
+CopyString	db/tbb_scan_db.h	/^  const char *CopyString(const std::string &str) {$/;"	f	class:ycsbc::TbbScanDB
+CoreWorkload	core/core_workload.h	/^  CoreWorkload() :$/;"	f	class:ycsbc::CoreWorkload
+CoreWorkload	core/core_workload.h	/^class CoreWorkload {$/;"	c	namespace:ycsbc
+CounterGenerator	core/counter_generator.h	/^  CounterGenerator(uint64_t start) : counter_(start) { }$/;"	f	class:ycsbc::CounterGenerator
+CounterGenerator	core/counter_generator.h	/^class CounterGenerator : public Generator<uint64_t> {$/;"	c	namespace:ycsbc
+CreateDB	db/db_factory.cc	/^DB* DBFactory::CreateDB(utils::Properties &props) {$/;"	f	class:DBFactory
+DB	core/db.h	/^class DB {$/;"	c	namespace:ycsbc
+DBFactory	db/db_factory.h	/^class DBFactory {$/;"	c	namespace:ycsbc
+DEBUG	redis/hiredis/Makefile	/^DEBUG?= -g -ggdb$/;"	m
+DICT_ERR	redis/hiredis/dict.h	40;"	d
+DICT_HT_INITIAL_SIZE	redis/hiredis/dict.h	76;"	d
+DICT_NOTUSED	redis/hiredis/dict.h	43;"	d
+DICT_OK	redis/hiredis/dict.h	39;"	d
+DYLIBNAME	redis/hiredis/Makefile	/^DYLIBNAME=$(LIBNAME).$(DYLIBSUFFIX)$/;"	m
+DYLIBSUFFIX	redis/hiredis/Makefile	/^  DYLIBSUFFIX=dylib$/;"	m
+DYLIBSUFFIX	redis/hiredis/Makefile	/^DYLIBSUFFIX=so$/;"	m
+DYLIB_MAJOR_NAME	redis/hiredis/Makefile	/^DYLIB_MAJOR_NAME=$(LIBNAME).$(DYLIBSUFFIX).$(HIREDIS_MAJOR)$/;"	m
+DYLIB_MAKE_CMD	redis/hiredis/Makefile	/^  DYLIB_MAKE_CMD=$(CC) -G -o $(DYLIBNAME) -h $(DYLIB_MINOR_NAME) $(LDFLAGS)$/;"	m
+DYLIB_MAKE_CMD	redis/hiredis/Makefile	/^  DYLIB_MAKE_CMD=$(CC) -shared -Wl,-install_name,$(DYLIB_MINOR_NAME) -o $(DYLIBNAME) $(LDFLAGS)$/;"	m
+DYLIB_MAKE_CMD	redis/hiredis/Makefile	/^DYLIB_MAKE_CMD=$(CC) -shared -Wl,-soname,$(DYLIB_MINOR_NAME) -o $(DYLIBNAME) $(LDFLAGS)$/;"	m
+DYLIB_MINOR_NAME	redis/hiredis/Makefile	/^  DYLIB_MINOR_NAME=$(LIBNAME).$(HIREDIS_SONAME).$(DYLIBSUFFIX)$/;"	m
+DYLIB_MINOR_NAME	redis/hiredis/Makefile	/^DYLIB_MINOR_NAME=$(LIBNAME).$(DYLIBSUFFIX).$(HIREDIS_SONAME)$/;"	m
+DelegateClient	ycsbc.cc	/^size_t DelegateClient(ycsbc::DB *db, ycsbc::CoreWorkload *wl, const size_t num_ops,$/;"	f
+Delete	db/basic_db.h	/^  int Delete(const std::string &table, const std::string &key) {$/;"	f	class:ycsbc::BasicDB
+Delete	db/hashtable_db.cc	/^int HashtableDB::Delete(const string &table, const string &key) {$/;"	f	class:ycsbc::HashtableDB
+Delete	db/leveldbVlog_db.cc	/^    int LeveldbVlog::Delete(const string& table, const string& key)$/;"	f	class:ycsbc::LeveldbVlog
+Delete	db/leveldb_db.cc	/^int LevelDB::Delete(const string& table, const string& key)$/;"	f	class:ycsbc::LevelDB
+Delete	db/redis_db.h	/^  int Delete(const std::string &table, const std::string &key) {$/;"	f	class:ycsbc::RedisDB
+Delete	db/rocksdb_db.cc	/^    int RocksDB::Delete(const string &table, const string &key)$/;"	f	class:ycsbc::RocksDB
+Delete	lib/mem_alloc.h	/^  static void Delete(T *p) { return delete p; }$/;"	f	struct:MemAlloc
+DeleteFieldHashtable	db/lock_stl_db.h	/^  void DeleteFieldHashtable(HashtableDB::FieldHashtable *table) {$/;"	f	class:ycsbc::LockStlDB
+DeleteFieldHashtable	db/tbb_rand_db.h	/^  void DeleteFieldHashtable(HashtableDB::FieldHashtable *table) {$/;"	f	class:ycsbc::TbbRandDB
+DeleteFieldHashtable	db/tbb_scan_db.h	/^  void DeleteFieldHashtable(HashtableDB::FieldHashtable *table) {$/;"	f	class:ycsbc::TbbScanDB
+DeleteString	db/lock_stl_db.h	/^  void DeleteString(const char *str) {$/;"	f	class:ycsbc::LockStlDB
+DeleteString	db/tbb_rand_db.h	/^  void DeleteString(const char *str) {$/;"	f	class:ycsbc::TbbRandDB
+DeleteString	db/tbb_scan_db.h	/^  void DeleteString(const char *str) {$/;"	f	class:ycsbc::TbbScanDB
+DiscreteGenerator	core/discrete_generator.h	/^  DiscreteGenerator() : sum_(0) { }$/;"	f	class:ycsbc::DiscreteGenerator
+DiscreteGenerator	core/discrete_generator.h	/^class DiscreteGenerator : public Generator<Value> {$/;"	c	namespace:ycsbc
+DoInsert	core/client.h	/^inline bool Client::DoInsert(bool insert_real) {$/;"	f	class:ycsbc::Client
+DoTransaction	core/client.h	/^inline bool Client::DoTransaction(size_t ops[],unsigned long long durations[]) {$/;"	f	class:ycsbc::Client
+Duration	core/timer.h	/^  typedef std::chrono::duration<T> Duration;$/;"	t	class:utils::Timer
+EXAMPLES	redis/hiredis/Makefile	/^EXAMPLES=hiredis-example hiredis-example-libevent hiredis-example-libev hiredis-example-glib$/;"	m
+EXEC	Makefile	/^EXEC=ycsbc$/;"	m
+End	core/timer.h	/^  T End() {$/;"	f	class:utils::Timer
+Entries	lib/lock_stl_hashtable.h	/^LockStlHashtable<V>::Entries(const char *key, size_t n) const {$/;"	f	class:vmp::LockStlHashtable
+Entries	lib/stl_hashtable.h	/^StlHashtable<V, MA, PA>::Entries(const char *key, std::size_t n) const {$/;"	f	class:vmp::StlHashtable
+Entries	lib/tbb_rand_hashtable.h	/^std::vector<typename TbbRandHashtable<V>::KVPair> TbbRandHashtable<V>::Entries($/;"	f	class:vmp::TbbRandHashtable
+Entries	lib/tbb_scan_hashtable.h	/^std::vector<typename TbbScanHashtable<V>::KVPair> TbbScanHashtable<V>::Entries($/;"	f	class:vmp::TbbScanHashtable
+Equal	lib/stl_hashtable.h	/^  struct Equal {$/;"	s	class:vmp::StlHashtable
+Eta	core/zipfian_generator.h	/^  double Eta() {$/;"	f	class:ycsbc::ZipfianGenerator
+ExampleQt	redis/hiredis/examples/example-qt.h	/^        ExampleQt(const char * value, QObject * parent = 0)$/;"	f	class:ExampleQt
+ExampleQt	redis/hiredis/examples/example-qt.h	/^class ExampleQt : public QObject {$/;"	c
+Exception	core/utils.h	/^  Exception(const std::string &message) : message_(message) { }$/;"	f	class:utils::Exception
+Exception	core/utils.h	/^class Exception : public std::exception {$/;"	c	namespace:utils
+FIELD_COUNT_DEFAULT	core/core_workload.cc	/^const string CoreWorkload::FIELD_COUNT_DEFAULT = "1";   \/\/fieldcount = 1$/;"	m	class:CoreWorkload	file:
+FIELD_COUNT_DEFAULT	core/core_workload.h	/^  static const std::string FIELD_COUNT_DEFAULT;$/;"	m	class:ycsbc::CoreWorkload
+FIELD_COUNT_PROPERTY	core/core_workload.cc	/^const string CoreWorkload::FIELD_COUNT_PROPERTY = "fieldcount";$/;"	m	class:CoreWorkload	file:
+FIELD_COUNT_PROPERTY	core/core_workload.h	/^  static const std::string FIELD_COUNT_PROPERTY;$/;"	m	class:ycsbc::CoreWorkload
+FIELD_LENGTH_DEFAULT	core/core_workload.cc	/^const string CoreWorkload::FIELD_LENGTH_DEFAULT = "100";$/;"	m	class:CoreWorkload	file:
+FIELD_LENGTH_DEFAULT	core/core_workload.h	/^  static const std::string FIELD_LENGTH_DEFAULT;$/;"	m	class:ycsbc::CoreWorkload
+FIELD_LENGTH_DISTRIBUTION_DEFAULT	core/core_workload.cc	/^const string CoreWorkload::FIELD_LENGTH_DISTRIBUTION_DEFAULT = "constant";$/;"	m	class:CoreWorkload	file:
+FIELD_LENGTH_DISTRIBUTION_DEFAULT	core/core_workload.h	/^  static const std::string FIELD_LENGTH_DISTRIBUTION_DEFAULT;$/;"	m	class:ycsbc::CoreWorkload
+FIELD_LENGTH_DISTRIBUTION_PROPERTY	core/core_workload.cc	/^const string CoreWorkload::FIELD_LENGTH_DISTRIBUTION_PROPERTY =$/;"	m	class:CoreWorkload	file:
+FIELD_LENGTH_DISTRIBUTION_PROPERTY	core/core_workload.h	/^  static const std::string FIELD_LENGTH_DISTRIBUTION_PROPERTY;$/;"	m	class:ycsbc::CoreWorkload
+FIELD_LENGTH_PROPERTY	core/core_workload.cc	/^const string CoreWorkload::FIELD_LENGTH_PROPERTY = "fieldlength";$/;"	m	class:CoreWorkload	file:
+FIELD_LENGTH_PROPERTY	core/core_workload.h	/^  static const std::string FIELD_LENGTH_PROPERTY;$/;"	m	class:ycsbc::CoreWorkload
+FLOAT_WIDTH_TEST	redis/hiredis/test.c	183;"	d	file:
+FNVHash64	core/utils.h	/^inline uint64_t FNVHash64(uint64_t val) {$/;"	f	namespace:utils
+FieldHashtable	db/hashtable_db.h	/^  typedef vmp::StringHashtable<const char *> FieldHashtable;$/;"	t	class:ycsbc::HashtableDB
+Free	lib/mem_alloc.h	/^  static void Free(T *p, std::size_t size) { free((void *)p); }$/;"	f	struct:MemAlloc
+Free	lib/string.h	/^inline void String::Free(const String& hstr) {$/;"	f	class:vmp::String
+Generator	core/generator.h	/^class Generator {$/;"	c	namespace:ycsbc
+Get	lib/lock_stl_hashtable.h	/^inline V LockStlHashtable<V>::Get(const char *key) const {$/;"	f	class:vmp::LockStlHashtable
+Get	lib/stl_hashtable.h	/^V StlHashtable<V, MA, PA>::Get(const char *key) const {$/;"	f	class:vmp::StlHashtable
+Get	lib/tbb_rand_hashtable.h	/^V TbbRandHashtable<V>::Get(const char *key) const {$/;"	f	class:vmp::TbbRandHashtable
+Get	lib/tbb_scan_hashtable.h	/^V TbbScanHashtable<V>::Get(const char *key) const {$/;"	f	class:vmp::TbbScanHashtable
+GetFieldLenGenerator	core/core_workload.cc	/^ycsbc::Generator<uint64_t> *CoreWorkload::GetFieldLenGenerator($/;"	f	class:CoreWorkload
+GetProperty	core/properties.h	/^inline std::string Properties::GetProperty(const std::string &key,$/;"	f	class:utils::Properties
+HEADERS	redis/Makefile	/^HEADERS=$(wildcard *.h)$/;"	m
+HIREDIS_MAJOR	redis/hiredis/Makefile	/^HIREDIS_MAJOR=$(shell grep HIREDIS_MAJOR hiredis.h | awk '{print $$3}')$/;"	m
+HIREDIS_MAJOR	redis/hiredis/hiredis.h	42;"	d
+HIREDIS_MINOR	redis/hiredis/Makefile	/^HIREDIS_MINOR=$(shell grep HIREDIS_MINOR hiredis.h | awk '{print $$3}')$/;"	m
+HIREDIS_MINOR	redis/hiredis/hiredis.h	43;"	d
+HIREDIS_PATCH	redis/hiredis/Makefile	/^HIREDIS_PATCH=$(shell grep HIREDIS_PATCH hiredis.h | awk '{print $$3}')$/;"	m
+HIREDIS_PATCH	redis/hiredis/hiredis.h	44;"	d
+HIREDIS_SONAME	redis/hiredis/Makefile	/^HIREDIS_SONAME=$(shell grep HIREDIS_SONAME hiredis.h | awk '{print $$3}')$/;"	m
+HIREDIS_SONAME	redis/hiredis/hiredis.h	45;"	d
+HOTSPOT_DATA_FRACTION	core/core_workload.cc	/^const std::string CoreWorkload::HOTSPOT_DATA_FRACTION = "hotspotdatafraction";$/;"	m	class:CoreWorkload	file:
+HOTSPOT_DATA_FRACTION	core/core_workload.h	/^  static const std::string HOTSPOT_DATA_FRACTION;$/;"	m	class:ycsbc::CoreWorkload
+HOTSPOT_DATA_FRACTION_DEFAULT	core/core_workload.cc	/^const std::string CoreWorkload::HOTSPOT_DATA_FRACTION_DEFAULT ="0.2";$/;"	m	class:CoreWorkload	file:
+HOTSPOT_DATA_FRACTION_DEFAULT	core/core_workload.h	/^  static const std::string HOTSPOT_DATA_FRACTION_DEFAULT ;$/;"	m	class:ycsbc::CoreWorkload
+HOTSPOT_OPN_FRACTION	core/core_workload.cc	/^const std::string CoreWorkload::HOTSPOT_OPN_FRACTION = "hotspotopnfraction";$/;"	m	class:CoreWorkload	file:
+HOTSPOT_OPN_FRACTION	core/core_workload.h	/^  static const std::string HOTSPOT_OPN_FRACTION ;$/;"	m	class:ycsbc::CoreWorkload
+HOTSPOT_OPN_FRACTION_DEFAULT	core/core_workload.cc	/^const std::string CoreWorkload::HOTSPOT_OPN_FRACTION_DEFAULT = "0.8";$/;"	m	class:CoreWorkload	file:
+HOTSPOT_OPN_FRACTION_DEFAULT	core/core_workload.h	/^  static const std::string HOTSPOT_OPN_FRACTION_DEFAULT ;$/;"	m	class:ycsbc::CoreWorkload
+HandleError	redis/redis_client.h	/^inline void RedisClient::HandleError(redisReply *reply, const char *hint) {$/;"	f	class:ycsbc::RedisClient
+Hash	core/utils.h	/^inline uint64_t Hash(uint64_t val) { return FNVHash64(val); }$/;"	f	namespace:utils
+Hash	lib/stl_hashtable.h	/^  struct Hash {$/;"	s	class:vmp::StlHashtable
+Hash	lib/tbb_scan_hashtable.h	/^  struct Hash {$/;"	s	class:vmp::TbbScanHashtable
+HashEqual	lib/tbb_rand_hashtable.h	/^  struct HashEqual {$/;"	s	class:vmp::TbbRandHashtable
+Hashtable	lib/stl_hashtable.h	/^  typedef std::unordered_map<String, V, Hash, Equal, PA> Hashtable;$/;"	t	class:vmp::StlHashtable
+Hashtable	lib/tbb_rand_hashtable.h	/^  typedef tbb::concurrent_hash_map<String, V, HashEqual> Hashtable;$/;"	t	class:vmp::TbbRandHashtable
+Hashtable	lib/tbb_scan_hashtable.h	/^  typedef tbb::concurrent_unordered_map<String, V, Hash> Hashtable;$/;"	t	class:vmp::TbbScanHashtable
+HashtableDB	db/hashtable_db.h	/^  HashtableDB(KeyHashtable *table) : key_table_(table) { }$/;"	f	class:ycsbc::HashtableDB
+HashtableDB	db/hashtable_db.h	/^class HashtableDB : public DB {$/;"	c	namespace:ycsbc
+HotspotIntegerGenerator	core/HotspotIntegerGenerator.h	/^  HotspotIntegerGenerator(uint64_t lowerBound, uint64_t upperBound,$/;"	f	class:ycsbc::HotspotIntegerGenerator
+HotspotIntegerGenerator	core/HotspotIntegerGenerator.h	/^class HotspotIntegerGenerator : public Generator<uint64_t> {$/;"	c	namespace:ycsbc
+INCLUDES	db/Makefile	/^INCLUDES=-I..\/  $/;"	m
+INCLUDES	redis/Makefile	/^INCLUDES=-I..\/$/;"	m
+INCLUDE_PATH	redis/hiredis/Makefile	/^INCLUDE_PATH?=include\/hiredis$/;"	m
+INSERT	core/core_workload.h	/^  INSERT,$/;"	e	enum:ycsbc::Operation
+INSERT_ORDER_DEFAULT	core/core_workload.cc	/^const string CoreWorkload::INSERT_ORDER_DEFAULT = "hashed";$/;"	m	class:CoreWorkload	file:
+INSERT_ORDER_DEFAULT	core/core_workload.h	/^  static const std::string INSERT_ORDER_DEFAULT;$/;"	m	class:ycsbc::CoreWorkload
+INSERT_ORDER_PROPERTY	core/core_workload.cc	/^const string CoreWorkload::INSERT_ORDER_PROPERTY = "insertorder";$/;"	m	class:CoreWorkload	file:
+INSERT_ORDER_PROPERTY	core/core_workload.h	/^  static const std::string INSERT_ORDER_PROPERTY;$/;"	m	class:ycsbc::CoreWorkload
+INSERT_PROPORTION_DEFAULT	core/core_workload.cc	/^const string CoreWorkload::INSERT_PROPORTION_DEFAULT = "0.0";$/;"	m	class:CoreWorkload	file:
+INSERT_PROPORTION_DEFAULT	core/core_workload.h	/^  static const std::string INSERT_PROPORTION_DEFAULT;$/;"	m	class:ycsbc::CoreWorkload
+INSERT_PROPORTION_PROPERTY	core/core_workload.cc	/^const string CoreWorkload::INSERT_PROPORTION_PROPERTY = "insertproportion";$/;"	m	class:CoreWorkload	file:
+INSERT_PROPORTION_PROPERTY	core/core_workload.h	/^  static const std::string INSERT_PROPORTION_PROPERTY;$/;"	m	class:ycsbc::CoreWorkload
+INSERT_START_DEFAULT	core/core_workload.cc	/^const string CoreWorkload::INSERT_START_DEFAULT = "0";$/;"	m	class:CoreWorkload	file:
+INSERT_START_DEFAULT	core/core_workload.h	/^  static const std::string INSERT_START_DEFAULT;$/;"	m	class:ycsbc::CoreWorkload
+INSERT_START_PROPERTY	core/core_workload.cc	/^const string CoreWorkload::INSERT_START_PROPERTY = "insertstart";$/;"	m	class:CoreWorkload	file:
+INSERT_START_PROPERTY	core/core_workload.h	/^  static const std::string INSERT_START_PROPERTY;$/;"	m	class:ycsbc::CoreWorkload
+INSTALL	redis/hiredis/Makefile	/^  INSTALL= cp -r$/;"	m
+INSTALL	redis/hiredis/Makefile	/^  INSTALL?= cp -r$/;"	m
+INSTALL	redis/hiredis/Makefile	/^INSTALL?= cp -a$/;"	m
+INSTALL_INCLUDE_PATH	redis/hiredis/Makefile	/^INSTALL_INCLUDE_PATH= $(DESTDIR)$(PREFIX)\/$(INCLUDE_PATH)$/;"	m
+INSTALL_LIBRARY_PATH	redis/hiredis/Makefile	/^INSTALL_LIBRARY_PATH= $(DESTDIR)$(PREFIX)\/$(LIBRARY_PATH)$/;"	m
+INSTALL_PKGCONF_PATH	redis/hiredis/Makefile	/^INSTALL_PKGCONF_PATH= $(INSTALL_LIBRARY_PATH)\/$(PKGCONF_PATH)$/;"	m
+INTEGER_WIDTH_TEST	redis/hiredis/test.c	174;"	d	file:
+Init	core/core_workload.cc	/^void CoreWorkload::Init(const utils::Properties &p) {$/;"	f	class:CoreWorkload
+Init	core/db.h	/^  virtual void Init() { }$/;"	f	class:ycsbc::DB
+Init	db/basic_db.h	/^  void Init() {$/;"	f	class:ycsbc::BasicDB
+Insert	db/basic_db.h	/^  int Insert(const std::string &table, const std::string &key,$/;"	f	class:ycsbc::BasicDB
+Insert	db/hashtable_db.cc	/^int HashtableDB::Insert(const string &table, const string &key,$/;"	f	class:ycsbc::HashtableDB
+Insert	db/leveldbVlog_db.cc	/^    int LeveldbVlog::Insert(const string& table, const string& key, vector< DB::KVPair >& values)$/;"	f	class:ycsbc::LeveldbVlog
+Insert	db/leveldb_db.cc	/^int LevelDB::Insert(const string& table, const string& key, vector< DB::KVPair >& values)$/;"	f	class:ycsbc::LevelDB
+Insert	db/redis_db.h	/^  int Insert(const std::string &table, const std::string &key,$/;"	f	class:ycsbc::RedisDB
+Insert	db/rocksdb_db.cc	/^    int RocksDB::Insert(const string &table, const string &key, vector< DB::KVPair > &values)$/;"	f	class:ycsbc::RocksDB
+Insert	lib/lock_stl_hashtable.h	/^inline bool LockStlHashtable<V>::Insert(const char *key, V value) {$/;"	f	class:vmp::LockStlHashtable
+Insert	lib/stl_hashtable.h	/^bool StlHashtable<V, MA, PA>::Insert(const char *key, V value) {$/;"	f	class:vmp::StlHashtable
+Insert	lib/tbb_rand_hashtable.h	/^bool TbbRandHashtable<V>::Insert(const char *key, V value) {$/;"	f	class:vmp::TbbRandHashtable
+Insert	lib/tbb_scan_hashtable.h	/^bool TbbScanHashtable<V>::Insert(const char *key, V value) {$/;"	f	class:vmp::TbbScanHashtable
+KVPair	core/db.h	/^  typedef std::pair<std::string, std::string> KVPair;$/;"	t	class:ycsbc::DB
+KVPair	lib/lock_stl_hashtable.h	/^  typedef typename StringHashtable<V>::KVPair KVPair;$/;"	t	class:vmp::LockStlHashtable
+KVPair	lib/stl_hashtable.h	/^  typedef typename StringHashtable<V>::KVPair KVPair;$/;"	t	class:vmp::StlHashtable
+KVPair	lib/string_hashtable.h	/^  typedef std::pair<const char *, V> KVPair;$/;"	t	class:vmp::StringHashtable
+KVPair	lib/tbb_rand_hashtable.h	/^  typedef typename StringHashtable<V>::KVPair KVPair;$/;"	t	class:vmp::TbbRandHashtable
+KVPair	lib/tbb_scan_hashtable.h	/^  typedef typename StringHashtable<V>::KVPair KVPair;$/;"	t	class:vmp::TbbScanHashtable
+KeyHashtable	db/hashtable_db.h	/^  typedef vmp::StringHashtable<FieldHashtable *> KeyHashtable;$/;"	t	class:ycsbc::HashtableDB
+LATENCYFILENAME_PROPERTY	core/core_workload.cc	/^const std::string CoreWorkload::LATENCYFILENAME_PROPERTY = "latencyfilename";$/;"	m	class:CoreWorkload	file:
+LATENCYFILENAME_PROPERTY	core/core_workload.h	/^  static const std::string LATENCYFILENAME_PROPERTY ;$/;"	m	class:ycsbc::CoreWorkload
+LATENCYFILENAME_PROPERTY_DEFAULT	core/core_workload.cc	/^const std::string CoreWorkload::LATENCYFILENAME_PROPERTY_DEFAULT = "lf";$/;"	m	class:CoreWorkload	file:
+LATENCYFILENAME_PROPERTY_DEFAULT	core/core_workload.h	/^  static const std::string LATENCYFILENAME_PROPERTY_DEFAULT;$/;"	m	class:ycsbc::CoreWorkload
+LDFLAGS	Makefile	/^LDFLAGS= -lpthread -ltbb -lhiredis -lleveldb -lrocksdb -lboost_system -lboost_thread$/;"	m
+LDFLAGS	redis/Makefile	/^LDFLAGS=-lhiredis$/;"	m
+LIBNAME	redis/hiredis/Makefile	/^LIBNAME=libhiredis$/;"	m
+LIBRARY_PATH	redis/hiredis/Makefile	/^LIBRARY_PATH?=lib$/;"	m
+Last	core/HotspotIntegerGenerator.h	/^  uint64_t Last() { return last_value_; }$/;"	f	class:ycsbc::HotspotIntegerGenerator
+Last	core/const_generator.h	/^  uint64_t Last() { return constant_; }$/;"	f	class:ycsbc::ConstGenerator
+Last	core/counter_generator.h	/^  uint64_t Last() { return counter_.load() - 1; }$/;"	f	class:ycsbc::CounterGenerator
+Last	core/discrete_generator.h	/^  Value Last() { return last_; }$/;"	f	class:ycsbc::DiscreteGenerator
+Last	core/scrambled_zipfian_generator.h	/^  uint64_t Last() { return last_; }$/;"	f	class:ycsbc::ScrambledZipfianGenerator
+Last	core/skewed_latest_generator.h	/^  uint64_t Last() { return last_; }$/;"	f	class:ycsbc::SkewedLatestGenerator
+Last	core/uniform_generator.h	/^  uint64_t Last() { return last_int_; }$/;"	f	class:ycsbc::UniformGenerator
+Last	core/zipfian_generator.h	/^  uint64_t Last() { return last_value_; }$/;"	f	class:ycsbc::ZipfianGenerator
+LevelDB	db/leveldb_db.cc	/^LevelDB::LevelDB(const char* dbfilename,const char* configPath)$/;"	f	class:ycsbc::LevelDB
+LevelDB	db/leveldb_db.h	/^class LevelDB : public DB{$/;"	c	namespace:ycsbc
+LevelDB_ConfigMod	db/basic_config.hh	/^class LevelDB_ConfigMod:public Basic_ConfigMod<LevelDB_ConfigMod>{$/;"	c
+LeveldbVlog	db/leveldbVlog_db.cc	/^    LeveldbVlog::LeveldbVlog(const char* dbfilename,const char* configPath)$/;"	f	class:ycsbc::LeveldbVlog
+LeveldbVlog	db/leveldbVlog_db.h	/^    class LeveldbVlog : public DB{$/;"	c	namespace:ycsbc
+Load	core/properties.h	/^inline bool Properties::Load(std::ifstream &input) {$/;"	f	class:utils::Properties
+LockStlDB	db/lock_stl_db.h	/^  LockStlDB() : HashtableDB($/;"	f	class:ycsbc::LockStlDB
+LockStlDB	db/lock_stl_db.h	/^class LockStlDB : public HashtableDB {$/;"	c	namespace:ycsbc
+LockStlHashtable	lib/lock_stl_hashtable.h	/^class LockStlHashtable : public StlHashtable<V> {$/;"	c	namespace:vmp
+MAX_SCAN_LENGTH_DEFAULT	core/core_workload.cc	/^const string CoreWorkload::MAX_SCAN_LENGTH_DEFAULT = "1000";$/;"	m	class:CoreWorkload	file:
+MAX_SCAN_LENGTH_DEFAULT	core/core_workload.h	/^  static const std::string MAX_SCAN_LENGTH_DEFAULT;$/;"	m	class:ycsbc::CoreWorkload
+MAX_SCAN_LENGTH_PROPERTY	core/core_workload.cc	/^const string CoreWorkload::MAX_SCAN_LENGTH_PROPERTY = "maxscanlength";$/;"	m	class:CoreWorkload	file:
+MAX_SCAN_LENGTH_PROPERTY	core/core_workload.h	/^  static const std::string MAX_SCAN_LENGTH_PROPERTY;$/;"	m	class:ycsbc::CoreWorkload
+Malloc	lib/mem_alloc.h	/^  static void *Malloc(std::size_t size) { return malloc(size); }$/;"	f	struct:MemAlloc
+MemAlloc	lib/mem_alloc.h	/^struct MemAlloc {$/;"	s
+New	lib/mem_alloc.h	/^  static T *New(Arguments... args) { return new T(args...); }$/;"	f	struct:MemAlloc
+NewFieldHashtable	db/lock_stl_db.h	/^  HashtableDB::FieldHashtable *NewFieldHashtable() {$/;"	f	class:ycsbc::LockStlDB
+NewFieldHashtable	db/tbb_rand_db.h	/^  HashtableDB::FieldHashtable *NewFieldHashtable() {$/;"	f	class:ycsbc::TbbRandDB
+NewFieldHashtable	db/tbb_scan_db.h	/^  HashtableDB::FieldHashtable *NewFieldHashtable() {$/;"	f	class:ycsbc::TbbScanDB
+Next	core/HotspotIntegerGenerator.h	/^  uint64_t Next() { $/;"	f	class:ycsbc::HotspotIntegerGenerator
+Next	core/const_generator.h	/^  uint64_t Next() { return constant_; }$/;"	f	class:ycsbc::ConstGenerator
+Next	core/counter_generator.h	/^  uint64_t Next() { return counter_.fetch_add(1); }$/;"	f	class:ycsbc::CounterGenerator
+Next	core/discrete_generator.h	/^inline Value DiscreteGenerator<Value>::Next() {$/;"	f	class:ycsbc::DiscreteGenerator
+Next	core/scrambled_zipfian_generator.h	/^inline uint64_t ScrambledZipfianGenerator::Next() {$/;"	f	class:ycsbc::ScrambledZipfianGenerator
+Next	core/skewed_latest_generator.h	/^inline uint64_t SkewedLatestGenerator::Next() {$/;"	f	class:ycsbc::SkewedLatestGenerator
+Next	core/uniform_generator.h	/^  uint64_t Next() { return last_int_ = dist_(generator_); }$/;"	f	class:ycsbc::UniformGenerator
+Next	core/zipfian_generator.h	/^  uint64_t Next() { return Next(num_items_); }$/;"	f	class:ycsbc::ZipfianGenerator
+Next	core/zipfian_generator.h	/^inline uint64_t ZipfianGenerator::Next(uint64_t num) {$/;"	f	class:ycsbc::ZipfianGenerator
+NextFieldName	core/core_workload.h	/^inline std::string CoreWorkload::NextFieldName() {$/;"	f	class:ycsbc::CoreWorkload
+NextOperation	core/core_workload.h	/^  virtual Operation NextOperation() { return op_chooser_.Next(); }$/;"	f	class:ycsbc::CoreWorkload
+NextScanLength	core/core_workload.h	/^  virtual size_t NextScanLength() { return scan_len_chooser_->Next(); }$/;"	f	class:ycsbc::CoreWorkload
+NextSequenceKey	core/core_workload.h	/^inline std::string CoreWorkload::NextSequenceKey() {$/;"	f	class:ycsbc::CoreWorkload
+NextTable	core/core_workload.h	/^  virtual std::string NextTable() { return table_name_; }$/;"	f	class:ycsbc::CoreWorkload
+NextTransactionKey	core/core_workload.h	/^inline std::string CoreWorkload::NextTransactionKey() {$/;"	f	class:ycsbc::CoreWorkload
+OBJ	redis/hiredis/Makefile	/^OBJ=net.o hiredis.o sds.o async.o read.o$/;"	m
+OBJECTS	Makefile	/^OBJECTS=$(SUBSRCS:.cc=.o)$/;"	m
+OBJECTS	core/Makefile	/^OBJECTS=$(SOURCES:.cc=.o)$/;"	m
+OBJECTS	db/Makefile	/^OBJECTS=$(SOURCES:.cc=.o)$/;"	m
+OPERATION_COUNT_PROPERTY	core/core_workload.cc	/^const string CoreWorkload::OPERATION_COUNT_PROPERTY = "operationcount";$/;"	m	class:CoreWorkload	file:
+OPERATION_COUNT_PROPERTY	core/core_workload.h	/^  static const std::string OPERATION_COUNT_PROPERTY;$/;"	m	class:ycsbc::CoreWorkload
+OPTIMIZATION	redis/hiredis/Makefile	/^OPTIMIZATION?=-O3$/;"	m
+Operation	core/core_workload.h	/^enum Operation {$/;"	g	namespace:ycsbc
+PKGCONFNAME	redis/hiredis/Makefile	/^PKGCONFNAME=hiredis.pc$/;"	m
+PKGCONF_PATH	redis/hiredis/Makefile	/^PKGCONF_PATH?=pkgconfig$/;"	m
+PREFIX	redis/hiredis/Makefile	/^PREFIX?=\/usr\/local$/;"	m
+ParseCommandLine	ycsbc.cc	/^string ParseCommandLine(int argc, const char *argv[], utils::Properties &props)$/;"	f
+Properties	core/properties.h	/^class Properties {$/;"	c	namespace:utils
+READ	core/core_workload.h	/^  READ,$/;"	e	enum:ycsbc::Operation
+READMODIFYWRITE	core/core_workload.h	/^  READMODIFYWRITE,$/;"	e	enum:ycsbc::Operation
+READMODIFYWRITE_PROPORTION_DEFAULT	core/core_workload.cc	/^const string CoreWorkload::READMODIFYWRITE_PROPORTION_DEFAULT = "0.0";$/;"	m	class:CoreWorkload	file:
+READMODIFYWRITE_PROPORTION_DEFAULT	core/core_workload.h	/^  static const std::string READMODIFYWRITE_PROPORTION_DEFAULT;$/;"	m	class:ycsbc::CoreWorkload
+READMODIFYWRITE_PROPORTION_PROPERTY	core/core_workload.cc	/^const string CoreWorkload::READMODIFYWRITE_PROPORTION_PROPERTY =$/;"	m	class:CoreWorkload	file:
+READMODIFYWRITE_PROPORTION_PROPERTY	core/core_workload.h	/^  static const std::string READMODIFYWRITE_PROPORTION_PROPERTY;$/;"	m	class:ycsbc::CoreWorkload
+READ_ALL_FIELDS_DEFAULT	core/core_workload.cc	/^const string CoreWorkload::READ_ALL_FIELDS_DEFAULT = "true";$/;"	m	class:CoreWorkload	file:
+READ_ALL_FIELDS_DEFAULT	core/core_workload.h	/^  static const std::string READ_ALL_FIELDS_DEFAULT;$/;"	m	class:ycsbc::CoreWorkload
+READ_ALL_FIELDS_PROPERTY	core/core_workload.cc	/^const string CoreWorkload::READ_ALL_FIELDS_PROPERTY = "readallfields";$/;"	m	class:CoreWorkload	file:
+READ_ALL_FIELDS_PROPERTY	core/core_workload.h	/^  static const std::string READ_ALL_FIELDS_PROPERTY;$/;"	m	class:ycsbc::CoreWorkload
+READ_PROPORTION_DEFAULT	core/core_workload.cc	/^const string CoreWorkload::READ_PROPORTION_DEFAULT = "0.95";$/;"	m	class:CoreWorkload	file:
+READ_PROPORTION_DEFAULT	core/core_workload.h	/^  static const std::string READ_PROPORTION_DEFAULT;$/;"	m	class:ycsbc::CoreWorkload
+READ_PROPORTION_PROPERTY	core/core_workload.cc	/^const string CoreWorkload::READ_PROPORTION_PROPERTY = "readproportion";$/;"	m	class:CoreWorkload	file:
+READ_PROPORTION_PROPERTY	core/core_workload.h	/^  static const std::string READ_PROPORTION_PROPERTY;$/;"	m	class:ycsbc::CoreWorkload
+REAL_CFLAGS	redis/hiredis/Makefile	/^REAL_CFLAGS=$(OPTIMIZATION) -fPIC $(CFLAGS) $(WARNINGS) $(DEBUG) $(ARCH)$/;"	m
+REAL_LDFLAGS	redis/hiredis/Makefile	/^REAL_LDFLAGS=$(LDFLAGS) $(ARCH)$/;"	m
+RECORD_COUNT_PROPERTY	core/core_workload.cc	/^const string CoreWorkload::RECORD_COUNT_PROPERTY = "recordcount";$/;"	m	class:CoreWorkload	file:
+RECORD_COUNT_PROPERTY	core/core_workload.h	/^  static const std::string RECORD_COUNT_PROPERTY;$/;"	m	class:ycsbc::CoreWorkload
+REDIS_BLOCK	redis/hiredis/hiredis.h	49;"	d
+REDIS_CONNECTED	redis/hiredis/hiredis.h	53;"	d
+REDIS_CONNECT_RETRIES	redis/hiredis/hiredis.h	81;"	d
+REDIS_CONN_TCP	redis/hiredis/hiredis.h	/^    REDIS_CONN_TCP,$/;"	e	enum:redisConnectionType
+REDIS_CONN_UNIX	redis/hiredis/hiredis.h	/^    REDIS_CONN_UNIX,$/;"	e	enum:redisConnectionType
+REDIS_DISCONNECTING	redis/hiredis/hiredis.h	59;"	d
+REDIS_ERR	redis/hiredis/read.h	37;"	d
+REDIS_ERR_EOF	redis/hiredis/read.h	45;"	d
+REDIS_ERR_IO	redis/hiredis/read.h	44;"	d
+REDIS_ERR_OOM	redis/hiredis/read.h	47;"	d
+REDIS_ERR_OTHER	redis/hiredis/read.h	48;"	d
+REDIS_ERR_PROTOCOL	redis/hiredis/read.h	46;"	d
+REDIS_FREEING	redis/hiredis/hiredis.h	63;"	d
+REDIS_IN_CALLBACK	redis/hiredis/hiredis.h	66;"	d
+REDIS_KEEPALIVE_INTERVAL	redis/hiredis/hiredis.h	77;"	d
+REDIS_MONITORING	redis/hiredis/hiredis.h	72;"	d
+REDIS_OK	redis/hiredis/read.h	38;"	d
+REDIS_PORT	redis/hiredis/Makefile	/^REDIS_PORT=56379$/;"	m
+REDIS_READER_MAX_BUF	redis/hiredis/read.h	57;"	d
+REDIS_REPLY_ARRAY	redis/hiredis/read.h	51;"	d
+REDIS_REPLY_ERROR	redis/hiredis/read.h	55;"	d
+REDIS_REPLY_INTEGER	redis/hiredis/read.h	52;"	d
+REDIS_REPLY_NIL	redis/hiredis/read.h	53;"	d
+REDIS_REPLY_STATUS	redis/hiredis/read.h	54;"	d
+REDIS_REPLY_STRING	redis/hiredis/read.h	50;"	d
+REDIS_REUSEADDR	redis/hiredis/hiredis.h	75;"	d
+REDIS_SERVER	redis/hiredis/Makefile	/^REDIS_SERVER=redis-server$/;"	m
+REDIS_SUBSCRIBED	redis/hiredis/hiredis.h	69;"	d
+REDIS_TEST_CONFIG	redis/hiredis/Makefile	/^define REDIS_TEST_CONFIG$/;"	m
+REQUEST_DISTRIBUTION_DEFAULT	core/core_workload.cc	/^const string CoreWorkload::REQUEST_DISTRIBUTION_DEFAULT = "uniform";$/;"	m	class:CoreWorkload	file:
+REQUEST_DISTRIBUTION_DEFAULT	core/core_workload.h	/^  static const std::string REQUEST_DISTRIBUTION_DEFAULT;$/;"	m	class:ycsbc::CoreWorkload
+REQUEST_DISTRIBUTION_PROPERTY	core/core_workload.cc	/^const string CoreWorkload::REQUEST_DISTRIBUTION_PROPERTY =$/;"	m	class:CoreWorkload	file:
+REQUEST_DISTRIBUTION_PROPERTY	core/core_workload.h	/^  static const std::string REQUEST_DISTRIBUTION_PROPERTY;$/;"	m	class:ycsbc::CoreWorkload
+RaiseZeta	core/zipfian_generator.h	/^  void RaiseZeta(uint64_t num) {$/;"	f	class:ycsbc::ZipfianGenerator
+RandomDouble	core/utils.h	/^inline double RandomDouble(double min = 0.0, double max = 1.0) {$/;"	f	namespace:utils
+RandomPrintChar	core/utils.h	/^inline char RandomPrintChar() {$/;"	f	namespace:utils
+RandomULL	core/utils.h	/^inline uint64_t RandomULL(uint64_t min = 0,uint64_t max = 9223372036854775808ULL ){$/;"	f	namespace:utils
+Read	db/basic_db.h	/^  int Read(const std::string &table, const std::string &key,$/;"	f	class:ycsbc::BasicDB
+Read	db/hashtable_db.cc	/^int HashtableDB::Read(const string &table, const string &key,$/;"	f	class:ycsbc::HashtableDB
+Read	db/leveldbVlog_db.cc	/^    int LeveldbVlog::Read(const string& table, const string& key, const vector< string >* fields, vector< DB::KVPair >& result)$/;"	f	class:ycsbc::LeveldbVlog
+Read	db/leveldb_db.cc	/^int LevelDB::Read(const string& table, const string& key, const vector< string >* fields, vector< DB::KVPair >& result)$/;"	f	class:ycsbc::LevelDB
+Read	db/redis_db.cc	/^int RedisDB::Read(const string &table, const string &key,$/;"	f	class:ycsbc::RedisDB
+Read	db/rocksdb_db.cc	/^    int RocksDB::Read(const string &table, const string &key, const vector< string > *fields, vector< DB::KVPair > &result)$/;"	f	class:ycsbc::RocksDB
+RedisClient	redis/redis_client.h	/^class RedisClient {$/;"	c	namespace:ycsbc
+RedisClient	redis/redis_client.h	/^inline RedisClient::RedisClient(const char *host, int port, int slaves) :$/;"	f	class:ycsbc::RedisClient
+RedisDB	db/redis_db.h	/^  RedisDB(const char *host, int port, int slaves) :$/;"	f	class:ycsbc::RedisDB
+RedisDB	db/redis_db.h	/^class RedisDB : public DB {$/;"	c	namespace:ycsbc
+RedisQtAdapter	redis/hiredis/adapters/qt.h	/^        RedisQtAdapter(QObject * parent = 0)$/;"	f	class:RedisQtAdapter
+RedisQtAdapter	redis/hiredis/adapters/qt.h	/^class RedisQtAdapter : public QObject {$/;"	c
+RedisQtAddRead	redis/hiredis/adapters/qt.h	/^    void RedisQtAddRead(void * adapter) {$/;"	f	class:RedisQtAdapter
+RedisQtAddWrite	redis/hiredis/adapters/qt.h	/^    void RedisQtAddWrite(void * adapter) {$/;"	f	class:RedisQtAdapter
+RedisQtCleanup	redis/hiredis/adapters/qt.h	/^    void RedisQtCleanup(void * adapter) {$/;"	f	class:RedisQtAdapter
+RedisQtDelRead	redis/hiredis/adapters/qt.h	/^    void RedisQtDelRead(void * adapter) {$/;"	f	class:RedisQtAdapter
+RedisQtDelWrite	redis/hiredis/adapters/qt.h	/^    void RedisQtDelWrite(void * adapter) {$/;"	f	class:RedisQtAdapter
+RedisRunLoop	redis/hiredis/adapters/macosx.h	/^} RedisRunLoop;$/;"	t	typeref:struct:__anon2
+RedisSource	redis/hiredis/adapters/glib.h	/^} RedisSource;$/;"	t	typeref:struct:__anon1
+Remove	lib/lock_stl_hashtable.h	/^inline V LockStlHashtable<V>::Remove(const char *key) {$/;"	f	class:vmp::LockStlHashtable
+Remove	lib/stl_hashtable.h	/^V StlHashtable<V, MA, PA>::Remove(const char *key) {$/;"	f	class:vmp::StlHashtable
+Remove	lib/tbb_rand_hashtable.h	/^V TbbRandHashtable<V>::Remove(const char *key) {$/;"	f	class:vmp::TbbRandHashtable
+Remove	lib/tbb_scan_hashtable.h	/^V TbbScanHashtable<V>::Remove(const char *key) {$/;"	f	class:vmp::TbbScanHashtable
+ReportInLoop	core/client.h	/^void *ReportInLoop(void *arg){$/;"	f	namespace:ycsbc
+RocksDB	db/rocksdb_db.cc	/^    RocksDB::RocksDB(const char *dbfilename, const char *configPath)$/;"	f	class:ycsbc::RocksDB
+RocksDB	db/rocksdb_db.h	/^class RocksDB : public DB{$/;"	c	namespace:ycsbc
+S2US	core/client.h	/^        static const unsigned long long S2US;$/;"	m	class:ycsbc::WallTimer
+S2US	core/client.h	/^const unsigned long long WallTimer::S2US = 1000000;$/;"	m	class:ycsbc::WallTimer
+SCAN	core/core_workload.h	/^  SCAN,$/;"	e	enum:ycsbc::Operation
+SCAN_LENGTH_DISTRIBUTION_DEFAULT	core/core_workload.cc	/^const string CoreWorkload::SCAN_LENGTH_DISTRIBUTION_DEFAULT = "uniform";$/;"	m	class:CoreWorkload	file:
+SCAN_LENGTH_DISTRIBUTION_DEFAULT	core/core_workload.h	/^  static const std::string SCAN_LENGTH_DISTRIBUTION_DEFAULT;$/;"	m	class:ycsbc::CoreWorkload
+SCAN_LENGTH_DISTRIBUTION_PROPERTY	core/core_workload.cc	/^const string CoreWorkload::SCAN_LENGTH_DISTRIBUTION_PROPERTY =$/;"	m	class:CoreWorkload	file:
+SCAN_LENGTH_DISTRIBUTION_PROPERTY	core/core_workload.h	/^  static const std::string SCAN_LENGTH_DISTRIBUTION_PROPERTY;$/;"	m	class:ycsbc::CoreWorkload
+SCAN_PROPORTION_DEFAULT	core/core_workload.cc	/^const string CoreWorkload::SCAN_PROPORTION_DEFAULT = "0.0";$/;"	m	class:CoreWorkload	file:
+SCAN_PROPORTION_DEFAULT	core/core_workload.h	/^  static const std::string SCAN_PROPORTION_DEFAULT;$/;"	m	class:ycsbc::CoreWorkload
+SCAN_PROPORTION_PROPERTY	core/core_workload.cc	/^const string CoreWorkload::SCAN_PROPORTION_PROPERTY = "scanproportion";$/;"	m	class:CoreWorkload	file:
+SCAN_PROPORTION_PROPERTY	core/core_workload.h	/^  static const std::string SCAN_PROPORTION_PROPERTY;$/;"	m	class:ycsbc::CoreWorkload
+SDBMHash	lib/string.h	/^inline uint64_t String::SDBMHash(const char *cstr) {$/;"	f	class:vmp::String
+SDS_LLSTR_SIZE	redis/hiredis/sds.c	298;"	d	file:
+SDS_MAX_PREALLOC	redis/hiredis/sds.h	34;"	d
+SKIPRATIO_INLOAD_PROPERTY	core/core_workload.cc	/^const std::string CoreWorkload::SKIPRATIO_INLOAD_PROPERTY ="skipratioinload";$/;"	m	class:CoreWorkload	file:
+SKIPRATIO_INLOAD_PROPERTY	core/core_workload.h	/^  static const std::string SKIPRATIO_INLOAD_PROPERTY;$/;"	m	class:ycsbc::CoreWorkload
+SKIPRATIO_INLOAD_PROPERTY_DEFAULT	core/core_workload.cc	/^const std::string CoreWorkload::SKIPRATIO_INLOAD_PROPERTY_DEFAULT = "0"; $/;"	m	class:CoreWorkload	file:
+SKIPRATIO_INLOAD_PROPERTY_DEFAULT	core/core_workload.h	/^  static const std::string SKIPRATIO_INLOAD_PROPERTY_DEFAULT; $/;"	m	class:ycsbc::CoreWorkload
+SOURCES	core/Makefile	/^SOURCES=$(wildcard *.cc)$/;"	m
+SOURCES	db/Makefile	/^SOURCES=$(wildcard *.cc)$/;"	m
+STLIBNAME	redis/hiredis/Makefile	/^STLIBNAME=$(LIBNAME).$(STLIBSUFFIX)$/;"	m
+STLIBSUFFIX	redis/hiredis/Makefile	/^STLIBSUFFIX=a$/;"	m
+STLIB_MAKE_CMD	redis/hiredis/Makefile	/^STLIB_MAKE_CMD=ar rcs $(STLIBNAME)$/;"	m
+SUBDIRS	Makefile	/^SUBDIRS=core db redis$/;"	m
+SUBSRCS	Makefile	/^SUBSRCS=$(wildcard core\/*.cc) $(wildcard db\/*.cc)$/;"	m
+Scan	db/basic_db.h	/^  int Scan(const std::string &table, const std::string &key,$/;"	f	class:ycsbc::BasicDB
+Scan	db/hashtable_db.cc	/^int HashtableDB::Scan(const string &table, const string &key, int len,$/;"	f	class:ycsbc::HashtableDB
+Scan	db/leveldbVlog_db.cc	/^    int LeveldbVlog::Scan(const string& table, const string& key, int len, const vector< string >* fields, vector< vector< DB::KVPair > >& result)$/;"	f	class:ycsbc::LeveldbVlog
+Scan	db/leveldb_db.cc	/^int LevelDB::Scan(const string& table, const string& key, int len, const vector< string >* fields, vector< vector< DB::KVPair > >& result)$/;"	f	class:ycsbc::LevelDB
+Scan	db/redis_db.h	/^  int Scan(const std::string &table, const std::string &key,$/;"	f	class:ycsbc::RedisDB
+Scan	db/rocksdb_db.cc	/^    int RocksDB::Scan(const string &table, const string &key, int len, const vector< string > *fields, vector< vector< DB::KVPair > > &result)$/;"	f	class:ycsbc::RocksDB
+ScrambledZipfianGenerator	core/scrambled_zipfian_generator.h	/^  ScrambledZipfianGenerator(uint64_t min, uint64_t max,$/;"	f	class:ycsbc::ScrambledZipfianGenerator
+ScrambledZipfianGenerator	core/scrambled_zipfian_generator.h	/^  ScrambledZipfianGenerator(uint64_t num_items,double zipfian_const) :$/;"	f	class:ycsbc::ScrambledZipfianGenerator
+ScrambledZipfianGenerator	core/scrambled_zipfian_generator.h	/^class ScrambledZipfianGenerator : public Generator<uint64_t> {$/;"	c	namespace:ycsbc
+Set	core/counter_generator.h	/^  void Set(uint64_t start) { counter_.store(start); }$/;"	f	class:ycsbc::CounterGenerator
+SetProperty	core/properties.h	/^inline void Properties::SetProperty(const std::string &key,$/;"	f	class:utils::Properties
+Size	lib/lock_stl_hashtable.h	/^inline std::size_t LockStlHashtable<V>::Size() const {$/;"	f	class:vmp::LockStlHashtable
+Size	lib/stl_hashtable.h	/^  std::size_t Size() const { return table_.size(); }$/;"	f	class:vmp::StlHashtable
+Size	lib/tbb_rand_hashtable.h	/^  std::size_t Size() const { return table_.size(); }$/;"	f	class:vmp::TbbRandHashtable
+Size	lib/tbb_scan_hashtable.h	/^  std::size_t Size() const { return table_.size(); }$/;"	f	class:vmp::TbbScanHashtable
+SkewedLatestGenerator	core/skewed_latest_generator.h	/^  SkewedLatestGenerator(CounterGenerator &counter) :$/;"	f	class:ycsbc::SkewedLatestGenerator
+SkewedLatestGenerator	core/skewed_latest_generator.h	/^class SkewedLatestGenerator : public Generator<uint64_t> {$/;"	c	namespace:ycsbc
+Start	core/client.h	/^	void Start(){$/;"	f	class:ycsbc::WallTimer
+Start	core/timer.h	/^  void Start() {$/;"	f	class:utils::Timer
+StlHashtable	lib/stl_hashtable.h	/^StlHashtable<V, MA, PA>::StlHashtable(std::size_t n, float f) : table_(n) {$/;"	f	class:vmp::StlHashtable
+StlHashtable	lib/stl_hashtable.h	/^class StlHashtable : public StringHashtable<V> {$/;"	c	namespace:vmp
+StrStartWith	ycsbc.cc	/^inline bool StrStartWith(const char *str, const char *pre)$/;"	f
+StrToBool	core/utils.h	/^inline bool StrToBool(std::string str) {$/;"	f	namespace:utils
+String	lib/string.h	/^  String() : hash_(0), value_(NULL), len_(0) { }$/;"	f	class:vmp::String
+String	lib/string.h	/^class String {$/;"	c	namespace:vmp
+StringHashtable	lib/string_hashtable.h	/^class StringHashtable {$/;"	c	namespace:vmp
+TABLENAME_DEFAULT	core/core_workload.cc	/^const string CoreWorkload::TABLENAME_DEFAULT = "usertable";$/;"	m	class:CoreWorkload	file:
+TABLENAME_DEFAULT	core/core_workload.h	/^  static const std::string TABLENAME_DEFAULT;$/;"	m	class:ycsbc::CoreWorkload
+TABLENAME_PROPERTY	core/core_workload.cc	/^const string CoreWorkload::TABLENAME_PROPERTY = "table";$/;"	m	class:CoreWorkload	file:
+TABLENAME_PROPERTY	core/core_workload.h	/^  static const std::string TABLENAME_PROPERTY;$/;"	m	class:ycsbc::CoreWorkload
+TESTS	redis/hiredis/Makefile	/^TESTS=hiredis-test$/;"	m
+THREAD0	core/core_workload.h	/^  THREAD0$/;"	e	enum:ycsbc::Operation
+TIMESTAMP_TRACEFILENAME_PROPERTY	core/core_workload.cc	/^const std::string CoreWorkload::TIMESTAMP_TRACEFILENAME_PROPERTY = "timestamptracefilename";$/;"	m	class:CoreWorkload	file:
+TIMESTAMP_TRACEFILENAME_PROPERTY	core/core_workload.h	/^  static const std::string TIMESTAMP_TRACEFILENAME_PROPERTY;$/;"	m	class:ycsbc::CoreWorkload
+TIMESTAMP_TRACEFILENAME_PROPERTY_DEFAULT	core/core_workload.cc	/^const std::string CoreWorkload::TIMESTAMP_TRACEFILENAME_PROPERTY_DEFAULT = "trace.txt";$/;"	m	class:CoreWorkload	file:
+TIMESTAMP_TRACEFILENAME_PROPERTY_DEFAULT	core/core_workload.h	/^  static const std::string TIMESTAMP_TRACEFILENAME_PROPERTY_DEFAULT;$/;"	m	class:ycsbc::CoreWorkload
+TbbRandDB	db/tbb_rand_db.h	/^  TbbRandDB() : HashtableDB($/;"	f	class:ycsbc::TbbRandDB
+TbbRandDB	db/tbb_rand_db.h	/^class TbbRandDB : public HashtableDB {$/;"	c	namespace:ycsbc
+TbbRandHashtable	lib/tbb_rand_hashtable.h	/^class TbbRandHashtable : public StringHashtable<V> {$/;"	c	namespace:vmp
+TbbScanDB	db/tbb_scan_db.h	/^  TbbScanDB() : HashtableDB($/;"	f	class:ycsbc::TbbScanDB
+TbbScanDB	db/tbb_scan_db.h	/^class TbbScanDB : public HashtableDB {$/;"	c	namespace:ycsbc
+TbbScanHashtable	lib/tbb_scan_hashtable.h	/^  TbbScanHashtable() { table_.max_load_factor(2.0); }$/;"	f	class:vmp::TbbScanHashtable
+TbbScanHashtable	lib/tbb_scan_hashtable.h	/^class TbbScanHashtable : public StringHashtable<V> {$/;"	c	namespace:vmp
+Timer	core/timer.h	/^class Timer {$/;"	c	namespace:utils
+TransactionInsert	core/client.h	/^inline int Client::TransactionInsert() {$/;"	f	class:ycsbc::Client
+TransactionRead	core/client.h	/^inline int Client::TransactionRead() {$/;"	f	class:ycsbc::Client
+TransactionReadModifyWrite	core/client.h	/^inline int Client::TransactionReadModifyWrite() {$/;"	f	class:ycsbc::Client
+TransactionScan	core/client.h	/^inline int Client::TransactionScan() {$/;"	f	class:ycsbc::Client
+TransactionUpdate	core/client.h	/^inline int Client::TransactionUpdate() {$/;"	f	class:ycsbc::Client
+Trim	core/utils.h	/^inline std::string Trim(const std::string &str) {$/;"	f	namespace:utils
+ULL	db/basic_config.hh	/^typedef  unsigned long long  ULL;$/;"	t
+UPDATE	core/core_workload.h	/^  UPDATE,$/;"	e	enum:ycsbc::Operation
+UPDATE_PROPORTION_DEFAULT	core/core_workload.cc	/^const string CoreWorkload::UPDATE_PROPORTION_DEFAULT = "0.05";$/;"	m	class:CoreWorkload	file:
+UPDATE_PROPORTION_DEFAULT	core/core_workload.h	/^  static const std::string UPDATE_PROPORTION_DEFAULT;$/;"	m	class:ycsbc::CoreWorkload
+UPDATE_PROPORTION_PROPERTY	core/core_workload.cc	/^const string CoreWorkload::UPDATE_PROPORTION_PROPERTY = "updateproportion";$/;"	m	class:CoreWorkload	file:
+UPDATE_PROPORTION_PROPERTY	core/core_workload.h	/^  static const std::string UPDATE_PROPORTION_PROPERTY;$/;"	m	class:ycsbc::CoreWorkload
+UniformGenerator	core/uniform_generator.h	/^  UniformGenerator(uint64_t min, uint64_t max) : dist_(min, max) { Next(); }$/;"	f	class:ycsbc::UniformGenerator
+UniformGenerator	core/uniform_generator.h	/^class UniformGenerator : public Generator<uint64_t> {$/;"	c	namespace:ycsbc
+Update	db/basic_db.h	/^  int Update(const std::string &table, const std::string &key,$/;"	f	class:ycsbc::BasicDB
+Update	db/hashtable_db.cc	/^int HashtableDB::Update(const string &table, const string &key,$/;"	f	class:ycsbc::HashtableDB
+Update	db/leveldbVlog_db.cc	/^    int LeveldbVlog::Update(const string& table, const string& key, vector< DB::KVPair >& values)$/;"	f	class:ycsbc::LeveldbVlog
+Update	db/leveldb_db.cc	/^int LevelDB::Update(const string& table, const string& key, vector< DB::KVPair >& values)$/;"	f	class:ycsbc::LevelDB
+Update	db/redis_db.cc	/^int RedisDB::Update(const string &table, const string &key,$/;"	f	class:ycsbc::RedisDB
+Update	db/rocksdb_db.cc	/^    int RocksDB::Update(const string &table, const string &key, vector< DB::KVPair > &values)$/;"	f	class:ycsbc::RocksDB
+Update	lib/lock_stl_hashtable.h	/^inline V LockStlHashtable<V>::Update(const char *key, V value) {$/;"	f	class:vmp::LockStlHashtable
+Update	lib/stl_hashtable.h	/^V StlHashtable<V, MA, PA>::Update(const char *key, V value) {$/;"	f	class:vmp::StlHashtable
+Update	lib/tbb_rand_hashtable.h	/^V TbbRandHashtable<V>::Update(const char *key, V value) {$/;"	f	class:vmp::TbbRandHashtable
+Update	lib/tbb_scan_hashtable.h	/^V TbbScanHashtable<V>::Update(const char *key, V value) {$/;"	f	class:vmp::TbbScanHashtable
+UsageMessage	ycsbc.cc	/^void UsageMessage(const char *command)$/;"	f
+VM_PERSISTENCE_MEM_ALLOC_H_	lib/mem_alloc.h	9;"	d
+WARNINGS	redis/hiredis/Makefile	/^WARNINGS=-Wall -W -Wstrict-prototypes -Wwrite-strings$/;"	m
+WITH_LATENCY_PROPERTY	core/core_workload.cc	/^const string CoreWorkload::WITH_LATENCY_PROPERTY = "withlatency";$/;"	m	class:CoreWorkload	file:
+WITH_LATENCY_PROPERTY	core/core_workload.h	/^  static const std::string WITH_LATENCY_PROPERTY;$/;"	m	class:ycsbc::CoreWorkload
+WITH_LATENCY_PROPERTY_DEFAULT	core/core_workload.cc	/^const string CoreWorkload::WITH_LATENCY_PROPERTY_DEFAULT = "false";$/;"	m	class:CoreWorkload	file:
+WITH_LATENCY_PROPERTY_DEFAULT	core/core_workload.h	/^  static const std::string WITH_LATENCY_PROPERTY_DEFAULT;$/;"	m	class:ycsbc::CoreWorkload
+WITH_OPERATION_PROPERTY	core/core_workload.cc	/^const string CoreWorkload::WITH_OPERATION_PROPERTY = "withoperation";$/;"	m	class:CoreWorkload	file:
+WITH_OPERATION_PROPERTY	core/core_workload.h	/^  static const std::string WITH_OPERATION_PROPERTY;$/;"	m	class:ycsbc::CoreWorkload
+WITH_OPERATION_PROPERTY_DEFAULT	core/core_workload.cc	/^const string CoreWorkload::WITH_OPERATION_PROPERTY_DEFAULT = "false";$/;"	m	class:CoreWorkload	file:
+WITH_OPERATION_PROPERTY_DEFAULT	core/core_workload.h	/^  static const std:: string WITH_OPERATION_PROPERTY_DEFAULT;$/;"	m	class:ycsbc::CoreWorkload
+WITH_TIMESTAMP_PROPERTY	core/core_workload.cc	/^const string CoreWorkload::WITH_TIMESTAMP_PROPERTY = "withtimestamp";$/;"	m	class:CoreWorkload	file:
+WITH_TIMESTAMP_PROPERTY	core/core_workload.h	/^  static const std::string WITH_TIMESTAMP_PROPERTY;$/;"	m	class:ycsbc::CoreWorkload
+WITH_TIMESTAMP_PROPERTY_DEFAULT	core/core_workload.cc	/^const string CoreWorkload::WITH_TIMESTAMP_PROPERTY_DEFAULT = "false";$/;"	m	class:CoreWorkload	file:
+WITH_TIMESTAMP_PROPERTY_DEFAULT	core/core_workload.h	/^  static const std::string WITH_TIMESTAMP_PROPERTY_DEFAULT;$/;"	m	class:ycsbc::CoreWorkload
+WRITE_ALL_FIELDS_DEFAULT	core/core_workload.cc	/^const string CoreWorkload::WRITE_ALL_FIELDS_DEFAULT = "false";$/;"	m	class:CoreWorkload	file:
+WRITE_ALL_FIELDS_DEFAULT	core/core_workload.h	/^  static const std::string WRITE_ALL_FIELDS_DEFAULT;$/;"	m	class:ycsbc::CoreWorkload
+WRITE_ALL_FIELDS_PROPERTY	core/core_workload.cc	/^const string CoreWorkload::WRITE_ALL_FIELDS_PROPERTY = "writeallfields";$/;"	m	class:CoreWorkload	file:
+WRITE_ALL_FIELDS_PROPERTY	core/core_workload.h	/^  static const std::string WRITE_ALL_FIELDS_PROPERTY;$/;"	m	class:ycsbc::CoreWorkload
+WallTimer	core/client.h	/^class WallTimer{$/;"	c	namespace:ycsbc
+Wrap	lib/string.h	/^inline String String::Wrap(const char *cstr) {$/;"	f	class:vmp::String
+YCSB_C_BASIC_DB_H_	db/basic_db.h	10;"	d
+YCSB_C_CLIENT_H_	core/client.h	10;"	d
+YCSB_C_CONST_GENERATOR_H_	core/const_generator.h	10;"	d
+YCSB_C_CORE_WORKLOAD_H_	core/core_workload.h	10;"	d
+YCSB_C_COUNTER_GENERATOR_H_	core/counter_generator.h	10;"	d
+YCSB_C_DB_FACTORY_H_	db/db_factory.h	10;"	d
+YCSB_C_DB_H_	core/db.h	10;"	d
+YCSB_C_DISCRETE_GENERATOR_H_	core/discrete_generator.h	10;"	d
+YCSB_C_GENERATOR_H_	core/generator.h	10;"	d
+YCSB_C_HASHTABLE_DB_H_	db/hashtable_db.h	10;"	d
+YCSB_C_HOTSPOTINTEGER_GENERATOR_H	core/HotspotIntegerGenerator.h	10;"	d
+YCSB_C_LEVELDB_H	db/leveldb_db.h	2;"	d
+YCSB_C_LIB_HASH_STRING_H_	lib/string.h	9;"	d
+YCSB_C_LIB_LOCK_STL_HASHTABLE_H_	lib/lock_stl_hashtable.h	9;"	d
+YCSB_C_LIB_STL_HASHTABLE_H_	lib/stl_hashtable.h	9;"	d
+YCSB_C_LIB_STRING_HASHTABLE_H_	lib/string_hashtable.h	9;"	d
+YCSB_C_LIB_TBB_RAND_HASHTABLE_H_	lib/tbb_rand_hashtable.h	9;"	d
+YCSB_C_LIB_TBB_SCAN_HASHTABLE_H_	lib/tbb_scan_hashtable.h	9;"	d
+YCSB_C_LOCK_STL_DB_H_	db/lock_stl_db.h	10;"	d
+YCSB_C_PROPERTIES_H_	core/properties.h	10;"	d
+YCSB_C_REDIS_CLIENT_H_	redis/redis_client.h	6;"	d
+YCSB_C_REDIS_DB_H_	db/redis_db.h	7;"	d
+YCSB_C_ROCKSDB_H	db/rocksdb_db.h	2;"	d
+YCSB_C_SCRAMBLED_ZIPFIAN_GENERATOR_H_	core/scrambled_zipfian_generator.h	10;"	d
+YCSB_C_SKEWED_LATEST_GENERATOR_H_	core/skewed_latest_generator.h	10;"	d
+YCSB_C_TBB_RAND_DB_H_	db/tbb_rand_db.h	10;"	d
+YCSB_C_TBB_SCAN_DB_H_	db/tbb_scan_db.h	10;"	d
+YCSB_C_TIMER_H_	core/timer.h	10;"	d
+YCSB_C_UNIFORM_GENERATOR_H_	core/uniform_generator.h	10;"	d
+YCSB_C_UTILS_H_	core/utils.h	10;"	d
+YCSB_C_ZIPFIAN_GENERATOR_H_	core/zipfian_generator.h	10;"	d
+YCSB_EBF_LEVELDBVLOG_DB_H	db/leveldbVlog_db.h	6;"	d
+ZEROREAD	core/core_workload.h	/^  ZEROREAD,$/;"	e	enum:ycsbc::Operation
+ZIPFIAN_CONST	core/core_workload.cc	/^const string CoreWorkload::ZIPFIAN_CONST="zipfianconst";$/;"	m	class:CoreWorkload	file:
+ZIPFIAN_CONST	core/core_workload.h	/^  static const std::string ZIPFIAN_CONST;$/;"	m	class:ycsbc::CoreWorkload
+ZIPFIAN_CONST_DEFAULT	core/core_workload.cc	/^const string CoreWorkload::ZIPFIAN_CONST_DEFAULT="0.99";$/;"	m	class:CoreWorkload	file:
+ZIPFIAN_CONST_DEFAULT	core/core_workload.h	/^ static const std::string ZIPFIAN_CONST_DEFAULT;$/;"	m	class:ycsbc::CoreWorkload
+Zeta	core/zipfian_generator.h	/^  static double Zeta(uint64_t last_num, uint64_t cur_num,$/;"	f	class:ycsbc::ZipfianGenerator
+Zeta	core/zipfian_generator.h	/^  static double Zeta(uint64_t num, double theta) {$/;"	f	class:ycsbc::ZipfianGenerator
+ZipfianGenerator	core/zipfian_generator.h	/^  ZipfianGenerator(uint64_t min, uint64_t max,$/;"	f	class:ycsbc::ZipfianGenerator
+ZipfianGenerator	core/zipfian_generator.h	/^  ZipfianGenerator(uint64_t num_items) :$/;"	f	class:ycsbc::ZipfianGenerator
+ZipfianGenerator	core/zipfian_generator.h	/^  ZipfianGenerator(uint64_t num_items,double zipfian_const):$/;"	f	class:ycsbc::ZipfianGenerator
+ZipfianGenerator	core/zipfian_generator.h	/^class ZipfianGenerator : public Generator<uint64_t> {$/;"	c	namespace:ycsbc
+_BSD_SOURCE	redis/hiredis/fmacros.h	5;"	d
+_DEFAULT_SOURCE	redis/hiredis/fmacros.h	6;"	d
+_EL_ADD_READ	redis/hiredis/async.c	44;"	d	file:
+_EL_ADD_WRITE	redis/hiredis/async.c	50;"	d	file:
+_EL_CLEANUP	redis/hiredis/async.c	56;"	d	file:
+_EL_DEL_READ	redis/hiredis/async.c	47;"	d	file:
+_EL_DEL_WRITE	redis/hiredis/async.c	53;"	d	file:
+_OSX	redis/hiredis/fmacros.h	18;"	d
+_POSIX_C_SOURCE	redis/hiredis/fmacros.h	10;"	d
+_WIN32_HELPER_INCLUDE	redis/hiredis/win32.h	2;"	d
+_XOPEN_SOURCE	redis/hiredis/fmacros.h	12;"	d
+_XOPEN_SOURCE	redis/hiredis/fmacros.h	14;"	d
+__DICT_H	redis/hiredis/dict.h	37;"	d
+__HIREDIS_AE_H__	redis/hiredis/adapters/ae.h	32;"	d
+__HIREDIS_ASYNC_H	redis/hiredis/async.h	33;"	d
+__HIREDIS_EXAMPLE_QT_H	redis/hiredis/examples/example-qt.h	2;"	d
+__HIREDIS_FMACRO_H	redis/hiredis/fmacros.h	2;"	d
+__HIREDIS_GLIB_H__	redis/hiredis/adapters/glib.h	2;"	d
+__HIREDIS_H	redis/hiredis/hiredis.h	35;"	d
+__HIREDIS_IVYKIS_H__	redis/hiredis/adapters/ivykis.h	2;"	d
+__HIREDIS_LIBEVENT_H__	redis/hiredis/adapters/libevent.h	32;"	d
+__HIREDIS_LIBEV_H__	redis/hiredis/adapters/libev.h	32;"	d
+__HIREDIS_LIBUV_H__	redis/hiredis/adapters/libuv.h	2;"	d
+__HIREDIS_MACOSX_H__	redis/hiredis/adapters/macosx.h	7;"	d
+__HIREDIS_QT_H__	redis/hiredis/adapters/qt.h	27;"	d
+__HIREDIS_READ_H	redis/hiredis/read.h	34;"	d
+__MAX_MSEC	redis/hiredis/net.c	179;"	d	file:
+__NET_H	redis/hiredis/net.h	36;"	d
+__SDS_H	redis/hiredis/sds.h	32;"	d
+__author__	parse_result.py	/^__author__ = "Jinglei Ren"$/;"	v
+__checkOutBranch	run-script/run_glsm_type.sh	/^function __checkOutBranch(){$/;"	f
+__checkOutBranch	run-script/run_lsm_type.sh	/^function __checkOutBranch(){$/;"	f
+__copyright__	parse_result.py	/^__copyright__ = "Copyright (c) 2014 Jinglei Ren"$/;"	v
+__email__	parse_result.py	/^__email__ = "jinglei@ren.systems"$/;"	v
+__init__	modifyConfig.py	/^        def __init__(self,defaults=None):$/;"	m	class:myconf
+__loadLSM	insert_mlsm_std.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	load_mlsm_std.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/insert_different_change_ratio_1KB_bits4.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/insert_different_change_ratio_1KB_bits4_3334444.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/insert_different_change_ratio_1KB_bits5.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/insert_different_change_ratio_1KB_bits5_5.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/insert_different_change_ratio_1KB_bits6.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/insert_different_change_ratio_1KB_bits7.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/insert_different_change_ratio_1KB_bits8.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/insert_different_change_ratio_1KB_size2_bit4.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/load_different_change_ratio.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/load_different_change_ratio_1KB.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/load_different_change_ratio_1KB_bits4.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/load_different_change_ratio_1KB_bits4_3334444.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/load_different_change_ratio_1KB_bits5.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/load_different_change_ratio_1KB_bits5_5.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/load_different_change_ratio_1KB_bits6.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/load_different_change_ratio_1KB_bits7.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/load_different_change_ratio_1KB_bits8.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/load_different_change_ratio_1KB_bits8_l5.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/load_different_change_ratio_1KB_size2_bits2.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/load_different_change_ratio_1KB_size2_bits3.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/load_different_change_ratio_1KB_size2_bits4.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/load_different_change_ratio_1KB_size2_bits5.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/load_different_change_ratio_4bits_size10_1KB.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/load_different_change_ratio_8bits_1KB.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/load_different_setting.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/run_different_change_ratio.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/run_different_change_ratio_1KB_bits4_3334444.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/run_different_change_ratio_1KB_bits5.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/run_different_change_ratio_1KB_bits5_5.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/run_different_change_ratio_1KB_bits6.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/run_different_change_ratio_1KB_bits7.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/run_different_change_ratio_1KB_bits8.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/run_different_change_ratio_1KB_size2_bits2.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/run_different_change_ratio_1KB_size2_bits3.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/run_different_change_ratio_1KB_size2_bits4.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/run_different_change_ratio_1KB_size2_bits5.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/run_different_change_ratio_4bits_1KB.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/run_different_change_ratio_old.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/run_different_change_ratio_old_10.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/run_different_setting.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/run_originLevelDB.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/run_read_adjust_filter.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/run_read_lsm.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run-script/run_read_multi_filter.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run_mlsm_std.sh	/^function __loadLSM(){$/;"	f
+__loadLSM	run_originLevelDB_std.sh	/^function __loadLSM(){$/;"	f
+__modifyConfig	insert_mlsm_std.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	load_mlsm_std.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/insert_different_change_ratio_1KB_bits4.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/insert_different_change_ratio_1KB_bits4_3334444.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/insert_different_change_ratio_1KB_bits5.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/insert_different_change_ratio_1KB_bits5_5.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/insert_different_change_ratio_1KB_bits6.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/insert_different_change_ratio_1KB_bits7.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/insert_different_change_ratio_1KB_bits8.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/insert_different_change_ratio_1KB_size2_bit4.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/load_different_change_ratio.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/load_different_change_ratio_1KB.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/load_different_change_ratio_1KB_bits4.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/load_different_change_ratio_1KB_bits4_3334444.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/load_different_change_ratio_1KB_bits5.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/load_different_change_ratio_1KB_bits5_5.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/load_different_change_ratio_1KB_bits6.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/load_different_change_ratio_1KB_bits7.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/load_different_change_ratio_1KB_bits8.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/load_different_change_ratio_1KB_bits8_l5.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/load_different_change_ratio_1KB_size2_bits2.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/load_different_change_ratio_1KB_size2_bits3.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/load_different_change_ratio_1KB_size2_bits4.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/load_different_change_ratio_1KB_size2_bits5.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/load_different_change_ratio_4bits_size10_1KB.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/load_different_change_ratio_8bits_1KB.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/load_different_setting.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/run_different_change_ratio.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/run_different_change_ratio_1KB_bits4_3334444.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/run_different_change_ratio_1KB_bits5.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/run_different_change_ratio_1KB_bits5_5.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/run_different_change_ratio_1KB_bits6.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/run_different_change_ratio_1KB_bits7.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/run_different_change_ratio_1KB_bits8.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/run_different_change_ratio_1KB_size2_bits2.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/run_different_change_ratio_1KB_size2_bits3.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/run_different_change_ratio_1KB_size2_bits4.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/run_different_change_ratio_1KB_size2_bits5.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/run_different_change_ratio_4bits_1KB.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/run_different_change_ratio_old.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/run_different_change_ratio_old_10.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/run_different_setting.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/run_glsm_type.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/run_lsm_type.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/run_originLevelDB.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/run_read_adjust_filter.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/run_read_lsm.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run-script/run_read_multi_filter.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run_mlsm_std.sh	/^function __modifyConfig(){$/;"	f
+__modifyConfig	run_originLevelDB_std.sh	/^function __modifyConfig(){$/;"	f
+__redisAppendCommand	redis/hiredis/hiredis.c	/^int __redisAppendCommand(redisContext *c, const char *cmd, size_t len) {$/;"	f
+__redisAsyncCommand	redis/hiredis/async.c	/^static int __redisAsyncCommand(redisAsyncContext *ac, redisCallbackFn *fn, void *privdata, const char *cmd, size_t len) {$/;"	f	file:
+__redisAsyncCopyError	redis/hiredis/async.c	/^static void __redisAsyncCopyError(redisAsyncContext *ac) {$/;"	f	file:
+__redisAsyncDisconnect	redis/hiredis/async.c	/^static void __redisAsyncDisconnect(redisAsyncContext *ac) {$/;"	f	file:
+__redisAsyncFree	redis/hiredis/async.c	/^static void __redisAsyncFree(redisAsyncContext *ac) {$/;"	f	file:
+__redisAsyncHandleConnect	redis/hiredis/async.c	/^static int __redisAsyncHandleConnect(redisAsyncContext *ac) {$/;"	f	file:
+__redisBlockForReply	redis/hiredis/hiredis.c	/^static void *__redisBlockForReply(redisContext *c) {$/;"	f	file:
+__redisGetSubscribeCallback	redis/hiredis/async.c	/^static int __redisGetSubscribeCallback(redisAsyncContext *ac, redisReply *reply, redisCallback *dstcb) {$/;"	f	file:
+__redisPushCallback	redis/hiredis/async.c	/^static int __redisPushCallback(redisCallbackList *list, redisCallback *source) {$/;"	f	file:
+__redisReaderSetError	redis/hiredis/read.c	/^static void __redisReaderSetError(redisReader *r, int type, const char *str) {$/;"	f	file:
+__redisReaderSetErrorOOM	redis/hiredis/read.c	/^static void __redisReaderSetErrorOOM(redisReader *r) {$/;"	f	file:
+__redisReaderSetErrorProtocolByte	redis/hiredis/read.c	/^static void __redisReaderSetErrorProtocolByte(redisReader *r, char byte) {$/;"	f	file:
+__redisRunCallback	redis/hiredis/async.c	/^static void __redisRunCallback(redisAsyncContext *ac, redisCallback *cb, redisReply *reply) {$/;"	f	file:
+__redisSetError	redis/hiredis/hiredis.c	/^void __redisSetError(redisContext *c, int type, const char *str) {$/;"	f
+__redisSetErrorFromErrno	redis/hiredis/net.c	/^static void __redisSetErrorFromErrno(redisContext *c, int type, const char *prefix) {$/;"	f	file:
+__redisShiftCallback	redis/hiredis/async.c	/^static int __redisShiftCallback(redisCallbackList *list, redisCallback *target) {$/;"	f	file:
+__redis_strerror_r	redis/hiredis/hiredis.h	88;"	d
+__redis_strerror_r	redis/hiredis/hiredis.h	94;"	d
+__runGLSM	run-script/run_glsm.sh	/^function __runGLSM(){$/;"	f
+__runGLSM	run-script/run_glsm_type.sh	/^function __runGLSM(){$/;"	f
+__runLSM	insert_mlsm_std.sh	/^function __runLSM(){$/;"	f
+__runLSM	load_mlsm_std.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/insert_different_change_ratio_1KB_bits4.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/insert_different_change_ratio_1KB_bits4_3334444.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/insert_different_change_ratio_1KB_bits5.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/insert_different_change_ratio_1KB_bits5_5.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/insert_different_change_ratio_1KB_bits6.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/insert_different_change_ratio_1KB_bits7.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/insert_different_change_ratio_1KB_bits8.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/insert_different_change_ratio_1KB_size2_bit4.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/load_different_change_ratio.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/load_different_change_ratio_1KB.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/load_different_change_ratio_1KB_bits4.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/load_different_change_ratio_1KB_bits4_3334444.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/load_different_change_ratio_1KB_bits5.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/load_different_change_ratio_1KB_bits5_5.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/load_different_change_ratio_1KB_bits6.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/load_different_change_ratio_1KB_bits7.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/load_different_change_ratio_1KB_bits8.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/load_different_change_ratio_1KB_bits8_l5.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/load_different_change_ratio_1KB_size2_bits2.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/load_different_change_ratio_1KB_size2_bits3.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/load_different_change_ratio_1KB_size2_bits4.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/load_different_change_ratio_1KB_size2_bits5.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/load_different_change_ratio_4bits_size10_1KB.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/load_different_change_ratio_8bits_1KB.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/load_different_setting.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/run_different_change_ratio.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/run_different_change_ratio_1KB_bits4_3334444.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/run_different_change_ratio_1KB_bits5.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/run_different_change_ratio_1KB_bits5_5.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/run_different_change_ratio_1KB_bits6.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/run_different_change_ratio_1KB_bits7.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/run_different_change_ratio_1KB_bits8.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/run_different_change_ratio_1KB_size2_bits2.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/run_different_change_ratio_1KB_size2_bits3.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/run_different_change_ratio_1KB_size2_bits4.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/run_different_change_ratio_1KB_size2_bits5.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/run_different_change_ratio_4bits_1KB.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/run_different_change_ratio_old.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/run_different_change_ratio_old_10.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/run_different_setting.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/run_lsm_type.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/run_originLevelDB.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/run_read_adjust_filter.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/run_read_lsm.sh	/^function __runLSM(){$/;"	f
+__runLSM	run-script/run_read_multi_filter.sh	/^function __runLSM(){$/;"	f
+__runLSM	run_mlsm_std.sh	/^function __runLSM(){$/;"	f
+__runLSM	run_originLevelDB_std.sh	/^function __runLSM(){$/;"	f
+_base_num	db/basic_config.hh	/^    int _base_num;$/;"	m	class:LevelDB_ConfigMod
+_blockCacheSize	db/basic_config.hh	/^    size_t _blockCacheSize;$/;"	m	class:LevelDB_ConfigMod
+_bloom_bits	db/basic_config.hh	/^    int _bloom_bits;$/;"	m	class:LevelDB_ConfigMod
+_bloom_bits_array_filename	db/basic_config.hh	/^    std::string _bloom_bits_array_filename;$/;"	m	class:LevelDB_ConfigMod
+_bloom_filename	db/basic_config.hh	/^    std::string _bloom_filename;$/;"	m	class:LevelDB_ConfigMod
+_bloom_type	db/basic_config.hh	/^    int _bloom_type;  \/\/0 means origin bloom filter, 1 means  hierarchical bloom filter, 2 means multi_bloom_filter$/;"	m	class:LevelDB_ConfigMod
+_changeRatio	db/basic_config.hh	/^    double _changeRatio;$/;"	m	class:LevelDB_ConfigMod
+_compression_flag	db/basic_config.hh	/^    bool _compression_flag;$/;"	m	class:LevelDB_ConfigMod
+_dictClear	redis/hiredis/dict.c	/^static int _dictClear(dict *ht) {$/;"	f	file:
+_dictExpandIfNeeded	redis/hiredis/dict.c	/^static int _dictExpandIfNeeded(dict *ht) {$/;"	f	file:
+_dictInit	redis/hiredis/dict.c	/^static int _dictInit(dict *ht, dictType *type, void *privDataPtr) {$/;"	f	file:
+_dictKeyIndex	redis/hiredis/dict.c	/^static int _dictKeyIndex(dict *ht, const void *key) {$/;"	f	file:
+_dictNextPower	redis/hiredis/dict.c	/^static unsigned long _dictNextPower(unsigned long size) {$/;"	f	file:
+_dictReset	redis/hiredis/dict.c	/^static void _dictReset(dict *ht) {$/;"	f	file:
+_directIO_flag	db/basic_config.hh	/^    bool _directIO_flag;$/;"	m	class:LevelDB_ConfigMod
+_filterBaseLg	db/basic_config.hh	/^    int _filterBaseLg;$/;"	m	class:LevelDB_ConfigMod
+_filters_capacity_ratio	db/basic_config.hh	/^    double _filters_capacity_ratio;$/;"	m	class:LevelDB_ConfigMod
+_forceDeleteLevel0File	db/basic_config.hh	/^    bool _forceDeleteLevel0File;$/;"	m	class:LevelDB_ConfigMod
+_force_disable_compaction_flag	db/basic_config.hh	/^    bool _force_disable_compaction_flag;$/;"	m	class:LevelDB_ConfigMod
+_hierarchical_bloom_flag	db/basic_config.hh	/^    bool _hierarchical_bloom_flag;$/;"	m	class:LevelDB_ConfigMod
+_init_filter_num	db/basic_config.hh	/^    int _init_filter_num;$/;"	m	class:LevelDB_ConfigMod
+_l0_base_ratio	db/basic_config.hh	/^    double _l0_base_ratio;$/;"	m	class:LevelDB_ConfigMod
+_life_time	db/basic_config.hh	/^    uint64_t _life_time;$/;"	m	class:LevelDB_ConfigMod
+_logBase	db/basic_config.hh	/^    int _logBase;$/;"	m	class:LevelDB_ConfigMod
+_lrus_num	db/basic_config.hh	/^    int _lrus_num;$/;"	m	class:LevelDB_ConfigMod
+_max_file_size	db/basic_config.hh	/^    int _max_file_size;$/;"	m	class:LevelDB_ConfigMod
+_max_open_files	db/basic_config.hh	/^    int _max_open_files;$/;"	m	class:LevelDB_ConfigMod
+_open_log	db/basic_config.hh	/^    bool _open_log;$/;"	m	class:LevelDB_ConfigMod
+_pt	db/basic_config.hh	/^    boost::property_tree::ptree _pt;$/;"	m	class:Basic_ConfigMod
+_redisContextConnectTcp	redis/hiredis/net.c	/^static int _redisContextConnectTcp(redisContext *c, const char *addr, int port,$/;"	f	file:
+_region_divide_size	db/basic_config.hh	/^    uint64_t _region_divide_size;$/;"	m	class:LevelDB_ConfigMod
+_runMode	db/basic_config.hh	/^    int _runMode;$/;"	m	class:LevelDB_ConfigMod
+_seek_compaction_flag	db/basic_config.hh	/^    bool _seek_compaction_flag;$/;"	m	class:LevelDB_ConfigMod
+_setFreCountInCompaction	db/basic_config.hh	/^    bool _setFreCountInCompaction;$/;"	m	class:LevelDB_ConfigMod
+_sizeRatio	db/basic_config.hh	/^    int _sizeRatio;$/;"	m	class:LevelDB_ConfigMod
+_slowRatio	db/basic_config.hh	/^    double _slowRatio;$/;"	m	class:LevelDB_ConfigMod
+_statistics_open	db/basic_config.hh	/^    bool _statistics_open;$/;"	m	class:LevelDB_ConfigMod
+_valueSize	db/basic_config.hh	/^    int _valueSize;$/;"	m	class:LevelDB_ConfigMod
+_vlog_filename	db/basic_config.hh	/^    std::string _vlog_filename;$/;"	m	class:LevelDB_ConfigMod
+ac	redis/hiredis/adapters/glib.h	/^    redisAsyncContext *ac;$/;"	m	struct:__anon1
+addRead	redis/hiredis/adapters/qt.h	/^        void addRead() {$/;"	f	class:RedisQtAdapter
+addRead	redis/hiredis/async.h	/^        void (*addRead)(void *privdata);$/;"	m	struct:redisAsyncContext::__anon3
+addWrite	redis/hiredis/adapters/qt.h	/^        void addWrite() {$/;"	f	class:RedisQtAdapter
+addWrite	redis/hiredis/async.h	/^        void (*addWrite)(void *privdata);$/;"	m	struct:redisAsyncContext::__anon3
+adjust_filter_	core/core_workload.h	/^  bool adjust_filter_;$/;"	m	class:ycsbc::CoreWorkload
+alpha_	core/zipfian_generator.h	/^  double theta_, zeta_n_, eta_, alpha_, zeta_2_;$/;"	m	class:ycsbc::ZipfianGenerator
+assert	redis/hiredis/test.c	50;"	d	file:
+assert	redis/hiredis/test.c	51;"	d	file:
+base_	core/scrambled_zipfian_generator.h	/^  uint64_t base_;$/;"	m	class:ycsbc::ScrambledZipfianGenerator
+base_	core/zipfian_generator.h	/^  uint64_t base_; \/\/\/ Min number of items to generate$/;"	m	class:ycsbc::ZipfianGenerator
+basex	util/parse_fp.py	/^basex = 10 #10000$/;"	v
+basis_	core/skewed_latest_generator.h	/^  CounterGenerator &basis_;$/;"	m	class:ycsbc::SkewedLatestGenerator
+blocknewcnt	getStatistics.py	/^    blocknewcnt = re.findall("block\\.new\\.time.*?count:([0-9]+)",filetext)[1]$/;"	v
+blocknewtime	getStatistics.py	/^    blocknewtime = re.findall("block\\.new\\.time.*?ave:([0-9.]+)",filetext)[1]$/;"	v
+blockreadcnt	getStatistics.py	/^    blockreadcnt = re.findall("block\\.read\\.time.*?count:([0-9]+)",filetext)[1]$/;"	v
+blockreadtime	getStatistics.py	/^    blockreadtime = re.findall("block\\.read\\.time.*?ave:([0-9.]+)",filetext)[1]$/;"	v
+buf	redis/hiredis/read.h	/^    char *buf; \/* Read buffer *\/$/;"	m	struct:redisReader
+buf	redis/hiredis/sds.h	/^    char buf[];$/;"	m	struct:sdshdr
+bulklen	redis/hiredis/hiredis.c	/^static size_t bulklen(size_t len) {$/;"	f	file:
+c	redis/hiredis/async.h	/^    redisContext c;$/;"	m	struct:redisAsyncContext
+c99_snprintf	redis/hiredis/win32.h	/^__inline int c99_snprintf(char* str, size_t size, const char* format, ...)$/;"	f
+c99_vsnprintf	redis/hiredis/win32.h	/^__inline int c99_vsnprintf(char* str, size_t size, const char* format, va_list ap)$/;"	f
+callbackDict	redis/hiredis/async.c	/^static dictType callbackDict = {$/;"	v	file:
+callbackHash	redis/hiredis/async.c	/^static unsigned int callbackHash(const void *key) {$/;"	f	file:
+callbackKeyCompare	redis/hiredis/async.c	/^static int callbackKeyCompare(void *privdata, const void *key1, const void *key2) {$/;"	f	file:
+callbackKeyDestructor	redis/hiredis/async.c	/^static void callbackKeyDestructor(void *privdata, void *key) {$/;"	f	file:
+callbackValDestructor	redis/hiredis/async.c	/^static void callbackValDestructor(void *privdata, void *val) {$/;"	f	file:
+callbackValDup	redis/hiredis/async.c	/^static void *callbackValDup(void *privdata, const void *src) {$/;"	f	file:
+channels	redis/hiredis/async.h	/^        struct dict *channels;$/;"	m	struct:redisAsyncContext::__anon4	typeref:struct:redisAsyncContext::__anon4::dict
+chrtos	redis/hiredis/read.c	/^static size_t chrtos(char *buf, size_t size, char byte) {$/;"	f	file:
+cleanup	redis/hiredis/adapters/qt.h	/^        void cleanup() {$/;"	f	class:RedisQtAdapter
+cleanup	redis/hiredis/async.h	/^        void (*cleanup)(void *privdata);$/;"	m	struct:redisAsyncContext::__anon3
+coldInterval	core/HotspotIntegerGenerator.h	/^ uint64_t coldInterval;$/;"	m	class:ycsbc::HotspotIntegerGenerator
+command_cb	redis/hiredis/examples/example-glib.c	/^command_cb(redisAsyncContext *ac,$/;"	f	file:
+config	redis/hiredis/test.c	/^struct config {$/;"	s	file:
+connect	redis/hiredis/test.c	/^static redisContext *connect(struct config config) {$/;"	f	file:
+connectCallback	redis/hiredis/examples/example-ae.c	/^void connectCallback(const redisAsyncContext *c, int status) {$/;"	f
+connectCallback	redis/hiredis/examples/example-ivykis.c	/^void connectCallback(const redisAsyncContext *c, int status) {$/;"	f
+connectCallback	redis/hiredis/examples/example-libev.c	/^void connectCallback(const redisAsyncContext *c, int status) {$/;"	f
+connectCallback	redis/hiredis/examples/example-libevent.c	/^void connectCallback(const redisAsyncContext *c, int status) {$/;"	f
+connectCallback	redis/hiredis/examples/example-libuv.c	/^void connectCallback(const redisAsyncContext *c, int status) {$/;"	f
+connectCallback	redis/hiredis/examples/example-macosx.c	/^void connectCallback(const redisAsyncContext *c, int status) {$/;"	f
+connect_cb	redis/hiredis/examples/example-glib.c	/^connect_cb (const redisAsyncContext *ac G_GNUC_UNUSED,$/;"	f	file:
+connection_type	redis/hiredis/hiredis.h	/^    enum redisConnectionType connection_type;$/;"	m	struct:redisContext	typeref:enum:redisContext::redisConnectionType
+connection_type	redis/hiredis/test.c	/^enum connection_type {$/;"	g	file:
+constant_	core/const_generator.h	/^  uint64_t constant_;$/;"	m	class:ycsbc::ConstGenerator
+context	redis/hiredis/adapters/ae.h	/^    redisAsyncContext *context;$/;"	m	struct:redisAeEvents
+context	redis/hiredis/adapters/ivykis.h	/^    redisAsyncContext *context;$/;"	m	struct:redisIvykisEvents
+context	redis/hiredis/adapters/libev.h	/^    redisAsyncContext *context;$/;"	m	struct:redisLibevEvents
+context	redis/hiredis/adapters/libevent.h	/^    redisAsyncContext *context;$/;"	m	struct:redisLibeventEvents
+context	redis/hiredis/adapters/libuv.h	/^  redisAsyncContext* context;$/;"	m	struct:redisLibuvEvents
+context	redis/hiredis/adapters/macosx.h	/^    redisAsyncContext *context;$/;"	m	struct:__anon2
+context	redis/redis_client.h	/^  redisContext *context() { return context_; }$/;"	f	class:ycsbc::RedisClient
+context_	redis/redis_client.h	/^  redisContext *context_;$/;"	m	class:ycsbc::RedisClient
+count	util/avg.py	/^count = 0$/;"	v
+countDigits	redis/hiredis/hiredis.c	/^static uint32_t countDigits(uint64_t v) {$/;"	f	file:
+counter_	core/counter_generator.h	/^  std::atomic<uint64_t> counter_;$/;"	m	class:ycsbc::CounterGenerator
+createArray	redis/hiredis/read.h	/^    void *(*createArray)(const redisReadTask*, int);$/;"	m	struct:redisReplyObjectFunctions
+createArrayObject	redis/hiredis/hiredis.c	/^static void *createArrayObject(const redisReadTask *task, int elements) {$/;"	f	file:
+createInteger	redis/hiredis/read.h	/^    void *(*createInteger)(const redisReadTask*, long long);$/;"	m	struct:redisReplyObjectFunctions
+createIntegerObject	redis/hiredis/hiredis.c	/^static void *createIntegerObject(const redisReadTask *task, long long value) {$/;"	f	file:
+createNil	redis/hiredis/read.h	/^    void *(*createNil)(const redisReadTask*);$/;"	m	struct:redisReplyObjectFunctions
+createNilObject	redis/hiredis/hiredis.c	/^static void *createNilObject(const redisReadTask *task) {$/;"	f	file:
+createReplyObject	redis/hiredis/hiredis.c	/^static redisReply *createReplyObject(int type) {$/;"	f	file:
+createString	redis/hiredis/read.h	/^    void *(*createString)(const redisReadTask*, char*, size_t);$/;"	m	struct:redisReplyObjectFunctions
+createStringObject	redis/hiredis/hiredis.c	/^static void *createStringObject(const redisReadTask *task, char *str, size_t len) {$/;"	f	file:
+current_operation_	core/client.h	/^  boost::shared_ptr<ycsbc::Operation> current_operation_;$/;"	m	class:ycsbc::Client
+current_time_	core/client.h	/^  double current_time_;$/;"	m	class:ycsbc::Client
+current_timestamp_	core/client.h	/^  double current_timestamp_;$/;"	m	class:ycsbc::Client
+data	redis/hiredis/async.h	/^        void *data;$/;"	m	struct:redisAsyncContext::__anon3
+data	redis/hiredis/async.h	/^    void *data;$/;"	m	struct:redisAsyncContext
+db_	core/client.h	/^  DB &db_;$/;"	m	class:ycsbc::Client
+db_	db/leveldbVlog_db.h	/^        leveldb::SepDB *db_;$/;"	m	class:ycsbc::LeveldbVlog
+db_	db/leveldb_db.h	/^    leveldb::DB *db_;$/;"	m	class:ycsbc::LevelDB
+db_	db/rocksdb_db.h	/^    rocksdb::DB *db_;$/;"	m	class:ycsbc::RocksDB
+defaultFunctions	redis/hiredis/hiredis.c	/^static redisReplyObjectFunctions defaultFunctions = {$/;"	v	file:
+delRead	redis/hiredis/adapters/qt.h	/^        void delRead() {$/;"	f	class:RedisQtAdapter
+delRead	redis/hiredis/async.h	/^        void (*delRead)(void *privdata);$/;"	m	struct:redisAsyncContext::__anon3
+delWrite	redis/hiredis/adapters/qt.h	/^        void delWrite() {$/;"	f	class:RedisQtAdapter
+delWrite	redis/hiredis/async.h	/^        void (*delWrite)(void *privdata);$/;"	m	struct:redisAsyncContext::__anon3
+dict	redis/hiredis/dict.h	/^typedef struct dict {$/;"	s
+dict	redis/hiredis/dict.h	/^} dict;$/;"	t	typeref:struct:dict
+dictAdd	redis/hiredis/dict.c	/^static int dictAdd(dict *ht, void *key, void *val) {$/;"	f	file:
+dictCompareHashKeys	redis/hiredis/dict.h	101;"	d
+dictCreate	redis/hiredis/dict.c	/^static dict *dictCreate(dictType *type, void *privDataPtr) {$/;"	f	file:
+dictDelete	redis/hiredis/dict.c	/^static int dictDelete(dict *ht, const void *key) {$/;"	f	file:
+dictEntry	redis/hiredis/dict.h	/^typedef struct dictEntry {$/;"	s
+dictEntry	redis/hiredis/dict.h	/^} dictEntry;$/;"	t	typeref:struct:dictEntry
+dictExpand	redis/hiredis/dict.c	/^static int dictExpand(dict *ht, unsigned long size) {$/;"	f	file:
+dictFind	redis/hiredis/dict.c	/^static dictEntry *dictFind(dict *ht, const void *key) {$/;"	f	file:
+dictFreeEntryKey	redis/hiredis/dict.h	90;"	d
+dictFreeEntryVal	redis/hiredis/dict.h	79;"	d
+dictGenHashFunction	redis/hiredis/dict.c	/^static unsigned int dictGenHashFunction(const unsigned char *buf, int len) {$/;"	f	file:
+dictGetEntryKey	redis/hiredis/dict.h	108;"	d
+dictGetEntryVal	redis/hiredis/dict.h	109;"	d
+dictGetIterator	redis/hiredis/dict.c	/^static dictIterator *dictGetIterator(dict *ht) {$/;"	f	file:
+dictHashKey	redis/hiredis/dict.h	106;"	d
+dictIterator	redis/hiredis/dict.h	/^typedef struct dictIterator {$/;"	s
+dictIterator	redis/hiredis/dict.h	/^} dictIterator;$/;"	t	typeref:struct:dictIterator
+dictNext	redis/hiredis/dict.c	/^static dictEntry *dictNext(dictIterator *iter) {$/;"	f	file:
+dictRelease	redis/hiredis/dict.c	/^static void dictRelease(dict *ht) {$/;"	f	file:
+dictReleaseIterator	redis/hiredis/dict.c	/^static void dictReleaseIterator(dictIterator *iter) {$/;"	f	file:
+dictReplace	redis/hiredis/dict.c	/^static int dictReplace(dict *ht, void *key, void *val) {$/;"	f	file:
+dictSetHashKey	redis/hiredis/dict.h	94;"	d
+dictSetHashVal	redis/hiredis/dict.h	83;"	d
+dictSize	redis/hiredis/dict.h	111;"	d
+dictSlots	redis/hiredis/dict.h	110;"	d
+dictType	redis/hiredis/dict.h	/^typedef struct dictType {$/;"	s
+dictType	redis/hiredis/dict.h	/^} dictType;$/;"	t	typeref:struct:dictType
+disconnect	redis/hiredis/test.c	/^static int disconnect(redisContext *c, int keep_fd) {$/;"	f	file:
+disconnectCallback	redis/hiredis/examples/example-ae.c	/^void disconnectCallback(const redisAsyncContext *c, int status) {$/;"	f
+disconnectCallback	redis/hiredis/examples/example-ivykis.c	/^void disconnectCallback(const redisAsyncContext *c, int status) {$/;"	f
+disconnectCallback	redis/hiredis/examples/example-libev.c	/^void disconnectCallback(const redisAsyncContext *c, int status) {$/;"	f
+disconnectCallback	redis/hiredis/examples/example-libevent.c	/^void disconnectCallback(const redisAsyncContext *c, int status) {$/;"	f
+disconnectCallback	redis/hiredis/examples/example-libuv.c	/^void disconnectCallback(const redisAsyncContext *c, int status) {$/;"	f
+disconnectCallback	redis/hiredis/examples/example-macosx.c	/^void disconnectCallback(const redisAsyncContext *c, int status) {$/;"	f
+disconnect_cb	redis/hiredis/examples/example-glib.c	/^disconnect_cb (const redisAsyncContext *ac G_GNUC_UNUSED,$/;"	f	file:
+dist_	core/uniform_generator.h	/^  std::uniform_int_distribution<uint64_t> dist_;$/;"	m	class:ycsbc::UniformGenerator
+doSomeThing	core/db.h	/^  virtual void doSomeThing(const char *thing_str="adjust_filter") {}$/;"	f	class:ycsbc::DB
+doSomeThing	db/leveldbVlog_db.cc	/^    void LeveldbVlog::doSomeThing(const char* thing_str)$/;"	f	class:ycsbc::LeveldbVlog
+doSomeThing	db/leveldb_db.cc	/^void LevelDB::doSomeThing(const char* thing_str)$/;"	f	class:ycsbc::LevelDB
+doSomeThing	db/rocksdb_db.cc	/^    void RocksDB::doSomeThing(const char *thing_str)$/;"	f	class:ycsbc::RocksDB
+durations	ycsbc.cc	/^unsigned long long durations[256] = {0};$/;"	v
+elapsed	core/client.h	/^	unsigned long long elapsed(){$/;"	f	class:ycsbc::WallTimer
+element	redis/hiredis/hiredis.h	/^    struct redisReply **element; \/* elements vector for REDIS_REPLY_ARRAY *\/$/;"	m	struct:redisReply	typeref:struct:redisReply::redisReply
+elements	redis/hiredis/hiredis.h	/^    size_t elements; \/* number of elements, for REDIS_REPLY_ARRAY *\/$/;"	m	struct:redisReply
+elements	redis/hiredis/read.h	/^    int elements; \/* number of elements in multibulk container *\/$/;"	m	struct:redisReadTask
+end_flag_	ycsbc.cc	/^bool end_flag_ = false;$/;"	v
+end_time_	core/client.h	/^	 struct timeval end_time_,res_;$/;"	m	class:ycsbc::WallTimer	typeref:struct:ycsbc::WallTimer::timeval
+entry	redis/hiredis/dict.h	/^    dictEntry *entry, *nextEntry;$/;"	m	struct:dictIterator
+equal	lib/tbb_rand_hashtable.h	/^    bool equal(const String &a, const String &b) const { return a == b; }$/;"	f	struct:vmp::TbbRandHashtable::HashEqual
+err	redis/hiredis/async.h	/^    int err;$/;"	m	struct:redisAsyncContext
+err	redis/hiredis/hiredis.h	/^    int err; \/* Error flags, 0 when there is no error *\/$/;"	m	struct:redisContext
+err	redis/hiredis/read.h	/^    int err; \/* Error flags, 0 when there is no error *\/$/;"	m	struct:redisReader
+errstr	redis/hiredis/async.h	/^    char *errstr;$/;"	m	struct:redisAsyncContext
+errstr	redis/hiredis/hiredis.h	/^    char errstr[128]; \/* String representation of error when applicable *\/$/;"	m	struct:redisContext
+errstr	redis/hiredis/read.h	/^    char errstr[128]; \/* String representation of error when applicable *\/$/;"	m	struct:redisReader
+eta_	core/zipfian_generator.h	/^  double theta_, zeta_n_, eta_, alpha_, zeta_2_;$/;"	m	class:ycsbc::ZipfianGenerator
+ev	redis/hiredis/async.h	/^    } ev;$/;"	m	struct:redisAsyncContext	typeref:struct:redisAsyncContext::__anon3
+events	redis/hiredis/adapters/libuv.h	/^  int                events;$/;"	m	struct:redisLibuvEvents
+f	util/avg.py	/^f = open("..\/level%s_extra_infos.txt" % (sys.argv[1]), "r")$/;"	v
+f_ops	core/client.h	/^static FILE *f_ops[2];$/;"	m	namespace:ycsbc
+fails	redis/hiredis/test.c	/^static int tests = 0, fails = 0;$/;"	v	file:
+fd	redis/hiredis/adapters/ae.h	/^    int fd;$/;"	m	struct:redisAeEvents
+fd	redis/hiredis/adapters/ivykis.h	/^    struct iv_fd fd;$/;"	m	struct:redisIvykisEvents	typeref:struct:redisIvykisEvents::iv_fd
+fd	redis/hiredis/hiredis.h	/^    int fd;$/;"	m	struct:redisContext
+field_chooser_	core/core_workload.h	/^  Generator<uint64_t> *field_chooser_;$/;"	m	class:ycsbc::CoreWorkload
+field_count_	core/core_workload.h	/^  int field_count_;$/;"	m	class:ycsbc::CoreWorkload
+field_len_generator_	core/core_workload.h	/^  Generator<uint64_t> *field_len_generator_;$/;"	m	class:ycsbc::CoreWorkload
+file_str	util/parse_freq.py	/^file_str = "level%d_access_frequencies.txt"$/;"	v
+filetext	getStatistics.py	/^    filetext = infile.read()$/;"	v
+findtablecnt	getStatistics.py	/^    findtablecnt = re.findall("findtable\\.time.*?count:([0-9]+)",filetext)[1]$/;"	v
+findtabletime	getStatistics.py	/^    findtabletime = re.findall("findtable\\.time.*?ave:([0-9.]+)",filetext)[1]$/;"	v
+finish	redis/hiredis/examples/example-qt.h	/^        void finish() { emit finished(); }$/;"	f	class:ExampleQt
+first_do_transaction	core/client.h	/^  bool first_do_transaction;$/;"	m	class:ycsbc::Client
+flags	redis/hiredis/hiredis.h	/^    int flags;$/;"	m	struct:redisContext
+fn	redis/hiredis/async.h	/^    redisCallbackFn *fn;$/;"	m	struct:redisCallback
+fn	redis/hiredis/read.h	/^    redisReplyObjectFunctions *fn;$/;"	m	struct:redisReader
+free	redis/hiredis/sds.h	/^    int free;$/;"	m	struct:sdshdr
+freeObject	redis/hiredis/read.h	/^    void (*freeObject)(void*);$/;"	m	struct:redisReplyObjectFunctions
+freeRedisRunLoop	redis/hiredis/adapters/macosx.h	/^static int freeRedisRunLoop(RedisRunLoop* redisRunLoop) {$/;"	f
+freeReplyObject	redis/hiredis/hiredis.c	/^void freeReplyObject(void *reply) {$/;"	f
+gen1	core/utils.h	/^static std::default_random_engine gen1;$/;"	m	namespace:utils
+generator	core/utils.h	/^static std::default_random_engine generator;$/;"	m	namespace:utils
+generator_	core/scrambled_zipfian_generator.h	/^  ZipfianGenerator generator_;$/;"	m	class:ycsbc::ScrambledZipfianGenerator
+generator_	core/uniform_generator.h	/^  std::mt19937_64 generator_;$/;"	m	class:ycsbc::UniformGenerator
+getBaseNum	db/basic_config.cc	/^int LevelDB_ConfigMod::getBaseNum()$/;"	f	class:LevelDB_ConfigMod
+getBitsArrayFilename	db/basic_config.cc	/^std::string LevelDB_ConfigMod::getBitsArrayFilename(){$/;"	f	class:LevelDB_ConfigMod
+getBlockCacheSize	db/basic_config.cc	/^size_t LevelDB_ConfigMod::getBlockCacheSize(){$/;"	f	class:LevelDB_ConfigMod
+getBloomType	db/basic_config.cc	/^int LevelDB_ConfigMod::getBloomType(){$/;"	f	class:LevelDB_ConfigMod
+getBloom_bits	db/basic_config.cc	/^int LevelDB_ConfigMod::getBloom_bits(){$/;"	f	class:LevelDB_ConfigMod
+getBloom_filename	db/basic_config.cc	/^std::string LevelDB_ConfigMod::getBloom_filename(){$/;"	f	class:LevelDB_ConfigMod
+getCallback	redis/hiredis/examples/example-ae.c	/^void getCallback(redisAsyncContext *c, void *r, void *privdata) {$/;"	f
+getCallback	redis/hiredis/examples/example-ivykis.c	/^void getCallback(redisAsyncContext *c, void *r, void *privdata) {$/;"	f
+getCallback	redis/hiredis/examples/example-libev.c	/^void getCallback(redisAsyncContext *c, void *r, void *privdata) {$/;"	f
+getCallback	redis/hiredis/examples/example-libevent.c	/^void getCallback(redisAsyncContext *c, void *r, void *privdata) {$/;"	f
+getCallback	redis/hiredis/examples/example-libuv.c	/^void getCallback(redisAsyncContext *c, void *r, void *privdata) {$/;"	f
+getCallback	redis/hiredis/examples/example-macosx.c	/^void getCallback(redisAsyncContext *c, void *r, void *privdata) {$/;"	f
+getCallback	redis/hiredis/examples/example-qt.cpp	/^void getCallback(redisAsyncContext *, void * r, void * privdata) {$/;"	f
+getChangeRatio	db/basic_config.cc	/^double LevelDB_ConfigMod::getChangeRatio(){$/;"	f	class:LevelDB_ConfigMod
+getCompression_flag	db/basic_config.cc	/^bool LevelDB_ConfigMod::getCompression_flag(){$/;"	f	class:LevelDB_ConfigMod
+getCurrentTimeStamp	core/client.h	/^inline void Client::getCurrentTimeStamp(){$/;"	f	class:ycsbc::Client
+getDirectIOFlag	db/basic_config.cc	/^bool LevelDB_ConfigMod::getDirectIOFlag(){$/;"	f	class:LevelDB_ConfigMod
+getFilterBaseLg	db/basic_config.cc	/^int LevelDB_ConfigMod::getFilterBaseLg()$/;"	f	class:LevelDB_ConfigMod
+getFiltersCapacityRatio	db/basic_config.cc	/^double LevelDB_ConfigMod::getFiltersCapacityRatio()$/;"	f	class:LevelDB_ConfigMod
+getForceDeleteLevel0File	db/basic_config.cc	/^bool LevelDB_ConfigMod::getForceDeleteLevel0File(){$/;"	f	class:LevelDB_ConfigMod
+getForceDisableCompactionFlag	db/basic_config.cc	/^bool LevelDB_ConfigMod::getForceDisableCompactionFlag()$/;"	f	class:LevelDB_ConfigMod
+getHotOpnFraction	core/HotspotIntegerGenerator.h	/^   double getHotOpnFraction(){$/;"	f	class:ycsbc::HotspotIntegerGenerator
+getHotsetFraction	core/HotspotIntegerGenerator.h	/^  double getHotsetFraction(){$/;"	f	class:ycsbc::HotspotIntegerGenerator
+getInitFilterNum	db/basic_config.cc	/^int LevelDB_ConfigMod::getInitFilterNum(){$/;"	f	class:LevelDB_ConfigMod
+getInstance	db/basic_config.hh	/^    static T& getInstance() {$/;"	f	class:Basic_ConfigMod
+getL0BaseRatio	db/basic_config.cc	/^double LevelDB_ConfigMod::getL0BaseRatio()$/;"	f	class:LevelDB_ConfigMod
+getLRUsNum	db/basic_config.cc	/^int LevelDB_ConfigMod::getLRUsNum()$/;"	f	class:LevelDB_ConfigMod
+getLifeTime	db/basic_config.cc	/^uint64_t LevelDB_ConfigMod::getLifeTime()$/;"	f	class:LevelDB_ConfigMod
+getLogBase	db/basic_config.cc	/^int LevelDB_ConfigMod::getLogBase(){$/;"	f	class:LevelDB_ConfigMod
+getLowerBound	core/HotspotIntegerGenerator.h	/^  uint64_t getLowerBound(){$/;"	f	class:ycsbc::HotspotIntegerGenerator
+getMax_file_size	db/basic_config.cc	/^int LevelDB_ConfigMod::getMax_file_size(){$/;"	f	class:LevelDB_ConfigMod
+getMax_open_files	db/basic_config.cc	/^int LevelDB_ConfigMod::getMax_open_files(){$/;"	f	class:LevelDB_ConfigMod
+getOpen_log	db/basic_config.cc	/^bool LevelDB_ConfigMod::getOpen_log(){$/;"	f	class:LevelDB_ConfigMod
+getRegion_divide_size	db/basic_config.cc	/^uint64_t LevelDB_ConfigMod::getRegion_divide_size(){$/;"	f	class:LevelDB_ConfigMod
+getRunMode	db/basic_config.cc	/^int LevelDB_ConfigMod::getRunMode()$/;"	f	class:LevelDB_ConfigMod
+getSeekCompactionFlag	db/basic_config.cc	/^bool LevelDB_ConfigMod::getSeekCompactionFlag()$/;"	f	class:LevelDB_ConfigMod
+getSetFreCountInCompaction	db/basic_config.cc	/^bool LevelDB_ConfigMod::getSetFreCountInCompaction(){$/;"	f	class:LevelDB_ConfigMod
+getSizeRatio	db/basic_config.cc	/^int LevelDB_ConfigMod::getSizeRatio()$/;"	f	class:LevelDB_ConfigMod
+getSlowRatio	db/basic_config.cc	/^double LevelDB_ConfigMod::getSlowRatio(){$/;"	f	class:LevelDB_ConfigMod
+getStatisticsOpen	db/basic_config.cc	/^bool LevelDB_ConfigMod::getStatisticsOpen()$/;"	f	class:LevelDB_ConfigMod
+getUpperBound	core/HotspotIntegerGenerator.h	/^  uint64_t getUpperBound(){$/;"	f	class:ycsbc::HotspotIntegerGenerator
+getValueSize	db/basic_config.cc	/^int LevelDB_ConfigMod::getValueSize()$/;"	f	class:LevelDB_ConfigMod
+getVlogFilename	db/basic_config.cc	/^std::string LevelDB_ConfigMod::getVlogFilename() {$/;"	f	class:LevelDB_ConfigMod
+getopt	modifyConfig.py	/^import getopt$/;"	i
+handle	redis/hiredis/adapters/libuv.h	/^  uv_poll_t          handle;$/;"	m	struct:redisLibuvEvents
+hasRead	db/leveldbVlog_db.cc	/^    bool  LeveldbVlog::hasRead = false;$/;"	m	class:ycsbc::LeveldbVlog	file:
+hasRead	db/leveldbVlog_db.h	/^        static bool hasRead;$/;"	m	class:ycsbc::LeveldbVlog
+hasRead	db/leveldb_db.cc	/^bool  LevelDB::hasRead = false;$/;"	m	class:ycsbc::LevelDB	file:
+hasRead	db/leveldb_db.h	/^    static bool hasRead;$/;"	m	class:ycsbc::LevelDB
+hasRead	db/rocksdb_db.cc	/^    bool  RocksDB::hasRead = false;$/;"	m	class:ycsbc::RocksDB	file:
+hasRead	db/rocksdb_db.h	/^    static bool hasRead;$/;"	m	class:ycsbc::RocksDB
+hash	lib/string.h	/^  uint64_t hash() const { return hash_; }$/;"	f	class:vmp::String
+hash	lib/tbb_rand_hashtable.h	/^    uint64_t hash(const String &hstr) const { return hstr.hash(); }$/;"	f	struct:vmp::TbbRandHashtable::HashEqual
+hashFunction	redis/hiredis/dict.h	/^    unsigned int (*hashFunction)(const void *key);$/;"	m	struct:dictType
+hash_	lib/string.h	/^  uint64_t hash_;$/;"	m	class:vmp::String
+head	redis/hiredis/async.h	/^    redisCallback *head, *tail;$/;"	m	struct:redisCallbackList
+hex_digit_to_int	redis/hiredis/sds.c	/^int hex_digit_to_int(char c) {$/;"	f
+host	redis/hiredis/hiredis.h	/^        char *host;$/;"	m	struct:redisContext::__anon5
+host	redis/hiredis/test.c	/^        const char *host;$/;"	m	struct:config::__anon7	file:
+hotInterval	core/HotspotIntegerGenerator.h	/^ uint64_t hotInterval;$/;"	m	class:ycsbc::HotspotIntegerGenerator
+hotOpnFraction	core/HotspotIntegerGenerator.h	/^ double hotOpnFraction;$/;"	m	class:ycsbc::HotspotIntegerGenerator
+hotsetFraction	core/HotspotIntegerGenerator.h	/^ double hotsetFraction;$/;"	m	class:ycsbc::HotspotIntegerGenerator
+ht	redis/hiredis/dict.h	/^    dict *ht;$/;"	m	struct:dictIterator
+idx	redis/hiredis/read.h	/^    int idx; \/* index in parent (array) object *\/$/;"	m	struct:redisReadTask
+index	redis/hiredis/dict.h	/^    int index;$/;"	m	struct:dictIterator
+infilename	getStatistics.py	/^infilename = sys.argv[1]$/;"	v
+initCount	core/core_workload.cc	/^int CoreWorkload::initCount = 0;$/;"	m	class:CoreWorkload	file:
+initCount	core/core_workload.h	/^  static int initCount;$/;"	m	class:ycsbc::CoreWorkload
+inline	redis/hiredis/win32.h	6;"	d
+insert_key_sequence_	core/core_workload.h	/^  CounterGenerator insert_key_sequence_;$/;"	m	class:ycsbc::CoreWorkload
+instance	db/basic_config.cc	/^boost::shared_ptr<LevelDB_ConfigMod> Basic_ConfigMod<LevelDB_ConfigMod>::instance = nullptr;	$/;"	m	class:Basic_ConfigMod	file:
+instance	db/basic_config.hh	/^    static boost::shared_ptr<T> instance;$/;"	m	class:Basic_ConfigMod
+integer	redis/hiredis/hiredis.h	/^    long long integer; \/* The integer when type is REDIS_REPLY_INTEGER *\/$/;"	m	struct:redisReply
+internalgetcnt	getStatistics.py	/^    internalgetcnt = re.findall("internalget\\.time.*?count:([0-9]+)",filetext)[1]$/;"	v
+internalgettime	getStatistics.py	/^    internalgettime = re.findall("internalget\\.time.*?ave:([0-9.]+)",filetext)[1]$/;"	v
+invalid	redis/hiredis/async.h	/^        redisCallbackList invalid;$/;"	m	struct:redisAsyncContext::__anon4
+iops_filename_	core/client.h	/^static const char iops_filename_[2][50]={"write_iops.txt","read_iops.txt"};$/;"	m	namespace:ycsbc
+is_empty	util/parse_freq.py	/^def is_empty(file_name):$/;"	f
+is_hex_digit	redis/hiredis/sds.c	/^int is_hex_digit(char c) {$/;"	f
+kErrorConflict	core/db.h	/^  static const int kErrorConflict = 2;$/;"	m	class:ycsbc::DB
+kErrorNoData	core/db.h	/^  static const int kErrorNoData = 1;$/;"	m	class:ycsbc::DB
+kFNVOffsetBasis64	core/utils.h	/^const uint64_t kFNVOffsetBasis64 = 0xCBF29CE484222325;$/;"	m	namespace:utils
+kFNVPrime64	core/utils.h	/^const uint64_t kFNVPrime64 = 1099511628211;$/;"	m	namespace:utils
+kMaxNumItems	core/zipfian_generator.h	/^  static const uint64_t kMaxNumItems = (UINT64_MAX >> 24);$/;"	m	class:ycsbc::ZipfianGenerator
+kOK	core/db.h	/^  static const int kOK = 0;$/;"	m	class:ycsbc::DB
+kZipfianConst	core/zipfian_generator.h	/^  constexpr static const double kZipfianConst = 0.99;$/;"	m	class:ycsbc::ZipfianGenerator
+key	mem_stat.py	/^key = "ycsb"$/;"	v
+key	redis/hiredis/dict.h	/^    void *key;$/;"	m	struct:dictEntry
+keyCompare	redis/hiredis/dict.h	/^    int (*keyCompare)(void *privdata, const void *key1, const void *key2);$/;"	m	struct:dictType
+keyDestructor	redis/hiredis/dict.h	/^    void (*keyDestructor)(void *privdata, void *key);$/;"	m	struct:dictType
+keyDup	redis/hiredis/dict.h	/^    void *(*keyDup)(void *privdata, const void *key);$/;"	m	struct:dictType
+key_chooser_	core/core_workload.h	/^  Generator<uint64_t> *key_chooser_;$/;"	m	class:ycsbc::CoreWorkload
+key_generator_	core/core_workload.h	/^  Generator<uint64_t> *key_generator_;$/;"	m	class:ycsbc::CoreWorkload
+key_table_	db/hashtable_db.h	/^  KeyHashtable *key_table_;$/;"	m	class:ycsbc::HashtableDB
+last_	core/discrete_generator.h	/^  Value last_;$/;"	m	class:ycsbc::DiscreteGenerator
+last_	core/scrambled_zipfian_generator.h	/^  uint64_t last_;$/;"	m	class:ycsbc::ScrambledZipfianGenerator
+last_	core/skewed_latest_generator.h	/^  uint64_t last_;$/;"	m	class:ycsbc::SkewedLatestGenerator
+last_int_	core/uniform_generator.h	/^  uint64_t last_int_;$/;"	m	class:ycsbc::UniformGenerator
+last_ops	core/client.h	/^static size_t last_ops[2]={0,0};$/;"	m	namespace:ycsbc
+last_value_	core/HotspotIntegerGenerator.h	/^ uint64_t last_value_;$/;"	m	class:ycsbc::HotspotIntegerGenerator
+last_value_	core/zipfian_generator.h	/^  uint64_t last_value_;$/;"	m	class:ycsbc::ZipfianGenerator
+latency_fp_	core/client.h	/^  FILE *latency_fp_;$/;"	m	class:ycsbc::Client
+latency_fp_	core/core_workload.h	/^  FILE *latency_fp_;$/;"	m	class:ycsbc::CoreWorkload
+len	redis/hiredis/hiredis.h	/^    int len; \/* Length of string *\/$/;"	m	struct:redisReply
+len	redis/hiredis/read.h	/^    size_t len; \/* Buffer length *\/$/;"	m	struct:redisReader
+len	redis/hiredis/sds.h	/^    int len;$/;"	m	struct:sdshdr
+len_	lib/string.h	/^  size_t len_;$/;"	m	class:vmp::String
+length	lib/string.h	/^  size_t length() const { return len_; }$/;"	f	class:vmp::String
+line_	core/client.h	/^  char *line_;$/;"	m	class:ycsbc::Client
+loop	redis/hiredis/adapters/ae.h	/^    aeEventLoop *loop;$/;"	m	struct:redisAeEvents
+loop	redis/hiredis/adapters/libev.h	/^    struct ev_loop *loop;$/;"	m	struct:redisLibevEvents	typeref:struct:redisLibevEvents::ev_loop
+loop	redis/hiredis/examples/example-ae.c	/^static aeEventLoop *loop;$/;"	v	file:
+lowerBound	core/HotspotIntegerGenerator.h	/^ uint64_t lowerBound;$/;"	m	class:ycsbc::HotspotIntegerGenerator
+m_adapter	redis/hiredis/examples/example-qt.h	/^        RedisQtAdapter m_adapter;$/;"	m	class:ExampleQt
+m_ctx	redis/hiredis/adapters/qt.h	/^        redisAsyncContext * m_ctx;$/;"	m	class:RedisQtAdapter
+m_ctx	redis/hiredis/examples/example-qt.h	/^        redisAsyncContext * m_ctx;$/;"	m	class:ExampleQt
+m_read	redis/hiredis/adapters/qt.h	/^        QSocketNotifier * m_read;$/;"	m	class:RedisQtAdapter
+m_value	redis/hiredis/examples/example-qt.h	/^        const char * m_value;$/;"	m	class:ExampleQt
+m_write	redis/hiredis/adapters/qt.h	/^        QSocketNotifier * m_write;$/;"	m	class:RedisQtAdapter
+main	modifyConfig.py	/^def main():$/;"	f
+main	parse_result.py	/^def main():$/;"	f
+main	redis/hiredis/examples/example-ae.c	/^int main (int argc, char **argv) {$/;"	f
+main	redis/hiredis/examples/example-glib.c	/^main (gint argc     G_GNUC_UNUSED,$/;"	f
+main	redis/hiredis/examples/example-ivykis.c	/^int main (int argc, char **argv) {$/;"	f
+main	redis/hiredis/examples/example-libev.c	/^int main (int argc, char **argv) {$/;"	f
+main	redis/hiredis/examples/example-libevent.c	/^int main (int argc, char **argv) {$/;"	f
+main	redis/hiredis/examples/example-libuv.c	/^int main (int argc, char **argv) {$/;"	f
+main	redis/hiredis/examples/example-macosx.c	/^int main (int argc, char **argv) {$/;"	f
+main	redis/hiredis/examples/example-qt.cpp	/^int main (int argc, char **argv) {$/;"	f
+main	redis/hiredis/examples/example.c	/^int main(int argc, char **argv) {$/;"	f
+main	redis/hiredis/sds.c	/^int main(void) {$/;"	f
+main	redis/hiredis/test.c	/^int main(int argc, char **argv) {$/;"	f
+main	redis/sample.cc	/^int main(int argc, const char *argv[]) {$/;"	f
+main	util/GetStats.cpp	/^int main(int argc,char *argv[]){$/;"	f
+main	util/scan.cpp	/^int main(int argc,char *argv[]){$/;"	f
+main	ycsbc.cc	/^int main(const int argc, const char *argv[])$/;"	f
+mainloop	redis/hiredis/examples/example-glib.c	/^static GMainLoop *mainloop;$/;"	v	file:
+maxbuf	redis/hiredis/read.h	/^    size_t maxbuf; \/* Max length of unused buffer *\/$/;"	m	struct:redisReader
+message_	core/utils.h	/^  std::string message_;$/;"	m	class:utils::Exception
+modifyCon	modifyConfig.py	/^def modifyCon(filename,section,key,value):$/;"	f
+moveToNextTask	redis/hiredis/read.c	/^static void moveToNextTask(redisReader *r) {$/;"	f	file:
+mutex_	db/basic_db.h	/^  std::mutex mutex_;$/;"	m	class:ycsbc::BasicDB
+mutex_	lib/lock_stl_hashtable.h	/^  mutable std::mutex mutex_;$/;"	m	class:vmp::LockStlHashtable
+mutex_	lib/tbb_rand_hashtable.h	/^  mutable tbb::queuing_rw_mutex mutex_;$/;"	m	class:vmp::TbbRandHashtable
+mutex_	lib/tbb_scan_hashtable.h	/^  mutable tbb::queuing_rw_mutex mutex_;$/;"	m	class:vmp::TbbScanHashtable
+myconf	modifyConfig.py	/^class myconf(ConfigParser.ConfigParser):$/;"	c
+n_for_zeta_	core/zipfian_generator.h	/^  uint64_t n_for_zeta_; \/\/\/ Number of items used to compute zeta_n$/;"	m	class:ycsbc::ZipfianGenerator
+next	redis/hiredis/async.h	/^    struct redisCallback *next; \/* simple singly linked list *\/$/;"	m	struct:redisCallback	typeref:struct:redisCallback::redisCallback
+next	redis/hiredis/dict.h	/^    struct dictEntry *next;$/;"	m	struct:dictEntry	typeref:struct:dictEntry::dictEntry
+nextArgument	redis/hiredis/async.c	/^static const char *nextArgument(const char *start, const char **str, size_t *len) {$/;"	f	file:
+nextEntry	redis/hiredis/dict.h	/^    dictEntry *entry, *nextEntry;$/;"	m	struct:dictIterator
+nlatency_fp_	core/client.h	/^  FILE *nlatency_fp_;$/;"	m	class:ycsbc::Client
+num_items_	core/scrambled_zipfian_generator.h	/^  uint64_t num_items_;$/;"	m	class:ycsbc::ScrambledZipfianGenerator
+num_items_	core/zipfian_generator.h	/^  uint64_t num_items_;$/;"	m	class:ycsbc::ZipfianGenerator
+numpy	parse_result.py	/^import numpy$/;"	i
+obj	redis/hiredis/read.h	/^    void *obj; \/* holds user-generated value for a read task *\/$/;"	m	struct:redisReadTask
+obuf	redis/hiredis/hiredis.h	/^    char *obuf; \/* Write buffer *\/$/;"	m	struct:redisContext
+onConnect	redis/hiredis/async.h	/^    redisConnectCallback *onConnect;$/;"	m	struct:redisAsyncContext
+onDisconnect	redis/hiredis/async.h	/^    redisDisconnectCallback *onDisconnect;$/;"	m	struct:redisAsyncContext
+on_close	redis/hiredis/adapters/libuv.h	/^static void on_close(uv_handle_t* handle) {$/;"	f
+op_chooser_	core/core_workload.h	/^  DiscreteGenerator<Operation> op_chooser_;$/;"	m	class:ycsbc::CoreWorkload
+openStatistics	core/db.h	/^  virtual void openStatistics() {}$/;"	f	class:ycsbc::DB
+openStatistics	db/leveldbVlog_db.cc	/^    void LeveldbVlog::openStatistics(){$/;"	f	class:ycsbc::LeveldbVlog
+openStatistics	db/leveldb_db.cc	/^void LevelDB::openStatistics(){$/;"	f	class:ycsbc::LevelDB
+openStatistics	db/rocksdb_db.cc	/^    void RocksDB::openStatistics()$/;"	f	class:ycsbc::RocksDB
+operator ()	lib/stl_hashtable.h	/^    bool operator()(const String &a, const String &b) const { return a == b; }$/;"	f	struct:vmp::StlHashtable::Equal
+operator ()	lib/stl_hashtable.h	/^    uint64_t operator()(const String &hstr) const { return hstr.hash(); }$/;"	f	struct:vmp::StlHashtable::Hash
+operator ()	lib/tbb_scan_hashtable.h	/^    uint64_t operator()(const String &hstr) const { return hstr.hash(); }$/;"	f	struct:vmp::TbbScanHashtable::Hash
+operator ==	lib/string.h	/^inline bool String::operator==(const String &other) const {$/;"	f	class:vmp::String
+operator []	core/properties.h	/^  std::string &operator[](const std::string &key) { return properties_[key]; }$/;"	f	class:utils::Properties
+ops	ycsbc.cc	/^size_t ops[256] = {0};$/;"	v
+optionxform	modifyConfig.py	/^        def optionxform(self, optionstr):$/;"	m	class:myconf
+ordered_inserts_	core/core_workload.h	/^  bool ordered_inserts_;$/;"	m	class:ycsbc::CoreWorkload
+os	getStatistics.py	/^import os$/;"	i
+os	mem_stat.py	/^import os$/;"	i
+os	modifyConfig.py	/^import os$/;"	i
+os	parse_result.py	/^import os$/;"	i
+os	util/parse_freq.py	/^import os$/;"	i
+out_region_ids	util/parse_freq.py	/^out_region_ids = [0, 1, 2]$/;"	v
+outfilename	getStatistics.py	/^outfilename = sys.argv[2]+infilename$/;"	v
+parent	redis/hiredis/read.h	/^    struct redisReadTask *parent; \/* parent task *\/$/;"	m	struct:redisReadTask	typeref:struct:redisReadTask::redisReadTask
+parse	util/parse_fp.py	/^def parse(fin, fout, dtype = "diff"):$/;"	f
+parse	util/parse_freq.py	/^def parse(fin, fout, dtype = "fill"):$/;"	f
+path	redis/hiredis/hiredis.h	/^        char *path;$/;"	m	struct:redisContext::__anon6
+path	redis/hiredis/test.c	/^        const char *path;$/;"	m	struct:config::__anon8	file:
+patterns	redis/hiredis/async.h	/^        struct dict *patterns;$/;"	m	struct:redisAsyncContext::__anon4	typeref:struct:redisAsyncContext::__anon4::dict
+poll_fd	redis/hiredis/adapters/glib.h	/^    GPollFD poll_fd;$/;"	m	struct:__anon1
+port	redis/hiredis/hiredis.h	/^        int port;$/;"	m	struct:redisContext::__anon5
+port	redis/hiredis/test.c	/^        int port;$/;"	m	struct:config::__anon7	file:
+pos	redis/hiredis/read.h	/^    size_t pos; \/* Buffer cursor *\/$/;"	m	struct:redisReader
+pre_operations	core/client.h	/^  ycsbc::Operation pre_operations;$/;"	m	class:ycsbc::Client
+printAccessFreq	db/leveldbVlog_db.cc	/^    void LeveldbVlog::printAccessFreq()$/;"	f	class:ycsbc::LeveldbVlog
+printAccessFreq	db/leveldb_db.cc	/^void LevelDB::printAccessFreq()$/;"	f	class:ycsbc::LevelDB
+printAccessFreq	db/rocksdb_db.cc	/^    void RocksDB::printAccessFreq()$/;"	f	class:ycsbc::RocksDB
+printFilterCount	db/leveldbVlog_db.cc	/^    void LeveldbVlog::printFilterCount()$/;"	f	class:ycsbc::LeveldbVlog
+printFilterCount	db/leveldb_db.cc	/^void LevelDB::printFilterCount()$/;"	f	class:ycsbc::LevelDB
+printFilterCount	db/rocksdb_db.cc	/^    void RocksDB::printFilterCount()$/;"	f	class:ycsbc::RocksDB
+privdata	redis/hiredis/async.h	/^    void *privdata;$/;"	m	struct:redisCallback
+privdata	redis/hiredis/dict.h	/^    void *privdata;$/;"	m	struct:dict
+privdata	redis/hiredis/read.h	/^    void *privdata; \/* user-settable arbitrary field *\/$/;"	m	struct:redisReadTask
+privdata	redis/hiredis/read.h	/^    void *privdata;$/;"	m	struct:redisReader
+processBulkItem	redis/hiredis/read.c	/^static int processBulkItem(redisReader *r) {$/;"	f	file:
+processItem	redis/hiredis/read.c	/^static int processItem(redisReader *r) {$/;"	f	file:
+processLineItem	redis/hiredis/read.c	/^static int processLineItem(redisReader *r) {$/;"	f	file:
+processMultiBulkItem	redis/hiredis/read.c	/^static int processMultiBulkItem(redisReader *r) {$/;"	f	file:
+properties	core/properties.h	/^inline const std::map<std::string, std::string> &Properties::properties() const {$/;"	f	class:utils::Properties
+properties_	core/properties.h	/^  std::map<std::string, std::string> properties_;$/;"	m	class:utils::Properties
+props_ptr	ycsbc.cc	/^utils::Properties *props_ptr = NULL;$/;"	v
+re	getStatistics.py	/^import re$/;"	i
+re	util/parse_fp.py	/^import re$/;"	i
+re	util/parse_freq.py	/^import re$/;"	i
+read	redis/hiredis/adapters/qt.h	/^        void read() { redisAsyncHandleRead(m_ctx); }$/;"	f	class:RedisQtAdapter
+readBool	db/basic_config.cc	/^bool Basic_ConfigMod<T>::readBool (const char* key) {$/;"	f	class:Basic_ConfigMod
+readBytes	redis/hiredis/read.c	/^static char *readBytes(redisReader *r, unsigned int bytes) {$/;"	f	file:
+readFloat	db/basic_config.cc	/^double Basic_ConfigMod<T>::readFloat(const char *key){$/;"	f	class:Basic_ConfigMod
+readInt	db/basic_config.cc	/^int Basic_ConfigMod<T>::readInt (const char* key) {$/;"	f	class:Basic_ConfigMod
+readLine	redis/hiredis/read.c	/^static char *readLine(redisReader *r, int *_len) {$/;"	f	file:
+readLongLong	redis/hiredis/read.c	/^static long long readLongLong(char *s) {$/;"	f	file:
+readSize_t	db/basic_config.cc	/^size_t Basic_ConfigMod<T>::readSize_t(const char *key){$/;"	f	class:Basic_ConfigMod
+readString	db/basic_config.cc	/^std::string Basic_ConfigMod<T>::readString (const char* key) {$/;"	f	class:Basic_ConfigMod
+readULL	db/basic_config.cc	/^ULL Basic_ConfigMod<T>::readULL(const char *key){$/;"	f	class:Basic_ConfigMod
+read_all_fields	core/core_workload.h	/^  bool read_all_fields() const { return read_all_fields_; }$/;"	f	class:ycsbc::CoreWorkload
+read_all_fields_	core/core_workload.h	/^  bool read_all_fields_;$/;"	m	class:ycsbc::CoreWorkload
+readcachecnt	getStatistics.py	/^    readcachecnt = re.findall("read\\.cache\\.time.*?count:([0-9]+)",filetext)[1]$/;"	v
+readcachetime	getStatistics.py	/^    readcachetime = re.findall("read\\.cache\\.time.*?ave:([0-9.]+)",filetext)[1]$/;"	v
+reader	redis/hiredis/hiredis.h	/^    redisReader *reader; \/* Protocol reader *\/$/;"	m	struct:redisContext
+readfiletime	getStatistics.py	/^    readfiletime = re.findall("block\\.file\\.read\\.time.*?ave:([0-9.]+)",filetext)[1]$/;"	v
+readfinecnt	getStatistics.py	/^    readfinecnt = re.findall("block\\.file\\.read\\.time.*?count:([0-9]+)",filetext)[1]$/;"	v
+reading	redis/hiredis/adapters/ae.h	/^    int reading, writing;$/;"	m	struct:redisAeEvents
+reading	redis/hiredis/adapters/libev.h	/^    int reading, writing;$/;"	m	struct:redisLibevEvents
+readlatency	getStatistics.py	/^    readlatency = re.findall("([0-9.]+)us Read",filetext)[1]$/;"	v
+readnocachecnt	getStatistics.py	/^    readnocachecnt = re.findall("read\\.no\\.cache\\.time.*?count:([0-9]+)",filetext)[1]$/;"	v
+readnocachetime	getStatistics.py	/^    readnocachetime = re.findall("read\\.no\\.cache\\.time.*?ave:([0-9.]+)",filetext)[1]$/;"	v
+readops	getStatistics.py	/^    readops = re.findall("Read ops: ([0-9]+)",filetext)[1]$/;"	v
+readzerolatency	getStatistics.py	/^    readzerolatency = re.findall("([0-9.]+)us Zero",filetext)[1]$/;"	v
+readzeroops	getStatistics.py	/^    readzeroops = re.findall("Zero-result ops: ([0-9]+)",filetext)[1]$/;"	v
+record_count_	core/core_workload.h	/^  size_t record_count_;$/;"	m	class:ycsbc::CoreWorkload
+redisAeAddRead	redis/hiredis/adapters/ae.h	/^static void redisAeAddRead(void *privdata) {$/;"	f
+redisAeAddWrite	redis/hiredis/adapters/ae.h	/^static void redisAeAddWrite(void *privdata) {$/;"	f
+redisAeAttach	redis/hiredis/adapters/ae.h	/^static int redisAeAttach(aeEventLoop *loop, redisAsyncContext *ac) {$/;"	f
+redisAeCleanup	redis/hiredis/adapters/ae.h	/^static void redisAeCleanup(void *privdata) {$/;"	f
+redisAeDelRead	redis/hiredis/adapters/ae.h	/^static void redisAeDelRead(void *privdata) {$/;"	f
+redisAeDelWrite	redis/hiredis/adapters/ae.h	/^static void redisAeDelWrite(void *privdata) {$/;"	f
+redisAeEvents	redis/hiredis/adapters/ae.h	/^typedef struct redisAeEvents {$/;"	s
+redisAeEvents	redis/hiredis/adapters/ae.h	/^} redisAeEvents;$/;"	t	typeref:struct:redisAeEvents
+redisAeReadEvent	redis/hiredis/adapters/ae.h	/^static void redisAeReadEvent(aeEventLoop *el, int fd, void *privdata, int mask) {$/;"	f
+redisAeWriteEvent	redis/hiredis/adapters/ae.h	/^static void redisAeWriteEvent(aeEventLoop *el, int fd, void *privdata, int mask) {$/;"	f
+redisAppendCommand	redis/hiredis/hiredis.c	/^int redisAppendCommand(redisContext *c, const char *format, ...) {$/;"	f
+redisAppendCommandArgv	redis/hiredis/hiredis.c	/^int redisAppendCommandArgv(redisContext *c, int argc, const char **argv, const size_t *argvlen) {$/;"	f
+redisAppendFormattedCommand	redis/hiredis/hiredis.c	/^int redisAppendFormattedCommand(redisContext *c, const char *cmd, size_t len) {$/;"	f
+redisAsyncCommand	redis/hiredis/async.c	/^int redisAsyncCommand(redisAsyncContext *ac, redisCallbackFn *fn, void *privdata, const char *format, ...) {$/;"	f
+redisAsyncCommandArgv	redis/hiredis/async.c	/^int redisAsyncCommandArgv(redisAsyncContext *ac, redisCallbackFn *fn, void *privdata, int argc, const char **argv, const size_t *argvlen) {$/;"	f
+redisAsyncConnect	redis/hiredis/async.c	/^redisAsyncContext *redisAsyncConnect(const char *ip, int port) {$/;"	f
+redisAsyncConnectBind	redis/hiredis/async.c	/^redisAsyncContext *redisAsyncConnectBind(const char *ip, int port,$/;"	f
+redisAsyncConnectBindWithReuse	redis/hiredis/async.c	/^redisAsyncContext *redisAsyncConnectBindWithReuse(const char *ip, int port,$/;"	f
+redisAsyncConnectUnix	redis/hiredis/async.c	/^redisAsyncContext *redisAsyncConnectUnix(const char *path) {$/;"	f
+redisAsyncContext	redis/hiredis/async.h	/^typedef struct redisAsyncContext {$/;"	s
+redisAsyncContext	redis/hiredis/async.h	/^} redisAsyncContext;$/;"	t	typeref:struct:redisAsyncContext
+redisAsyncDisconnect	redis/hiredis/async.c	/^void redisAsyncDisconnect(redisAsyncContext *ac) {$/;"	f
+redisAsyncFormattedCommand	redis/hiredis/async.c	/^int redisAsyncFormattedCommand(redisAsyncContext *ac, redisCallbackFn *fn, void *privdata, const char *cmd, size_t len) {$/;"	f
+redisAsyncFree	redis/hiredis/async.c	/^void redisAsyncFree(redisAsyncContext *ac) {$/;"	f
+redisAsyncHandleRead	redis/hiredis/async.c	/^void redisAsyncHandleRead(redisAsyncContext *ac) {$/;"	f
+redisAsyncHandleWrite	redis/hiredis/async.c	/^void redisAsyncHandleWrite(redisAsyncContext *ac) {$/;"	f
+redisAsyncInitialize	redis/hiredis/async.c	/^static redisAsyncContext *redisAsyncInitialize(redisContext *c) {$/;"	f	file:
+redisAsyncSetConnectCallback	redis/hiredis/async.c	/^int redisAsyncSetConnectCallback(redisAsyncContext *ac, redisConnectCallback *fn) {$/;"	f
+redisAsyncSetDisconnectCallback	redis/hiredis/async.c	/^int redisAsyncSetDisconnectCallback(redisAsyncContext *ac, redisDisconnectCallback *fn) {$/;"	f
+redisBufferRead	redis/hiredis/hiredis.c	/^int redisBufferRead(redisContext *c) {$/;"	f
+redisBufferWrite	redis/hiredis/hiredis.c	/^int redisBufferWrite(redisContext *c, int *done) {$/;"	f
+redisCallback	redis/hiredis/async.h	/^typedef struct redisCallback {$/;"	s
+redisCallback	redis/hiredis/async.h	/^} redisCallback;$/;"	t	typeref:struct:redisCallback
+redisCallbackFn	redis/hiredis/async.h	/^typedef void (redisCallbackFn)(struct redisAsyncContext*, void*, void*);$/;"	t
+redisCallbackList	redis/hiredis/async.h	/^typedef struct redisCallbackList {$/;"	s
+redisCallbackList	redis/hiredis/async.h	/^} redisCallbackList;$/;"	t	typeref:struct:redisCallbackList
+redisCheckSocketError	redis/hiredis/net.c	/^int redisCheckSocketError(redisContext *c) {$/;"	f
+redisCommand	redis/hiredis/hiredis.c	/^void *redisCommand(redisContext *c, const char *format, ...) {$/;"	f
+redisCommandArgv	redis/hiredis/hiredis.c	/^void *redisCommandArgv(redisContext *c, int argc, const char **argv, const size_t *argvlen) {$/;"	f
+redisConnect	redis/hiredis/hiredis.c	/^redisContext *redisConnect(const char *ip, int port) {$/;"	f
+redisConnectBindNonBlock	redis/hiredis/hiredis.c	/^redisContext *redisConnectBindNonBlock(const char *ip, int port,$/;"	f
+redisConnectBindNonBlockWithReuse	redis/hiredis/hiredis.c	/^redisContext *redisConnectBindNonBlockWithReuse(const char *ip, int port,$/;"	f
+redisConnectCallback	redis/hiredis/async.h	/^typedef void (redisConnectCallback)(const struct redisAsyncContext*, int status);$/;"	t
+redisConnectFd	redis/hiredis/hiredis.c	/^redisContext *redisConnectFd(int fd) {$/;"	f
+redisConnectNonBlock	redis/hiredis/hiredis.c	/^redisContext *redisConnectNonBlock(const char *ip, int port) {$/;"	f
+redisConnectUnix	redis/hiredis/hiredis.c	/^redisContext *redisConnectUnix(const char *path) {$/;"	f
+redisConnectUnixNonBlock	redis/hiredis/hiredis.c	/^redisContext *redisConnectUnixNonBlock(const char *path) {$/;"	f
+redisConnectUnixWithTimeout	redis/hiredis/hiredis.c	/^redisContext *redisConnectUnixWithTimeout(const char *path, const struct timeval tv) {$/;"	f
+redisConnectWithTimeout	redis/hiredis/hiredis.c	/^redisContext *redisConnectWithTimeout(const char *ip, int port, const struct timeval tv) {$/;"	f
+redisConnectionType	redis/hiredis/hiredis.h	/^enum redisConnectionType {$/;"	g
+redisContext	redis/hiredis/hiredis.h	/^typedef struct redisContext {$/;"	s
+redisContext	redis/hiredis/hiredis.h	/^} redisContext;$/;"	t	typeref:struct:redisContext
+redisContextCloseFd	redis/hiredis/net.c	/^static void redisContextCloseFd(redisContext *c) {$/;"	f	file:
+redisContextConnectBindTcp	redis/hiredis/net.c	/^int redisContextConnectBindTcp(redisContext *c, const char *addr, int port,$/;"	f
+redisContextConnectTcp	redis/hiredis/net.c	/^int redisContextConnectTcp(redisContext *c, const char *addr, int port,$/;"	f
+redisContextConnectUnix	redis/hiredis/net.c	/^int redisContextConnectUnix(redisContext *c, const char *path, const struct timeval *timeout) {$/;"	f
+redisContextInit	redis/hiredis/hiredis.c	/^static redisContext *redisContextInit(void) {$/;"	f	file:
+redisContextSetTimeout	redis/hiredis/net.c	/^int redisContextSetTimeout(redisContext *c, const struct timeval tv) {$/;"	f
+redisContextWaitReady	redis/hiredis/net.c	/^static int redisContextWaitReady(redisContext *c, const struct timeval *timeout) {$/;"	f	file:
+redisCreateSocket	redis/hiredis/net.c	/^static int redisCreateSocket(redisContext *c, int type) {$/;"	f	file:
+redisDisconnectCallback	redis/hiredis/async.h	/^typedef void (redisDisconnectCallback)(const struct redisAsyncContext*, int status);$/;"	t
+redisEnableKeepAlive	redis/hiredis/hiredis.c	/^int redisEnableKeepAlive(redisContext *c) {$/;"	f
+redisFormatCommand	redis/hiredis/hiredis.c	/^int redisFormatCommand(char **target, const char *format, ...) {$/;"	f
+redisFormatCommandArgv	redis/hiredis/hiredis.c	/^int redisFormatCommandArgv(char **target, int argc, const char **argv, const size_t *argvlen) {$/;"	f
+redisFormatSdsCommandArgv	redis/hiredis/hiredis.c	/^int redisFormatSdsCommandArgv(sds *target, int argc, const char **argv,$/;"	f
+redisFree	redis/hiredis/hiredis.c	/^void redisFree(redisContext *c) {$/;"	f
+redisFreeCommand	redis/hiredis/hiredis.c	/^void redisFreeCommand(char *cmd) {$/;"	f
+redisFreeKeepFd	redis/hiredis/hiredis.c	/^int redisFreeKeepFd(redisContext *c) {$/;"	f
+redisFreeSdsCommand	redis/hiredis/hiredis.c	/^void redisFreeSdsCommand(sds cmd) {$/;"	f
+redisGetReply	redis/hiredis/hiredis.c	/^int redisGetReply(redisContext *c, void **reply) {$/;"	f
+redisGetReplyFromReader	redis/hiredis/hiredis.c	/^int redisGetReplyFromReader(redisContext *c, void **reply) {$/;"	f
+redisIvykisAddRead	redis/hiredis/adapters/ivykis.h	/^static void redisIvykisAddRead(void *privdata) {$/;"	f
+redisIvykisAddWrite	redis/hiredis/adapters/ivykis.h	/^static void redisIvykisAddWrite(void *privdata) {$/;"	f
+redisIvykisAttach	redis/hiredis/adapters/ivykis.h	/^static int redisIvykisAttach(redisAsyncContext *ac) {$/;"	f
+redisIvykisCleanup	redis/hiredis/adapters/ivykis.h	/^static void redisIvykisCleanup(void *privdata) {$/;"	f
+redisIvykisDelRead	redis/hiredis/adapters/ivykis.h	/^static void redisIvykisDelRead(void *privdata) {$/;"	f
+redisIvykisDelWrite	redis/hiredis/adapters/ivykis.h	/^static void redisIvykisDelWrite(void *privdata) {$/;"	f
+redisIvykisEvents	redis/hiredis/adapters/ivykis.h	/^typedef struct redisIvykisEvents {$/;"	s
+redisIvykisEvents	redis/hiredis/adapters/ivykis.h	/^} redisIvykisEvents;$/;"	t	typeref:struct:redisIvykisEvents
+redisIvykisReadEvent	redis/hiredis/adapters/ivykis.h	/^static void redisIvykisReadEvent(void *arg) {$/;"	f
+redisIvykisWriteEvent	redis/hiredis/adapters/ivykis.h	/^static void redisIvykisWriteEvent(void *arg) {$/;"	f
+redisKeepAlive	redis/hiredis/net.c	/^int redisKeepAlive(redisContext *c, int interval) {$/;"	f
+redisLibevAddRead	redis/hiredis/adapters/libev.h	/^static void redisLibevAddRead(void *privdata) {$/;"	f
+redisLibevAddWrite	redis/hiredis/adapters/libev.h	/^static void redisLibevAddWrite(void *privdata) {$/;"	f
+redisLibevAttach	redis/hiredis/adapters/libev.h	/^static int redisLibevAttach(EV_P_ redisAsyncContext *ac) {$/;"	f
+redisLibevCleanup	redis/hiredis/adapters/libev.h	/^static void redisLibevCleanup(void *privdata) {$/;"	f
+redisLibevDelRead	redis/hiredis/adapters/libev.h	/^static void redisLibevDelRead(void *privdata) {$/;"	f
+redisLibevDelWrite	redis/hiredis/adapters/libev.h	/^static void redisLibevDelWrite(void *privdata) {$/;"	f
+redisLibevEvents	redis/hiredis/adapters/libev.h	/^typedef struct redisLibevEvents {$/;"	s
+redisLibevEvents	redis/hiredis/adapters/libev.h	/^} redisLibevEvents;$/;"	t	typeref:struct:redisLibevEvents
+redisLibevReadEvent	redis/hiredis/adapters/libev.h	/^static void redisLibevReadEvent(EV_P_ ev_io *watcher, int revents) {$/;"	f
+redisLibevWriteEvent	redis/hiredis/adapters/libev.h	/^static void redisLibevWriteEvent(EV_P_ ev_io *watcher, int revents) {$/;"	f
+redisLibeventAddRead	redis/hiredis/adapters/libevent.h	/^static void redisLibeventAddRead(void *privdata) {$/;"	f
+redisLibeventAddWrite	redis/hiredis/adapters/libevent.h	/^static void redisLibeventAddWrite(void *privdata) {$/;"	f
+redisLibeventAttach	redis/hiredis/adapters/libevent.h	/^static int redisLibeventAttach(redisAsyncContext *ac, struct event_base *base) {$/;"	f
+redisLibeventCleanup	redis/hiredis/adapters/libevent.h	/^static void redisLibeventCleanup(void *privdata) {$/;"	f
+redisLibeventDelRead	redis/hiredis/adapters/libevent.h	/^static void redisLibeventDelRead(void *privdata) {$/;"	f
+redisLibeventDelWrite	redis/hiredis/adapters/libevent.h	/^static void redisLibeventDelWrite(void *privdata) {$/;"	f
+redisLibeventEvents	redis/hiredis/adapters/libevent.h	/^typedef struct redisLibeventEvents {$/;"	s
+redisLibeventEvents	redis/hiredis/adapters/libevent.h	/^} redisLibeventEvents;$/;"	t	typeref:struct:redisLibeventEvents
+redisLibeventReadEvent	redis/hiredis/adapters/libevent.h	/^static void redisLibeventReadEvent(int fd, short event, void *arg) {$/;"	f
+redisLibeventWriteEvent	redis/hiredis/adapters/libevent.h	/^static void redisLibeventWriteEvent(int fd, short event, void *arg) {$/;"	f
+redisLibuvAddRead	redis/hiredis/adapters/libuv.h	/^static void redisLibuvAddRead(void *privdata) {$/;"	f
+redisLibuvAddWrite	redis/hiredis/adapters/libuv.h	/^static void redisLibuvAddWrite(void *privdata) {$/;"	f
+redisLibuvAttach	redis/hiredis/adapters/libuv.h	/^static int redisLibuvAttach(redisAsyncContext* ac, uv_loop_t* loop) {$/;"	f
+redisLibuvCleanup	redis/hiredis/adapters/libuv.h	/^static void redisLibuvCleanup(void *privdata) {$/;"	f
+redisLibuvDelRead	redis/hiredis/adapters/libuv.h	/^static void redisLibuvDelRead(void *privdata) {$/;"	f
+redisLibuvDelWrite	redis/hiredis/adapters/libuv.h	/^static void redisLibuvDelWrite(void *privdata) {$/;"	f
+redisLibuvEvents	redis/hiredis/adapters/libuv.h	/^typedef struct redisLibuvEvents {$/;"	s
+redisLibuvEvents	redis/hiredis/adapters/libuv.h	/^} redisLibuvEvents;$/;"	t	typeref:struct:redisLibuvEvents
+redisLibuvPoll	redis/hiredis/adapters/libuv.h	/^static void redisLibuvPoll(uv_poll_t* handle, int status, int events) {$/;"	f
+redisMacOSAddRead	redis/hiredis/adapters/macosx.h	/^static void redisMacOSAddRead(void *privdata) {$/;"	f
+redisMacOSAddWrite	redis/hiredis/adapters/macosx.h	/^static void redisMacOSAddWrite(void *privdata) {$/;"	f
+redisMacOSAsyncCallback	redis/hiredis/adapters/macosx.h	/^static void redisMacOSAsyncCallback(CFSocketRef __unused s, CFSocketCallBackType callbackType, CFDataRef __unused address, const void __unused *data, void *info) {$/;"	f
+redisMacOSAttach	redis/hiredis/adapters/macosx.h	/^static int redisMacOSAttach(redisAsyncContext *redisAsyncCtx, CFRunLoopRef runLoop) {$/;"	f
+redisMacOSCleanup	redis/hiredis/adapters/macosx.h	/^static void redisMacOSCleanup(void *privdata) {$/;"	f
+redisMacOSDelRead	redis/hiredis/adapters/macosx.h	/^static void redisMacOSDelRead(void *privdata) {$/;"	f
+redisMacOSDelWrite	redis/hiredis/adapters/macosx.h	/^static void redisMacOSDelWrite(void *privdata) {$/;"	f
+redisProcessCallbacks	redis/hiredis/async.c	/^void redisProcessCallbacks(redisAsyncContext *ac) {$/;"	f
+redisReadTask	redis/hiredis/read.h	/^typedef struct redisReadTask {$/;"	s
+redisReadTask	redis/hiredis/read.h	/^} redisReadTask;$/;"	t	typeref:struct:redisReadTask
+redisReader	redis/hiredis/read.h	/^typedef struct redisReader {$/;"	s
+redisReader	redis/hiredis/read.h	/^} redisReader;$/;"	t	typeref:struct:redisReader
+redisReaderCreate	redis/hiredis/hiredis.c	/^redisReader *redisReaderCreate(void) {$/;"	f
+redisReaderCreateWithFunctions	redis/hiredis/read.c	/^redisReader *redisReaderCreateWithFunctions(redisReplyObjectFunctions *fn) {$/;"	f
+redisReaderFeed	redis/hiredis/read.c	/^int redisReaderFeed(redisReader *r, const char *buf, size_t len) {$/;"	f
+redisReaderFree	redis/hiredis/read.c	/^void redisReaderFree(redisReader *r) {$/;"	f
+redisReaderGetReply	redis/hiredis/read.c	/^int redisReaderGetReply(redisReader *r, void **reply) {$/;"	f
+redisReconnect	redis/hiredis/hiredis.c	/^int redisReconnect(redisContext *c) {$/;"	f
+redisReply	redis/hiredis/hiredis.h	/^typedef struct redisReply {$/;"	s
+redisReply	redis/hiredis/hiredis.h	/^} redisReply;$/;"	t	typeref:struct:redisReply
+redisReplyObjectFunctions	redis/hiredis/read.h	/^typedef struct redisReplyObjectFunctions {$/;"	s
+redisReplyObjectFunctions	redis/hiredis/read.h	/^} redisReplyObjectFunctions;$/;"	t	typeref:struct:redisReplyObjectFunctions
+redisReplyReaderCreate	redis/hiredis/read.h	104;"	d
+redisReplyReaderFeed	redis/hiredis/read.h	106;"	d
+redisReplyReaderFree	redis/hiredis/read.h	105;"	d
+redisReplyReaderGetError	redis/hiredis/read.h	110;"	d
+redisReplyReaderGetObject	redis/hiredis/read.h	109;"	d
+redisReplyReaderGetReply	redis/hiredis/read.h	107;"	d
+redisReplyReaderSetPrivdata	redis/hiredis/read.h	108;"	d
+redisSetBlocking	redis/hiredis/net.c	/^static int redisSetBlocking(redisContext *c, int blocking) {$/;"	f	file:
+redisSetReuseAddr	redis/hiredis/net.c	/^static int redisSetReuseAddr(redisContext *c) {$/;"	f	file:
+redisSetTcpNoDelay	redis/hiredis/net.c	/^static int redisSetTcpNoDelay(redisContext *c) {$/;"	f	file:
+redisSetTimeout	redis/hiredis/hiredis.c	/^int redisSetTimeout(redisContext *c, const struct timeval tv) {$/;"	f
+redis_	db/redis_db.h	/^  RedisClient redis_;$/;"	m	class:ycsbc::RedisDB
+redis_source_add_read	redis/hiredis/adapters/glib.h	/^redis_source_add_read (gpointer data)$/;"	f
+redis_source_add_write	redis/hiredis/adapters/glib.h	/^redis_source_add_write (gpointer data)$/;"	f
+redis_source_check	redis/hiredis/adapters/glib.h	/^redis_source_check (GSource *source)$/;"	f
+redis_source_cleanup	redis/hiredis/adapters/glib.h	/^redis_source_cleanup (gpointer data)$/;"	f
+redis_source_del_read	redis/hiredis/adapters/glib.h	/^redis_source_del_read (gpointer data)$/;"	f
+redis_source_del_write	redis/hiredis/adapters/glib.h	/^redis_source_del_write (gpointer data)$/;"	f
+redis_source_dispatch	redis/hiredis/adapters/glib.h	/^redis_source_dispatch (GSource      *source,$/;"	f
+redis_source_finalize	redis/hiredis/adapters/glib.h	/^redis_source_finalize (GSource *source)$/;"	f
+redis_source_new	redis/hiredis/adapters/glib.h	/^redis_source_new (redisAsyncContext *ac)$/;"	f
+redis_source_prepare	redis/hiredis/adapters/glib.h	/^redis_source_prepare (GSource *source,$/;"	f
+redisvAppendCommand	redis/hiredis/hiredis.c	/^int redisvAppendCommand(redisContext *c, const char *format, va_list ap) {$/;"	f
+redisvAsyncCommand	redis/hiredis/async.c	/^int redisvAsyncCommand(redisAsyncContext *ac, redisCallbackFn *fn, void *privdata, const char *format, va_list ap) {$/;"	f
+redisvCommand	redis/hiredis/hiredis.c	/^void *redisvCommand(redisContext *c, const char *format, va_list ap) {$/;"	f
+redisvFormatCommand	redis/hiredis/hiredis.c	/^int redisvFormatCommand(char **target, const char *format, va_list ap) {$/;"	f
+releasecnt	getStatistics.py	/^    releasecnt = re.findall("release\\.time.*?count:([0-9]+)",filetext)[1]$/;"	v
+releasetime	getStatistics.py	/^    releasetime = re.findall("release\\.time.*?ave:([0-9.]+)",filetext)[1]$/;"	v
+replies	redis/hiredis/async.h	/^    redisCallbackList replies;$/;"	m	struct:redisAsyncContext
+reply	redis/hiredis/read.h	/^    void *reply; \/* Temporary reply pointer *\/$/;"	m	struct:redisReader
+res_	core/client.h	/^	 struct timeval end_time_,res_;$/;"	m	class:ycsbc::WallTimer	typeref:struct:ycsbc::WallTimer::
+rev	redis/hiredis/adapters/libev.h	/^    ev_io rev, wev;$/;"	m	struct:redisLibevEvents
+rev	redis/hiredis/adapters/libevent.h	/^    struct event rev, wev;$/;"	m	struct:redisLibeventEvents	typeref:struct:redisLibeventEvents::event
+ridx	redis/hiredis/read.h	/^    int ridx; \/* Index of current read task *\/$/;"	m	struct:redisReader
+rstack	redis/hiredis/read.h	/^    redisReadTask rstack[9];$/;"	m	struct:redisReader
+run	redis/hiredis/examples/example-qt.cpp	/^void ExampleQt::run() {$/;"	f	class:ExampleQt
+scan_len_chooser_	core/core_workload.h	/^  Generator<uint64_t> *scan_len_chooser_;$/;"	m	class:ycsbc::CoreWorkload
+sds	redis/hiredis/sds.h	/^typedef char *sds;$/;"	t
+sdsAllocSize	redis/hiredis/sds.c	/^size_t sdsAllocSize(sds s) {$/;"	f
+sdsIncrLen	redis/hiredis/sds.c	/^void sdsIncrLen(sds s, int incr) {$/;"	f
+sdsMakeRoomFor	redis/hiredis/sds.c	/^sds sdsMakeRoomFor(sds s, size_t addlen) {$/;"	f
+sdsRemoveFreeSpace	redis/hiredis/sds.c	/^sds sdsRemoveFreeSpace(sds s) {$/;"	f
+sdsavail	redis/hiredis/sds.h	/^static inline size_t sdsavail(const sds s) {$/;"	f
+sdscat	redis/hiredis/sds.c	/^sds sdscat(sds s, const char *t) {$/;"	f
+sdscatfmt	redis/hiredis/sds.c	/^sds sdscatfmt(sds s, char const *fmt, ...) {$/;"	f
+sdscatlen	redis/hiredis/sds.c	/^sds sdscatlen(sds s, const void *t, size_t len) {$/;"	f
+sdscatprintf	redis/hiredis/sds.c	/^sds sdscatprintf(sds s, const char *fmt, ...) {$/;"	f
+sdscatrepr	redis/hiredis/sds.c	/^sds sdscatrepr(sds s, const char *p, size_t len) {$/;"	f
+sdscatsds	redis/hiredis/sds.c	/^sds sdscatsds(sds s, const sds t) {$/;"	f
+sdscatvprintf	redis/hiredis/sds.c	/^sds sdscatvprintf(sds s, const char *fmt, va_list ap) {$/;"	f
+sdsclear	redis/hiredis/sds.c	/^void sdsclear(sds s) {$/;"	f
+sdscmp	redis/hiredis/sds.c	/^int sdscmp(const sds s1, const sds s2) {$/;"	f
+sdscpy	redis/hiredis/sds.c	/^sds sdscpy(sds s, const char *t) {$/;"	f
+sdscpylen	redis/hiredis/sds.c	/^sds sdscpylen(sds s, const char *t, size_t len) {$/;"	f
+sdsdup	redis/hiredis/sds.c	/^sds sdsdup(const sds s) {$/;"	f
+sdsempty	redis/hiredis/sds.c	/^sds sdsempty(void) {$/;"	f
+sdsfree	redis/hiredis/sds.c	/^void sdsfree(sds s) {$/;"	f
+sdsfreesplitres	redis/hiredis/sds.c	/^void sdsfreesplitres(sds *tokens, int count) {$/;"	f
+sdsfromlonglong	redis/hiredis/sds.c	/^sds sdsfromlonglong(long long value) {$/;"	f
+sdsgrowzero	redis/hiredis/sds.c	/^sds sdsgrowzero(sds s, size_t len) {$/;"	f
+sdshdr	redis/hiredis/sds.h	/^struct sdshdr {$/;"	s
+sdsjoin	redis/hiredis/sds.c	/^sds sdsjoin(char **argv, int argc, char *sep, size_t seplen) {$/;"	f
+sdsjoinsds	redis/hiredis/sds.c	/^sds sdsjoinsds(sds *argv, int argc, const char *sep, size_t seplen) {$/;"	f
+sdslen	redis/hiredis/sds.h	/^static inline size_t sdslen(const sds s) {$/;"	f
+sdsll2str	redis/hiredis/sds.c	/^int sdsll2str(char *s, long long value) {$/;"	f
+sdsmapchars	redis/hiredis/sds.c	/^sds sdsmapchars(sds s, const char *from, const char *to, size_t setlen) {$/;"	f
+sdsnew	redis/hiredis/sds.c	/^sds sdsnew(const char *init) {$/;"	f
+sdsnewlen	redis/hiredis/sds.c	/^sds sdsnewlen(const void *init, size_t initlen) {$/;"	f
+sdsrange	redis/hiredis/sds.c	/^void sdsrange(sds s, int start, int end) {$/;"	f
+sdssplitargs	redis/hiredis/sds.c	/^sds *sdssplitargs(const char *line, int *argc) {$/;"	f
+sdssplitlen	redis/hiredis/sds.c	/^sds *sdssplitlen(const char *s, int len, const char *sep, int seplen, int *count) {$/;"	f
+sdstolower	redis/hiredis/sds.c	/^void sdstolower(sds s) {$/;"	f
+sdstoupper	redis/hiredis/sds.c	/^void sdstoupper(sds s) {$/;"	f
+sdstrim	redis/hiredis/sds.c	/^void sdstrim(sds s, const char *cset) {$/;"	f
+sdsull2str	redis/hiredis/sds.c	/^int sdsull2str(char *s, unsigned long long v) {$/;"	f
+sdsupdatelen	redis/hiredis/sds.c	/^void sdsupdatelen(sds s) {$/;"	f
+seekNewline	redis/hiredis/read.c	/^static char *seekNewline(char *s, size_t len) {$/;"	f	file:
+select_database	redis/hiredis/test.c	/^static redisContext *select_database(redisContext *c) {$/;"	f	file:
+setConfigPath	db/basic_config.cc	/^void Basic_ConfigMod<T>::setConfigPath (const char* path) {$/;"	f	class:Basic_ConfigMod
+setConfigPath	db/basic_config.cc	/^void LevelDB_ConfigMod::setConfigPath(const char*path){$/;"	f	class:LevelDB_ConfigMod
+setContext	redis/hiredis/adapters/qt.h	/^        int setContext(redisAsyncContext * ac) {$/;"	f	class:RedisQtAdapter
+set_value	lib/string.h	/^inline void String::set_value(const char *v) {$/;"	f	class:vmp::String
+size	redis/hiredis/dict.h	/^    unsigned long size;$/;"	m	struct:dict
+sizemask	redis/hiredis/dict.h	/^    unsigned long sizemask;$/;"	m	struct:dict
+skipratio_inload	core/core_workload.h	/^  int skipratio_inload;$/;"	m	class:ycsbc::CoreWorkload
+slaves_	redis/redis_client.h	/^  int slaves_;$/;"	m	class:ycsbc::RedisClient
+snprintf	redis/hiredis/win32.h	14;"	d
+socketRef	redis/hiredis/adapters/macosx.h	/^    CFSocketRef socketRef;$/;"	m	struct:__anon2
+source	redis/hiredis/adapters/glib.h	/^    GSource source;$/;"	m	struct:__anon1
+sourceRef	redis/hiredis/adapters/macosx.h	/^    CFRunLoopSourceRef sourceRef;$/;"	m	struct:__anon2
+source_addr	redis/hiredis/hiredis.h	/^        char *source_addr;$/;"	m	struct:redisContext::__anon5
+start_time_	core/client.h	/^	struct timeval start_time_;$/;"	m	class:ycsbc::WallTimer	typeref:struct:ycsbc::WallTimer::timeval
+str	redis/hiredis/hiredis.h	/^    char *str; \/* Used for both REDIS_REPLY_ERROR and REDIS_REPLY_STRING *\/$/;"	m	struct:redisReply
+str_	util/avg.py	/^str_ = [int(i) for i in str_]$/;"	v
+str_	util/avg.py	/^str_ = strs.split(",")$/;"	v
+strs	util/avg.py	/^strs = f.readline()$/;"	v
+strs	util/avg.py	/^strs = strs[:-1]$/;"	v
+sub	redis/hiredis/async.h	/^    } sub;$/;"	m	struct:redisAsyncContext	typeref:struct:redisAsyncContext::__anon4
+sum_	core/discrete_generator.h	/^  double sum_;$/;"	m	class:ycsbc::DiscreteGenerator
+sys	getStatistics.py	/^import sys$/;"	i
+sys	modifyConfig.py	/^import sys$/;"	i
+sys	parse_result.py	/^import sys$/;"	i
+sys	util/avg.py	/^import sys$/;"	i
+sys	util/parse_fp.py	/^import sys$/;"	i
+sys	util/parse_freq.py	/^import sys$/;"	i
+t_id	core/client.h	/^  int t_id;$/;"	m	class:ycsbc::Client
+t_type	core/client.h	/^  int t_type;$/;"	m	class:ycsbc::Client
+table	redis/hiredis/dict.h	/^    dictEntry **table;$/;"	m	struct:dict
+table_	lib/stl_hashtable.h	/^  Hashtable table_;$/;"	m	class:vmp::StlHashtable
+table_	lib/tbb_rand_hashtable.h	/^  Hashtable table_;$/;"	m	class:vmp::TbbRandHashtable
+table_	lib/tbb_scan_hashtable.h	/^  Hashtable table_;$/;"	m	class:vmp::TbbScanHashtable
+table_name_	core/core_workload.h	/^  std::string table_name_;$/;"	m	class:ycsbc::CoreWorkload
+tail	redis/hiredis/async.h	/^    redisCallback *head, *tail;$/;"	m	struct:redisCallbackList
+tcp	redis/hiredis/hiredis.h	/^    } tcp;$/;"	m	struct:redisContext	typeref:struct:redisContext::__anon5
+tcp	redis/hiredis/test.c	/^    } tcp;$/;"	m	struct:config	typeref:struct:config::__anon7	file:
+test	redis/hiredis/test.c	38;"	d	file:
+test_append_formatted_commands	redis/hiredis/test.c	/^static void test_append_formatted_commands(struct config config) {$/;"	f	file:
+test_blocking_connection	redis/hiredis/test.c	/^static void test_blocking_connection(struct config config) {$/;"	f	file:
+test_blocking_connection_errors	redis/hiredis/test.c	/^static void test_blocking_connection_errors(void) {$/;"	f	file:
+test_blocking_connection_timeouts	redis/hiredis/test.c	/^static void test_blocking_connection_timeouts(struct config config) {$/;"	f	file:
+test_blocking_io_errors	redis/hiredis/test.c	/^static void test_blocking_io_errors(struct config config) {$/;"	f	file:
+test_cond	redis/hiredis/test.c	39;"	d	file:
+test_format_commands	redis/hiredis/test.c	/^static void test_format_commands(void) {$/;"	f	file:
+test_free_null	redis/hiredis/test.c	/^static void test_free_null(void) {$/;"	f	file:
+test_invalid_timeout_errors	redis/hiredis/test.c	/^static void test_invalid_timeout_errors(struct config config) {$/;"	f	file:
+test_reply_reader	redis/hiredis/test.c	/^static void test_reply_reader(void) {$/;"	f	file:
+test_throughput	redis/hiredis/test.c	/^static void test_throughput(struct config config) {$/;"	f	file:
+tests	redis/hiredis/test.c	/^static int tests = 0, fails = 0;$/;"	v	file:
+theta_	core/zipfian_generator.h	/^  double theta_, zeta_n_, eta_, alpha_, zeta_2_;$/;"	m	class:ycsbc::ZipfianGenerator
+thread_id	ycsbc.cc	/^int thread_id = 0;$/;"	v
+time	mem_stat.py	/^import time$/;"	i
+time_	core/timer.h	/^  Clock::time_point time_;$/;"	m	class:utils::Timer
+timeout	redis/hiredis/hiredis.h	/^    struct timeval *timeout;$/;"	m	struct:redisContext	typeref:struct:redisContext::timeval
+timeout	redis/hiredis/test.c	/^        struct timeval timeout;$/;"	m	struct:config::__anon7	typeref:struct:config::__anon7::timeval	file:
+timer_	core/client.h	/^  WallTimer timer_;$/;"	m	class:ycsbc::Client
+timestamp_trace_fp_	core/client.h	/^  FILE *timestamp_trace_fp_;$/;"	m	class:ycsbc::Client
+timestamp_trace_fp_	core/core_workload.h	/^  FILE *timestamp_trace_fp_;$/;"	m	class:ycsbc::CoreWorkload
+timevalTous	core/client.h	/^	static unsigned long long inline  timevalTous(struct timeval &res) {$/;"	f	class:ycsbc::WallTimer
+type	redis/hiredis/dict.h	/^    dictType *type;$/;"	m	struct:dict
+type	redis/hiredis/hiredis.h	/^    int type; \/* REDIS_REPLY_* *\/$/;"	m	struct:redisReply
+type	redis/hiredis/read.h	/^    int type;$/;"	m	struct:redisReadTask
+type	redis/hiredis/test.c	/^    enum connection_type type;$/;"	m	struct:config	typeref:enum:config::connection_type	file:
+uname_S	redis/hiredis/Makefile	/^uname_S := $(shell sh -c 'uname -s 2>\/dev\/null || echo not')$/;"	m
+unix	redis/hiredis/test.c	/^    } unix;$/;"	m	struct:config	typeref:struct:config::__anon8	file:
+unix_sock	redis/hiredis/hiredis.h	/^    } unix_sock;$/;"	m	struct:redisContext	typeref:struct:redisContext::__anon6
+upperBound	core/HotspotIntegerGenerator.h	/^ uint64_t upperBound;$/;"	m	class:ycsbc::HotspotIntegerGenerator
+usec	redis/hiredis/test.c	/^static long long usec(void) {$/;"	f	file:
+used	redis/hiredis/dict.h	/^    unsigned long used;$/;"	m	struct:dict
+utils	core/properties.h	/^namespace utils {$/;"	n
+utils	core/timer.h	/^namespace utils {$/;"	n
+utils	core/utils.h	/^namespace utils {$/;"	n
+va_copy	redis/hiredis/win32.h	10;"	d
+val	redis/hiredis/dict.h	/^    void *val;$/;"	m	struct:dictEntry
+valDestructor	redis/hiredis/dict.h	/^    void (*valDestructor)(void *privdata, void *obj);$/;"	m	struct:dictType
+valDup	redis/hiredis/dict.h	/^    void *(*valDup)(void *privdata, const void *obj);$/;"	m	struct:dictType
+value	lib/string.h	/^  const char *value() const { return value_; }$/;"	f	class:vmp::String
+value_	lib/string.h	/^  const char *value_;$/;"	m	class:vmp::String
+values_	core/discrete_generator.h	/^  std::vector<std::pair<Value, double>> values_;$/;"	m	class:ycsbc::DiscreteGenerator
+vmp	lib/lock_stl_hashtable.h	/^namespace vmp {$/;"	n
+vmp	lib/stl_hashtable.h	/^namespace vmp {$/;"	n
+vmp	lib/string.h	/^namespace vmp {$/;"	n
+vmp	lib/string_hashtable.h	/^namespace vmp {$/;"	n
+vmp	lib/tbb_rand_hashtable.h	/^namespace vmp {$/;"	n
+vmp	lib/tbb_scan_hashtable.h	/^namespace vmp {$/;"	n
+wev	redis/hiredis/adapters/libev.h	/^    ev_io rev, wev;$/;"	m	struct:redisLibevEvents
+wev	redis/hiredis/adapters/libevent.h	/^    struct event rev, wev;$/;"	m	struct:redisLibeventEvents	typeref:struct:redisLibeventEvents::
+with_latency_filename_	core/core_workload.h	/^  bool with_latency_filename_;$/;"	m	class:ycsbc::CoreWorkload
+with_operation_	core/core_workload.h	/^  bool with_operation_; \/\/operation come from trace;$/;"	m	class:ycsbc::CoreWorkload
+with_timestamp_	core/core_workload.h	/^  bool with_timestamp_;$/;"	m	class:ycsbc::CoreWorkload
+workload_	core/client.h	/^  CoreWorkload &workload_;$/;"	m	class:ycsbc::Client
+write	redis/hiredis/adapters/qt.h	/^        void write() { redisAsyncHandleWrite(m_ctx); }$/;"	f	class:RedisQtAdapter
+write_all_fields	core/core_workload.h	/^  bool write_all_fields() const { return write_all_fields_; }$/;"	f	class:ycsbc::CoreWorkload
+write_all_fields_	core/core_workload.h	/^  bool write_all_fields_;$/;"	m	class:ycsbc::CoreWorkload
+writing	redis/hiredis/adapters/ae.h	/^    int reading, writing;$/;"	m	struct:redisAeEvents
+writing	redis/hiredis/adapters/libev.h	/^    int reading, writing;$/;"	m	struct:redisLibevEvents
+ycsbc	core/HotspotIntegerGenerator.h	/^namespace ycsbc {$/;"	n
+ycsbc	core/client.h	/^namespace ycsbc {$/;"	n
+ycsbc	core/const_generator.h	/^namespace ycsbc {$/;"	n
+ycsbc	core/core_workload.h	/^namespace ycsbc {$/;"	n
+ycsbc	core/counter_generator.h	/^namespace ycsbc {$/;"	n
+ycsbc	core/db.h	/^namespace ycsbc {$/;"	n
+ycsbc	core/discrete_generator.h	/^namespace ycsbc {$/;"	n
+ycsbc	core/generator.h	/^namespace ycsbc {$/;"	n
+ycsbc	core/scrambled_zipfian_generator.h	/^namespace ycsbc {$/;"	n
+ycsbc	core/skewed_latest_generator.h	/^namespace ycsbc {$/;"	n
+ycsbc	core/uniform_generator.h	/^namespace ycsbc {$/;"	n
+ycsbc	core/zipfian_generator.h	/^namespace ycsbc {$/;"	n
+ycsbc	db/basic_db.h	/^namespace ycsbc {$/;"	n
+ycsbc	db/db_factory.h	/^namespace ycsbc {$/;"	n
+ycsbc	db/hashtable_db.cc	/^namespace ycsbc {$/;"	n	file:
+ycsbc	db/hashtable_db.h	/^namespace ycsbc {$/;"	n
+ycsbc	db/leveldbVlog_db.cc	/^namespace ycsbc {$/;"	n	file:
+ycsbc	db/leveldbVlog_db.h	/^namespace ycsbc {$/;"	n
+ycsbc	db/leveldb_db.cc	/^namespace ycsbc {$/;"	n	file:
+ycsbc	db/leveldb_db.h	/^namespace ycsbc {$/;"	n
+ycsbc	db/lock_stl_db.h	/^namespace ycsbc {$/;"	n
+ycsbc	db/redis_db.cc	/^namespace ycsbc {$/;"	n	file:
+ycsbc	db/redis_db.h	/^namespace ycsbc {$/;"	n
+ycsbc	db/rocksdb_db.cc	/^namespace ycsbc$/;"	n	file:
+ycsbc	db/rocksdb_db.h	/^namespace ycsbc {$/;"	n
+ycsbc	db/tbb_rand_db.h	/^namespace ycsbc {$/;"	n
+ycsbc	db/tbb_scan_db.h	/^namespace ycsbc {$/;"	n
+ycsbc	redis/redis_client.h	/^namespace ycsbc {$/;"	n
+zeta_2_	core/zipfian_generator.h	/^  double theta_, zeta_n_, eta_, alpha_, zeta_2_;$/;"	m	class:ycsbc::ZipfianGenerator
+zeta_n_	core/zipfian_generator.h	/^  double theta_, zeta_n_, eta_, alpha_, zeta_2_;$/;"	m	class:ycsbc::ZipfianGenerator
+zipfian_	core/skewed_latest_generator.h	/^  ZipfianGenerator zipfian_;$/;"	m	class:ycsbc::SkewedLatestGenerator
+~Basic_ConfigMod	db/basic_config.hh	/^    ~Basic_ConfigMod() {}$/;"	f	class:Basic_ConfigMod
+~Client	core/client.h	/^  virtual ~Client() { $/;"	f	class:ycsbc::Client
+~CoreWorkload	core/core_workload.h	/^  virtual ~CoreWorkload() {$/;"	f	class:ycsbc::CoreWorkload
+~DB	core/db.h	/^  virtual ~DB() { }$/;"	f	class:ycsbc::DB
+~Generator	core/generator.h	/^  virtual ~Generator() { }$/;"	f	class:ycsbc::Generator
+~LevelDB	db/leveldb_db.cc	/^LevelDB::~LevelDB()$/;"	f	class:ycsbc::LevelDB
+~LeveldbVlog	db/leveldbVlog_db.cc	/^    LeveldbVlog::~LeveldbVlog()$/;"	f	class:ycsbc::LeveldbVlog
+~LockStlDB	db/lock_stl_db.h	/^  ~LockStlDB() {$/;"	f	class:ycsbc::LockStlDB
+~RedisClient	redis/redis_client.h	/^inline RedisClient::~RedisClient() {$/;"	f	class:ycsbc::RedisClient
+~RedisQtAdapter	redis/hiredis/adapters/qt.h	/^        ~RedisQtAdapter() {$/;"	f	class:RedisQtAdapter
+~RocksDB	db/rocksdb_db.cc	/^    RocksDB::~RocksDB()$/;"	f	class:ycsbc::RocksDB
+~StringHashtable	lib/string_hashtable.h	/^  virtual ~StringHashtable() { }$/;"	f	class:vmp::StringHashtable
+~TbbRandDB	db/tbb_rand_db.h	/^  ~TbbRandDB() {$/;"	f	class:ycsbc::TbbRandDB
+~TbbScanDB	db/tbb_scan_db.h	/^  ~TbbScanDB() {$/;"	f	class:ycsbc::TbbScanDB

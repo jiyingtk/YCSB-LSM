@@ -24,6 +24,11 @@ class SkewedLatestGenerator : public Generator<uint64_t> {
     Next();
   }
   
+  SkewedLatestGenerator(CounterGenerator &counter, double zipfian_const) :
+      basis_(counter), zipfian_(basis_.Last(), zipfian_const) {
+    Next();
+  }
+
   uint64_t Next();
   uint64_t Last() { return last_; }
  private:

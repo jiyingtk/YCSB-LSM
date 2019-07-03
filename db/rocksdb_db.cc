@@ -91,31 +91,48 @@ namespace ycsbc
         options.use_direct_reads = directIO_flag;
 
         rocksdb::BlockBasedTableOptions table_options;
-        std::shared_ptr<rocksdb::Cache> block_cache = rocksdb::NewLRUCache(block_cache_size, 6, false, 0.0);
+        std::shared_ptr<rocksdb::Cache> block_cache = rocksdb::NewLRUCache(block_cache_size, 1, false, 0.0);
         table_options.block_cache = block_cache;
         table_options.block_size = 4096;
-        
-        std::shared_ptr<rocksdb::Cache> metadata_cache = rocksdb::NewLRUCache(8 * 1024 * 1024 * 1024L, 1, false, 0.0);
-        table_options.metadata_cache = metadata_cache;
 
-        // std::shared_ptr<rocksdb::Cache> filter_info_cache = rocksdb::NewLRUCache(8 * 1024 * 1024, 1, false, 0.0);
-        std::shared_ptr<rocksdb::Cache> filter_info_cache = rocksdb::NewMultiQueue(max_open_files * filter_capacity_ratio * 9, bits_per_key_per_filter, life_time, change_ratio);
-        table_options.filter_info_cache = filter_info_cache;
+        options.max_background_compactions = 20;
+        options.max_bytes_for_level_base = 512 * 1024 * 1024L;
+        // options.level0_slowdown_writes_trigger = 8;
+        // options.level0_stop_writes_trigger = 12;
 
-        table_options.index_type = rocksdb::BlockBasedTableOptions::kTwoLevelIndexSearch;
-        table_options.partition_filters = true;
-        table_options.metadata_block_size = 4096; //per filter partion size
+// #define USE_ORIGIN
 
-        table_options.bits_per_key_per_filter.assign(bits_per_key_per_filter.begin(), bits_per_key_per_filter.end());
-        table_options.init_filter_nums = init_filter_num;
+#ifndef USE_ORIGIN
 
-        table_options.filter_policy.reset(rocksdb::NewBloomFilterPolicy(bits_per_key_per_filter, false));
-        // table_options.filter_policy.reset(rocksdb::NewBloomFilterPolicy(bloom_bits, false));
+       std::shared_ptr<rocksdb::Cache> metadata_cache = rocksdb::NewLRUCache(8 * 1024 * 1024 * 1024L, 1, false, 0.0);
+       table_options.metadata_cache = metadata_cache;
+
+       // std::shared_ptr<rocksdb::Cache> filter_info_cache = rocksdb::NewLRUCache(8 * 1024 * 1024, 1, false, 0.0);
+       std::shared_ptr<rocksdb::Cache> filter_info_cache = rocksdb::NewMultiQueue(max_open_files * filter_capacity_ratio * 9, bits_per_key_per_filter, life_time, change_ratio);
+       table_options.filter_info_cache = filter_info_cache;
+
+       table_options.index_type = rocksdb::BlockBasedTableOptions::kTwoLevelIndexSearch;
+       table_options.partition_filters = true;
+       table_options.metadata_block_size = 4096; //per filter partion size
+
+       table_options.bits_per_key_per_filter.assign(bits_per_key_per_filter.begin(), bits_per_key_per_filter.end());
+       table_options.init_filter_nums = init_filter_num;
+
+       table_options.filter_policy.reset(rocksdb::NewBloomFilterPolicy(bits_per_key_per_filter, false));
+
+       // options.optionExtra.force_disable_compaction = force_disable_compaction_flag;
+       options.force_disable_compaction = force_disable_compaction_flag;
+
+       table_options.block_restart_interval = 16;
+       options.table_factory.reset(NewBlockBasedTableFactory(table_options));
+#else
+       options.optionExtra.force_disable_compaction = force_disable_compaction_flag;
+
+        table_options.filter_policy.reset(rocksdb::NewBloomFilterPolicy(bloom_bits, false));
 
         table_options.block_restart_interval = 16;
         options.table_factory.reset(NewBlockBasedTableFactory(table_options));
-
-        options.optionExtra.force_disable_compaction = force_disable_compaction_flag;
+#endif
 
         //    options.opEp_.region_divide_size = region_divide_size;
 
@@ -145,9 +162,9 @@ namespace ycsbc
         //    options.opEp_.init_filter_nums = init_filter_num;
         //    fprintf(stderr,"filter_capacity_ratio: %.3lf, init_filter_num:%d change_ratio %.5lf block_cache_size %lu MB size_ratio:%d l0_base_ratio:%lf\n",filter_capacity_ratio,init_filter_num,change_ratio,block_cache_size/1024/1024,size_ratio,l0_base_ratio);
 
-        //    if(LevelDB_ConfigMod::getInstance().getStatisticsOpen()){
-        //      options.opEp_.stats_ = RocksDB::CreateDBStatistics();
-        //    }
+       if(LevelDB_ConfigMod::getInstance().getStatisticsOpen()){
+          options.statistics = rocksdb::CreateDBStatistics();
+       }
 
         rocksdb::Status status = rocksdb::DB::Open(options, string(dbfilename), &db_);
         if(!status.ok())
@@ -221,7 +238,13 @@ namespace ycsbc
 
     int RocksDB::Scan(const string &table, const string &key, int len, const vector< string > *fields, vector< vector< DB::KVPair > > &result)
     {
-        fprintf(stderr, "not implement yet");
+        rocksdb::ReadOptions options(false, true); //verify, cache
+        rocksdb::Iterator* iter = db_->NewIterator(options);
+        iter->Seek(key);
+        for (int i = 0; i < len; i++) {
+            iter->Next();
+        }
+        delete iter;
         return DB::kOK;
     }
 

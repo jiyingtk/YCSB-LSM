@@ -30,6 +30,7 @@ int thread_id = 0;
 
 size_t ops[256] = {0};
 unsigned long long durations[256] = {0};
+size_t processed_ops = 0;
 
 size_t DelegateClient(ycsbc::DB *db, ycsbc::CoreWorkload *wl, const size_t num_ops,
                       bool is_loading, int read_thread_nums, bool warm)
@@ -52,7 +53,9 @@ size_t DelegateClient(ycsbc::DB *db, ycsbc::CoreWorkload *wl, const size_t num_o
     size_t oks = 0;
 
     int skipratio_inload = wl->skipratio_inload;
+    int skipratio_forrun = wl->skipratio_forrun;
     cerr << "skipratio_inload" << skipratio_inload << endl;
+    cerr << "skipratio_forrun" << skipratio_forrun << endl;
     cerr << "num_ops" << num_ops << endl;
     
     struct timeval start_insert_time, end_insert_time, res_time;
@@ -72,6 +75,11 @@ size_t DelegateClient(ycsbc::DB *db, ycsbc::CoreWorkload *wl, const size_t num_o
         }
         else
         {
+            if(skipratio_forrun && i % skipratio_forrun != 0) {
+                oks += client.DoTransaction(ops, durations, false);
+                continue;
+            }
+
             oks += client.DoTransaction(ops, durations);
         }
         if(i % 10240 == 0)
@@ -89,10 +97,45 @@ size_t DelegateClient(ycsbc::DB *db, ycsbc::CoreWorkload *wl, const size_t num_o
                 cerr << "operation count:" << i << "\r";
             }
         }
-        if (i % 100000 == 0)
+        if (i != 0 && i % 10000 == 0)
         {
-            db->doSomeThing("printFP");
-            db->doSomeThing("printAccessFreq");
+            size_t cur_processed_ops = __sync_add_and_fetch(&processed_ops, 10000);
+            if (cur_processed_ops % 500000 == 0) {
+                gettimeofday(&end_insert_time, NULL);
+                timersub(&end_insert_time, &start_insert_time, &res_time);
+                cout << endl;
+                if(!is_loading)
+                {
+                    unsigned long long real_used_time = res_time.tv_sec * 1000000 + res_time.tv_usec;
+                    if (read_thread_nums == 0)
+                        cout << "[stage output] Thread type: " << "mixed read and write" << endl;
+                    else
+                        cout << "[stage output] Thread type: " << (thread_type == 1 ? "only READ" : "only WRITE") << endl;
+                    cout << "Used time: " << durations[ycsbc::Operation::THREAD0 + t_id] / 1000000.0 << "s" << endl;
+                    cout << "WRITE latency " << endl;
+                    if (ops[ycsbc::Operation::INSERT])
+                        cout << durations[ycsbc::Operation::INSERT] / ops[ycsbc::Operation::INSERT] << "us" << " Write ops: " << ops[ycsbc::Operation::INSERT] << endl;
+                    cout << "READ latency(including zero-result lookup)" << endl;
+                    if (ops[ycsbc::Operation::READ])
+                        cout << durations[ycsbc::Operation::READ] / ops[ycsbc::Operation::READ] << "us" << " Read ops: " << ops[ycsbc::Operation::READ] << endl;
+                    cout << "Zero-result lookup: " << endl;
+                    if (ops[ycsbc::Operation::ZEROREAD])
+                        cout << durations[ycsbc::Operation::ZEROREAD] / ops[ycsbc::Operation::ZEROREAD] << "us" << " Zero-result ops: " << ops[ycsbc::Operation::ZEROREAD] << endl;
+                    cout << "Total IOPS: " << endl;
+                    cout << ops[ycsbc::Operation::ALL] / (durations[ycsbc::Operation::THREAD0 + t_id] / 1000000.0) << endl;
+                    cout << "Read IOPS: " << endl;
+                    cout << ops[ycsbc::Operation::READ] / (durations[ycsbc::Operation::THREAD0 + t_id] / 1000000.0) << ", " << ops[ycsbc::Operation::READ] / (real_used_time / 1000000.0) << endl;
+                    // cout<<ops[ycsbc::Operation::READ]/(durations[ycsbc::Operation::READ]/1000000.0)<<endl;
+                    cout << "WRITE IOPS: " << endl;
+                    cout << ops[ycsbc::Operation::INSERT] / (durations[ycsbc::Operation::THREAD0 + t_id] / 1000000.0) << ", " << ops[ycsbc::Operation::INSERT] / (real_used_time / 1000000.0) << endl;
+                    // cout<<ops[ycsbc::Operation::INSERT]/(durations[ycsbc::Operation::INSERT]/1000000.0)<<endl;
+                    
+                    db->doSomeThing("printStats");
+                }
+                db->doSomeThing("printFP");
+                db->doSomeThing("printAccessFreq");
+            }
+
         }
     }
     gettimeofday(&end_insert_time, NULL);
@@ -194,7 +237,7 @@ int main(const int argc, const char *argv[])
         actual_ops.clear();
     }
     thread_id = 0;
-    total_ops = stoi(props[ycsbc::CoreWorkload::OPERATION_COUNT_PROPERTY]);
+    total_ops = stol(props[ycsbc::CoreWorkload::OPERATION_COUNT_PROPERTY]);
     ycsbc::WallTimer timer;
     db->openStatistics();
     int read_thread_nums = std::stoi(props.GetProperty("readTheadNums", "0"));
@@ -239,6 +282,8 @@ int main(const int argc, const char *argv[])
 
     gettimeofday(&start_main_time, NULL);
 
+    thread_id = 0;
+
     int runs;
     for (runs = 0; runs < 2; runs++) {
         if (runs == 0)
@@ -247,6 +292,7 @@ int main(const int argc, const char *argv[])
             cerr << "Second run workload (adjust filter)\n" << endl;
             memset(ops, 0, sizeof(size_t) * 256);
             memset(durations, 0, sizeof(unsigned long long) * 256);
+            processed_ops = 0;
         }
 
         ycsbc::CoreWorkload wl;

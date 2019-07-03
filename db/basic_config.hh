@@ -32,6 +32,7 @@ protected:
     static boost::shared_ptr<T> instance;
     boost::property_tree::ptree _pt;
     bool readBool (const char* key);
+    bool readBool (const char* key, const bool defaultVal);
     int readInt (const char* key);
     double readFloat(const char* key);
     ULL readULL (const char* key);
@@ -72,8 +73,10 @@ private:
     int _valueSize;
     int _runMode;
     int _filterBaseLg;
+    double _extraValue1;
     bool _forceDeleteLevel0File;
     size_t _blockCacheSize;
+    bool _useLRUCache;
 public:
     std::string getBloom_filename();
     std::string getVlogFilename();
@@ -101,10 +104,12 @@ public:
     double getSlowRatio();
     double getChangeRatio();
     size_t getBlockCacheSize();
+    bool getUseLRUCache();
     int getSizeRatio();
     int getValueSize();
     int getFilterBaseLg();
     int getRunMode();
+    double getExtraValue1();
     bool getForceDeleteLevel0File();
 };
 

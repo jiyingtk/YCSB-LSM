@@ -5,14 +5,22 @@ void Basic_ConfigMod<T>::setConfigPath (const char* path) {
     boost::property_tree::ini_parser::read_ini(path, _pt);
     assert (!_pt.empty());
 }
+
+template<typename T>
+bool Basic_ConfigMod<T>::readBool (const char* key, const bool defaultVal) {
+    return _pt.get<bool>(key, defaultVal);
+}
+
 template<typename T>
 bool Basic_ConfigMod<T>::readBool (const char* key) {
     return _pt.get<bool>(key);
 }
+
 template<typename T>
 int Basic_ConfigMod<T>::readInt (const char* key) {
     return _pt.get<int>(key);
 }
+
 template<typename T>
 std::string Basic_ConfigMod<T>::readString (const char* key) {
     return _pt.get<std::string>(key);
@@ -53,6 +61,7 @@ void LevelDB_ConfigMod::setConfigPath(const char*path){
     _bloom_bits_array_filename = readString("basic.bitsArrayFileName");
     _setFreCountInCompaction = readBool("basic.setFreCountInCompaction");
     _l0_base_ratio = readFloat("basic.L0BaseRatio");
+    _extraValue1 = readFloat("basic.extraValue1");
     _lrus_num = readInt("LRU.LRUNum");
     _filters_capacity_ratio = readFloat("LRU.filterCapacityRatio");
     _base_num = readInt("LRU.baseNum");
@@ -67,6 +76,7 @@ void LevelDB_ConfigMod::setConfigPath(const char*path){
     _forceDeleteLevel0File = readBool("basic.forceDeleteLevel0File");
     _init_filter_num = readFloat("LRU.initFilterNum");
     _blockCacheSize = readSize_t("basic.blockCacheSize");
+    _useLRUCache = readBool("basic.useLRUCache", false);
 }
 /*template<typename T>
 boost::shared_ptr<T> Basic_ConfigMod<T>::instance= nullptr;*/
@@ -203,6 +213,11 @@ size_t LevelDB_ConfigMod::getBlockCacheSize(){
     return _blockCacheSize;
 }
 
+bool LevelDB_ConfigMod::getUseLRUCache() {
+    assert(!_pt.empty());
+    return _useLRUCache;
+}
+
 int LevelDB_ConfigMod::getSizeRatio()
 {
      assert(!_pt.empty());
@@ -225,6 +240,12 @@ int LevelDB_ConfigMod::getRunMode()
 {
      assert(!_pt.empty());
     return _runMode;
+}
+
+double LevelDB_ConfigMod::getExtraValue1()
+{
+     assert(!_pt.empty());
+    return _extraValue1;
 }
 
 bool LevelDB_ConfigMod::getForceDeleteLevel0File(){
