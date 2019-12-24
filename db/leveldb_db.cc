@@ -81,13 +81,11 @@ LevelDB::LevelDB(const char* dbfilename,const char* configPath)
 	if(fp == NULL){
 	    perror("open bits_array_filename error: ");
 	}
-	char c;
-	while( (c=fgetc(fp)) != EOF){
-	    if(!(c >= '0' && c <= '9')){
-		continue;
-	    }
-	    bits_per_key_per_filter[i++] = c-'0';
+	int bits;
+	while( fscanf(fp, "%d", &bits) == 1 ) {
+	    bits_per_key_per_filter[i++] = bits;
 	}
+
 	fprintf(stderr,"bits_per_key_per_filter: ");
 	fprintf(stdout,"\nbits_per_key_per_filter: ");
 	fprintf(fpout,"\nbits_per_key_per_filter: ");
@@ -132,9 +130,9 @@ LevelDB::LevelDB(const char* dbfilename,const char* configPath)
     options.opEp_.setFreCountInCompaction = setFreCountInCompaction;
     options.opEp_.slow_ratio = slow_ratio;
     options.opEp_.change_ratio = change_ratio;
-    options.opEp_.useLRUCache = LevelDB_ConfigMod::getInstance().getUseLRUCache();
+    //options.opEp_.useLRUCache = LevelDB_ConfigMod::getInstance().getUseLRUCache();
 
-    fprintf(stderr, "use defaultLRUCache: %s, max_open_files: %d\n", (options.opEp_.useLRUCache?"true":"false"), max_open_files);
+    fprintf(stderr, "use defaultLRUCache: %s, max_open_files: %d\n", (0?"true":"false"), max_open_files);
 
     options.opEp_.size_ratio = size_ratio;
  
@@ -163,8 +161,8 @@ int LevelDB::Read(const string& table, const string& key, const vector< string >
     std::string value;
     leveldb::Status s = db_->Get(leveldb::ReadOptions(), key, &value);
     if(s.IsNotFound()){
-        // fprintf(fnotexist, "%s\n", key.c_str());
-	// fprintf(stdout,"ycsb not found! %s\n", key.c_str());
+        //fprintf(stderr, "%s\n", key.c_str());
+	//fprintf(stderr,"ycsb not found! %s\n", key.c_str());
     	return DB::kErrorNoData;
     }
     // else

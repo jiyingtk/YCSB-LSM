@@ -15,13 +15,13 @@
 #include "db/tbb_rand_db.h"
 #include "db/tbb_scan_db.h"
 #include "db/leveldb_db.h"
-#include "db/rocksdb_db.h"
+//#include "db/rocksdb_db.h"
 #include "db/leveldbVlog_db.h"
 using namespace std;
 using ycsbc::DB;
 using ycsbc::DBFactory;
 using ycsbc::LevelDB;
-using ycsbc::RocksDB;
+//using ycsbc::RocksDB;
 using ycsbc::LeveldbVlog;
 DB* DBFactory::CreateDB(utils::Properties &props) {
   if (props["dbname"] == "basic") {
@@ -38,9 +38,9 @@ DB* DBFactory::CreateDB(utils::Properties &props) {
     return new TbbScanDB;
   } else if (props["dbname"] == "leveldb"){
 	return new LevelDB(props["dbfilename"].c_str(),props["configpath"].c_str());
-  } else if (props["dbname"] == "rocksdb"){
+  }/* else if (props["dbname"] == "rocksdb"){
   return new RocksDB(props["dbfilename"].c_str(),props["configpath"].c_str());
-  } else if (props["dbname"] == "leveldbVlog"){
+  }*/ else if (props["dbname"] == "leveldbVlog"){
     return new LeveldbVlog(props["dbfilename"].c_str(),props["configpath"].c_str());
   }
   else return NULL;
