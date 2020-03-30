@@ -60,14 +60,10 @@ namespace ycsbc
         if(fp == NULL)
             perror("open bits_array_filename error: ");
 
-        char c;
-        while( (c = fgetc(fp)) != EOF)
+        int c;
+        while((fscanf(fp, "%d", &c)) == 1)
         {
-            if(!(c >= '0' && c <= '9'))
-            {
-                continue;
-            }
-            bits_per_key_per_filter.push_back(c - '0');
+            bits_per_key_per_filter.push_back(c);
         }
         fprintf(stderr, "bits_per_key_per_filter: ");
         fprintf(stdout, "\nbits_per_key_per_filter: ");

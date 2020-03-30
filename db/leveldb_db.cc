@@ -74,20 +74,20 @@ LevelDB::LevelDB(const char* dbfilename,const char* configPath)
 	options.filter_policy = leveldb::NewBloomFilterPolicy(bloom_bits);
     }else if(bloom_type == 2){
 	int bits_per_key_per_filter[32] = {0};
-	int i = 0;
 	std::string bits_array_filename = LevelDB_ConfigMod::getInstance().getBitsArrayFilename();
 	FILE *fp = fopen(bits_array_filename.c_str(),"r");
 	FILE *fpout = fopen("bits_array.txt","w");
 	if(fp == NULL){
 	    perror("open bits_array_filename error: ");
 	}
-	char c;
-	while( (c=fgetc(fp)) != EOF){
-	    if(!(c >= '0' && c <= '9')){
-		continue;
-	    }
-	    bits_per_key_per_filter[i++] = c-'0';
+
+        int c;
+	int i = 0;
+	while((fscanf(fp,"%d",&c)) == 1)
+    	{
+	    bits_per_key_per_filter[i++] = c;
 	}
+
 	fprintf(stderr,"bits_per_key_per_filter: ");
 	fprintf(stdout,"\nbits_per_key_per_filter: ");
 	fprintf(fpout,"\nbits_per_key_per_filter: ");
