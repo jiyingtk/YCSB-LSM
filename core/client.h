@@ -177,8 +177,7 @@ inline bool Client::DoTransaction(size_t ops[],unsigned long long durations[], b
     operations = INSERT;
 
   if (!real_do) {
-    switch (operations) {
-      case INSERT:
+    if (operations == INSERT) {
         const std::string &table = workload_.NextTable();
         const std::string &key = workload_.NextSequenceKey();
     }

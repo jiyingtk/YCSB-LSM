@@ -111,7 +111,7 @@ LevelDB::LevelDB(const char* dbfilename,const char* configPath)
     options.opEp_.key_value_size = value_size;
     options.opEp_.force_delete_level0_file = force_delete_level0_file;
     options.opEp_.run_mode = run_mode;  //0:origin, 1:ebf-previous, 2:ebf-optimized
-    options.opEp_.cache_use_real_size = true;
+    options.opEp_.cache_use_real_size = false;
     options.opEp_.region_merge_threshold = extra_value1;
 
     options.create_if_missing = true;
@@ -159,7 +159,8 @@ int LevelDB::Read(const string& table, const string& key, const vector< string >
     // static FILE* fexist = fopen("exist.txt", "w");
     // static FILE* fnotexist = fopen("notexist.txt", "w");
     std::string value;
-    leveldb::Status s = db_->Get(leveldb::ReadOptions(), key, &value);
+    leveldb::ReadOptions ro;
+    leveldb::Status s = db_->Get(ro, key, &value);
     if(s.IsNotFound()){
         //fprintf(stderr, "%s\n", key.c_str());
 	//fprintf(stderr,"ycsb not found! %s\n", key.c_str());
@@ -245,7 +246,7 @@ void LevelDB::printAccessFreq()
     std::string acc_str;
     for(i = 0 ; i <= levels ; i++){
 	    snprintf(buf,sizeof(buf),"level%d_access_frequencies.txt",i);
-	    fd[i] = open(buf,O_RDWR|O_CREAT);
+	    fd[i] = open(buf,O_RDWR|O_CREAT, 0777);
 	    if(fd[i] < 0){
 		perror("open :");
 	    }
@@ -258,7 +259,7 @@ void LevelDB::printAccessFreq()
 
 
         snprintf(buf,sizeof(buf),"level%d_extra_infos.txt",i);
-        fd[i] = open(buf,O_RDWR|O_CREAT);
+        fd[i] = open(buf,O_RDWR|O_CREAT, 0777);
         if(fd[i] < 0){
         perror("open :");
         }
@@ -287,7 +288,7 @@ void LevelDB::printFilterCount()
     std::string filter_str;
     for(i = 0 ; i < levels ; i++){
             snprintf(buf,sizeof(buf),"level%d_filter_count_%d.txt",i,call_count);
-	    fd[i] = open(buf,O_RDWR|O_CREAT);
+	    fd[i] = open(buf,O_RDWR|O_CREAT, 0777);
 	    if(fd[i] < 0){
 		perror("open :");
 	    }
@@ -320,6 +321,17 @@ void LevelDB::doSomeThing(const char* thing_str)
     }
     std::string stat_str;
     db_->GetProperty("leveldb.fp-stat-access_file",&stat_str);
+    if(write(fd,stat_str.c_str(),stat_str.size()) != (ssize_t)stat_str.size()){
+        perror("write :");
+    }
+    close(fd);
+
+    fd = open("filter_info_file.txt",O_RDWR|O_CREAT,0777);
+    if(fd < 0){
+        perror("open :");
+    }
+    stat_str.clear();
+    db_->GetProperty("leveldb.filter-info",&stat_str);
     if(write(fd,stat_str.c_str(),stat_str.size()) != (ssize_t)stat_str.size()){
         perror("write :");
     }

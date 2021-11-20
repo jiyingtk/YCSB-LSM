@@ -12,6 +12,7 @@
 #include <vector>
 #include <string>
 #include <stdlib.h>
+#include <string.h>
 #include <stdio.h>
 #include "db.h"
 #include "properties.h"
@@ -261,6 +262,7 @@ inline std::string CoreWorkload::BuildKeyName(uint64_t key_num) {
     key_num = utils::Hash(key_num);
   }
   snprintf(key, sizeof(key), "%020lu", key_num);
+  //memcpy(key, (char*)&key_num, 8);
   return std::string("user").append(std::string(key,20));
 }
 

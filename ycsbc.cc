@@ -11,6 +11,9 @@
 #include <iostream>
 #include <vector>
 #include <future>
+#include <thread>
+#include <chrono>
+#include <condition_variable>
 #include "core/utils.h"
 #include "core/timer.h"
 #include "core/client.h"
@@ -31,6 +34,45 @@ int thread_id = 0;
 size_t ops[256] = {0};
 unsigned long long durations[256] = {0};
 size_t processed_ops = 0;
+
+const int stat_monitoring_duration = 5;
+
+std::mutex stat_mutex;
+std::condition_variable stat_cv;
+void * collect_stats(void *arg) {
+    cerr << "collect stats every " << stat_monitoring_duration << "s" << endl;
+
+    struct timeval start_phase_time, end_phase_time, res_time;
+    size_t pre_ops = 0;
+    size_t pre_read_ops = 0;
+    unsigned long long pre_read_duration = 0;
+    gettimeofday(&start_phase_time, NULL);
+    while (stat_monitoring_duration > 0) {
+        std::unique_lock<std::mutex> lk(stat_mutex);
+        std::chrono::seconds monitoring_seconds(stat_monitoring_duration);
+
+        if (stat_cv.wait_for(lk, monitoring_seconds) == cv_status::no_timeout) {
+            break;
+        } else {
+            gettimeofday(&end_phase_time, NULL);
+            timersub(&end_phase_time, &start_phase_time, &res_time);
+            start_phase_time = end_phase_time;
+            unsigned long long real_used_time = res_time.tv_sec * 1000000 + res_time.tv_usec;
+            int total_used_seconds = durations[ycsbc::Operation::THREAD0] / 1000000.0;
+            int real_used_seconds = real_used_time / 1000000.0;
+            float current_ops = (ops[ycsbc::Operation::ALL] - pre_ops) / (real_used_time / 1000000.0);
+            int read_latency = 0;
+            if (ops[ycsbc::Operation::READ] - pre_read_ops)
+                read_latency = (durations[ycsbc::Operation::READ] - pre_read_duration) / (ops[ycsbc::Operation::READ] - pre_read_ops);
+
+            cerr << "-result-: start " << total_used_seconds << "s, used " << real_used_seconds << "s, IOPS " << current_ops << ", read_lat " << read_latency << "us" << endl;
+            pre_ops = ops[ycsbc::Operation::ALL];
+            pre_read_ops = ops[ycsbc::Operation::READ];
+            pre_read_duration = durations[ycsbc::Operation::READ];
+        }
+    }
+    return NULL;
+}
 
 size_t DelegateClient(ycsbc::DB *db, ycsbc::CoreWorkload *wl, const size_t num_ops,
                       bool is_loading, int read_thread_nums, bool warm)
@@ -58,10 +100,16 @@ size_t DelegateClient(ycsbc::DB *db, ycsbc::CoreWorkload *wl, const size_t num_o
     cerr << "skipratio_forrun" << skipratio_forrun << endl;
     cerr << "num_ops" << num_ops << endl;
     
+    //thread for collecting stats
+    cerr << "collect stats" << endl;
+    pthread_t pid;
+    pthread_create(&pid, NULL, collect_stats, NULL);
+
     struct timeval start_insert_time, end_insert_time, res_time;
     struct timeval start_phase_time, end_phase_time;
     gettimeofday(&start_insert_time, NULL);
     gettimeofday(&start_phase_time, NULL);
+    size_t pre_ops = 0;
     for (size_t i = 0; i < num_ops; ++i)
     {
         if (is_loading)
@@ -86,7 +134,7 @@ size_t DelegateClient(ycsbc::DB *db, ycsbc::CoreWorkload *wl, const size_t num_o
         {
             if(is_loading && i % 102400 == 0)
             {
-                cerr << "operation count:" << i << "\r";
+                cerr << "operation count:" << i << "\n";
                 gettimeofday(&end_phase_time, NULL);
                 timersub(&end_phase_time, &start_phase_time, &res_time);
                 start_phase_time = end_phase_time;
@@ -94,13 +142,13 @@ size_t DelegateClient(ycsbc::DB *db, ycsbc::CoreWorkload *wl, const size_t num_o
             }
             else if(!is_loading)
             {
-                cerr << "operation count:" << i << "\r";
+                cerr << "operation count:" << i << "\n";
             }
         }
         if (i != 0 && i % 10000 == 0)
         {
             size_t cur_processed_ops = __sync_add_and_fetch(&processed_ops, 10000);
-            if (cur_processed_ops % 500000 == 0) {
+            if (cur_processed_ops % 100000 == 0) {
                 gettimeofday(&end_insert_time, NULL);
                 timersub(&end_insert_time, &start_insert_time, &res_time);
                 cout << endl;
@@ -125,11 +173,17 @@ size_t DelegateClient(ycsbc::DB *db, ycsbc::CoreWorkload *wl, const size_t num_o
                     cout << ops[ycsbc::Operation::ALL] / (durations[ycsbc::Operation::THREAD0 + t_id] / 1000000.0) << endl;
                     cout << "Read IOPS: " << endl;
                     cout << ops[ycsbc::Operation::READ] / (durations[ycsbc::Operation::THREAD0 + t_id] / 1000000.0) << ", " << ops[ycsbc::Operation::READ] / (real_used_time / 1000000.0) << endl;
-                    // cout<<ops[ycsbc::Operation::READ]/(durations[ycsbc::Operation::READ]/1000000.0)<<endl;
                     cout << "WRITE IOPS: " << endl;
                     cout << ops[ycsbc::Operation::INSERT] / (durations[ycsbc::Operation::THREAD0 + t_id] / 1000000.0) << ", " << ops[ycsbc::Operation::INSERT] / (real_used_time / 1000000.0) << endl;
-                    // cout<<ops[ycsbc::Operation::INSERT]/(durations[ycsbc::Operation::INSERT]/1000000.0)<<endl;
-                    
+                    if (!is_loading) {
+                        gettimeofday(&end_phase_time, NULL);
+                        timersub(&end_phase_time, &start_phase_time, &res_time);
+                        start_phase_time = end_phase_time;
+                        real_used_time = res_time.tv_sec * 1000000 + res_time.tv_usec;
+                        cout << "Total IOPS (phase): " << endl;
+                        cout << (ops[ycsbc::Operation::ALL] - pre_ops) / (real_used_time / 1000000.0) << endl;
+                        pre_ops = ops[ycsbc::Operation::ALL];
+                    }
                     db->doSomeThing("printStats");
                 }
                 db->doSomeThing("printFP");
@@ -332,6 +386,7 @@ int main(const int argc, const char *argv[])
         actual_ops.clear();
     }
 
+    stat_cv.notify_all();
     db->Close();
     delete db;
 }

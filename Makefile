@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-std=c++11 -g2  -Wall -pthread -I./ -I/home/kvgroup/tcj/EBF-extend/multi-bf-lsm/include -L/home/kvgroup/tcj/EBF-extend/multi-bf-lsm/out-shared -Wl,-rpath=/home/kvgroup/tcj/EBF-extend/multi-bf-lsm/out-shared
+CFLAGS=-std=c++11 -g2  -Wall -pthread -I./ -I/home/distkv/tcj/EBF-extend/multi-bf-lsm/include -L/home/distkv/tcj/EBF-extend/multi-bf-lsm/out-shared -Wl,-rpath=/home/distkv/tcj/EBF-extend/multi-bf-lsm/out-shared
 LDFLAGS= -lpthread -ltbb -lhiredis -lleveldb -lboost_system -lboost_thread
 SUBDIRS=core db redis
 SUBSRCS=$(wildcard core/*.cc) $(wildcard db/*.cc)

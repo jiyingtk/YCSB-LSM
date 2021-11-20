@@ -19,11 +19,14 @@ namespace ycsbc {
 class HotspotIntegerGenerator : public Generator<uint64_t> {
  uint64_t lowerBound;
  uint64_t upperBound;
+ uint64_t interval;
  uint64_t hotInterval;
  uint64_t coldInterval;
  double hotsetFraction;
  double hotOpnFraction;
  uint64_t last_value_;
+ uint64_t dynamicShiftOps;
+ uint64_t opCounter;
  public:
 
   
@@ -46,23 +49,32 @@ class HotspotIntegerGenerator : public Generator<uint64_t> {
 	this->lowerBound = lowerBound;
 	this->upperBound = upperBound;
 	this->hotsetFraction = hotsetFraction;
-	uint64_t interval = upperBound - lowerBound + 1;
-	this->hotInterval = (interval * hotsetFraction);
-	this->coldInterval = interval - hotInterval;
+	this->interval = upperBound - lowerBound + 1;
+	this->hotInterval = (this->interval * hotsetFraction);
+	this->coldInterval = this->interval - hotInterval;
 	this->hotOpnFraction = hotOpnFraction;
+	
+	this->dynamicShiftOps = 1000000;
+	if (this->dynamicShiftOps != 0) {
+		fprintf(stderr, "[Hotspot] enable dynamic shift hotspot, every %lu ops", this->dynamicShiftOps);
+	}
+	this->opCounter = 0;
   }
-  
-  
-  
   
   uint64_t Next() { 
 	uint64_t value = 0;
 	if(utils::RandomDouble() < hotOpnFraction){
-	     value = lowerBound + utils::RandomULL() % hotInterval;
+		value = utils::RandomULL() % hotInterval;
 	}else{
-	    value = lowerBound + hotInterval + utils::RandomULL()%coldInterval;
+		value = hotInterval + utils::RandomULL()%coldInterval;
 	}
+	if (dynamicShiftOps != 0) {
+		uint64_t shift = (opCounter / dynamicShiftOps) * hotInterval;	
+		value = (value + shift) % interval;
+	}
+	value += lowerBound;
 	last_value_ = value;
+	opCounter++;
 	return value;
   }
 
